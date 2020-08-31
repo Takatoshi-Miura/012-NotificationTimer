@@ -1,0 +1,10 @@
+・スクリーンショット画像サイズ
+    iPhone 6.5インチ：iPhone Xs Max（1242x2688）
+    iPhone 5.5インチ：iPhone 8 Plus（1242x2208）
+    iPad Pro(第3世代) 12.9インチ（2048×2732）
+
+・作成手順
+　シミュレーター でスクリーンショットを撮る
+　Adobe XD でフレームを付ける
+　FireAlpaca余分な四隅を透明色にする
+　FireAlpacaでスクショ画像を作る
