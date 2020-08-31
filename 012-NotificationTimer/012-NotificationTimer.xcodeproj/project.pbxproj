@@ -59,12 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				8DA3F23724FD00980029D5C3 /* AppDelegate.swift */,
+				8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */,
 				8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */,
 				8DA3F23D24FD00980029D5C3 /* Main.storyboard */,
 				8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */,
 				8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */,
 				8DA3F24024FD009B0029D5C3 /* Assets.xcassets */,
-				8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */,
 				8DA3F24524FD009B0029D5C3 /* Info.plist */,
 			);
 			path = "012-NotificationTimer";
