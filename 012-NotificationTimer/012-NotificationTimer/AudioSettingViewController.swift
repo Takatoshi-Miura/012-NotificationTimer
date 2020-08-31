@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AudioSettingViewController.swift
 //  012-NotificationTimer
 //
 //  Created by Takatoshi Miura on 2020/08/31.
@@ -8,13 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AudioSettingViewController: UIViewController {
 
+    // MARK: -ライフサイクルメソッド
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
+    
+    
+    
+    // MARK: -UIの設定
+    
+    
+    
+
 
 
 }
-
