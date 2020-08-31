@@ -29,7 +29,9 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     // MARK: -UIの設定
     
     // 時間表示ラベル
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeButton: UIButton!
+    @IBAction func timeButton(_ sender: Any) {
+    }
     
     // スタートボタン
     @IBOutlet weak var startButton: UIButton!
