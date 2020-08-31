@@ -75,7 +75,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-9i-PYf">
                                 <rect key="frame" x="16" y="378" width="74" height="74"/>
-                                <state key="normal" image="Start Button"/>
+                                <state key="normal" image="Reset Button"/>
                                 <connections>
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hl5-pY-9yN"/>
                                 </connections>
@@ -86,13 +86,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5i-1v-mFC">
+                                <rect key="frame" x="27" y="405" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0G0-cc-Xb0"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="1wm-Dd-Kn1" secondAttribute="bottom" id="2cV-DJ-2Kv"/>
+                            <constraint firstItem="A5i-1v-mFC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="3Xc-lq-7pT"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EuB-ed-96g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1wm-Dd-Kn1" secondAttribute="trailing" id="IM7-hH-PXx"/>
+                            <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="A5i-1v-mFC" secondAttribute="bottom" constant="42" id="LsV-WO-vDv"/>
                             <constraint firstItem="ox5-9i-PYf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NLS-cY-Pok"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="ox5-9i-PYf" secondAttribute="bottom" constant="16" id="NgP-cu-tcC"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="oAx-xE-3VS" secondAttribute="bottom" constant="16" id="Pft-OA-Gz0"/>
@@ -130,7 +138,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-V5-Cm4">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mannerCell" textLabel="UEc-U6-CeZ" style="IBUITableViewCellStyleDefault" id="g1X-yd-YGY">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="43.5"/>
@@ -174,6 +182,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fzK-ui-Qee" id="8eK-EI-NO7"/>
+                                    <outlet property="delegate" destination="fzK-ui-Qee" id="AWs-Ak-Oh4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -186,6 +198,9 @@
                         <viewLayoutGuide key="safeArea" id="4SZ-sl-n8G"/>
                     </view>
                     <navigationItem key="navigationItem" id="CYm-4d-3ev"/>
+                    <connections>
+                        <outlet property="tableView" destination="gfO-V5-Cm4" id="QAm-jl-dCi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCN-JU-gZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -211,6 +226,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Reset Button" width="74" height="74"/>
         <image name="Start Button" width="74" height="74"/>
         <image name="ハンバーガーメニュー" width="200" height="200"/>
     </resources>
