@@ -30,6 +30,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     // マナーモードスイッチ
+    let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     @objc func switchTriggered(sender: UISwitch){
         if sender.isOn {
             // ONの処理
@@ -73,7 +74,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             cell.textLabel!.text = "マナーモード"
             
             // スイッチを追加
-            let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             switchView.addTarget(self, action: #selector(switchTriggered), for: .valueChanged)
             cell.accessoryView = switchView
             
