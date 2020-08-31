@@ -14,6 +14,9 @@ class AudioSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ナビゲーションバーを表示
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     

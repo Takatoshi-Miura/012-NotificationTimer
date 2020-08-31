@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0yC-HT-xxf">
-                                <rect key="frame" x="0.0" y="448" width="320" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="468" width="320" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="3Hv-mh-rbd"/>
+                                    <constraint firstAttribute="height" constant="100" id="3Hv-mh-rbd"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="audioCell" textLabel="cY9-zV-x8c" detailTextLabel="bu0-Zv-jr6" style="IBUITableViewCellStyleValue1" id="eE4-za-goy">
@@ -47,9 +47,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="DSd-X6-etg"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kBe-g4-rMD"/>
+                                </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1wm-Dd-Kn1">
-                                <rect key="frame" x="0.0" y="44" width="320" height="404"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="424"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEa-Ug-Nnh">
                                 <rect key="frame" x="16" y="60" width="40" height="40"/>
@@ -58,14 +62,23 @@
                                     <constraint firstAttribute="height" constant="40" id="IFj-AP-Gg9"/>
                                 </constraints>
                                 <state key="normal" image="ハンバーガーメニュー"/>
+                                <connections>
+                                    <action selector="hamburgerMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nze-9b-sJe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-xE-3VS">
-                                <rect key="frame" x="230" y="358" width="74" height="74"/>
+                                <rect key="frame" x="230" y="378" width="74" height="74"/>
                                 <state key="normal" image="Start Button"/>
+                                <connections>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyb-bO-cPD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-9i-PYf">
-                                <rect key="frame" x="16" y="358" width="74" height="74"/>
+                                <rect key="frame" x="16" y="378" width="74" height="74"/>
                                 <state key="normal" image="Start Button"/>
+                                <connections>
+                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hl5-pY-9yN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xa-nh-t8f">
                                 <rect key="frame" x="34.5" y="248" width="251" height="72"/>
@@ -96,6 +109,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="DCH-Ev-ZWm"/>
                     <connections>
+                        <outlet property="resetButton" destination="ox5-9i-PYf" id="hcp-2E-MKu"/>
+                        <outlet property="startButton" destination="oAx-xE-3VS" id="NhR-fx-aNX"/>
+                        <outlet property="tableView" destination="0yC-HT-xxf" id="LM7-lO-J36"/>
+                        <outlet property="timeLabel" destination="5Xa-nh-t8f" id="GQg-Ja-Z7y"/>
                         <segue destination="fzK-ui-Qee" kind="show" identifier="goAudioSetting" id="iFK-GZ-65z"/>
                     </connections>
                 </viewController>
@@ -103,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="1136.25" y="137.32394366197184"/>
         </scene>
-        <!--View Controller-->
+        <!--Audio Setting View Controller-->
         <scene sceneID="fKn-sh-Q3N">
             <objects>
-                <viewController id="fzK-ui-Qee" sceneMemberID="viewController">
+                <viewController id="fzK-ui-Qee" customClass="AudioSettingViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0yv-fU-2dl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
