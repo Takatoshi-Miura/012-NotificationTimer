@@ -29,6 +29,15 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     // テーブルビュー
     @IBOutlet weak var tableView: UITableView!
     
+    // マナーモードスイッチ
+    @objc func switchTriggered(sender: UISwitch){
+        if sender.isOn {
+            // ONの処理
+        } else {
+            // OFFの処理
+        }
+    }
+    
     
     
     // MARK: -テーブルビューの設定
@@ -62,6 +71,12 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // マナーモードセルを返却
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "mannerCell", for: indexPath)
             cell.textLabel!.text = "マナーモード"
+            
+            // スイッチを追加
+            let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            switchView.addTarget(self, action: #selector(switchTriggered), for: .valueChanged)
+            cell.accessoryView = switchView
+            
             return cell
         case 1:
             // 音声セルを返却
