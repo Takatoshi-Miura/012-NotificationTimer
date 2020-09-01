@@ -109,6 +109,7 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     // ハンバーガーメニュー
     @IBAction func hamburgerMenu(_ sender: Any) {
+        // セグエ遷移
     }
     
     // 背景画像

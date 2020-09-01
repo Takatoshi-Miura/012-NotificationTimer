@@ -14,7 +14,7 @@
 		8DA3F24424FD009B0029D5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */; };
 		8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */; };
 		8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */; };
-		8DAAD0F124FE2E0A0004765C /* hamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAD0F024FE2E0A0004765C /* hamburgerViewController.swift */; };
+		8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		8DA3F24524FD009B0029D5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingViewController.swift; sourceTree = "<group>"; };
-		8DAAD0F024FE2E0A0004765C /* hamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hamburgerViewController.swift; sourceTree = "<group>"; };
+		8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				8DA3F23D24FD00980029D5C3 /* Main.storyboard */,
 				8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */,
 				8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */,
-				8DAAD0F024FE2E0A0004765C /* hamburgerViewController.swift */,
+				8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */,
 				8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */,
 				8DA3F24024FD009B0029D5C3 /* Assets.xcassets */,
 				8DA3F24524FD009B0029D5C3 /* Info.plist */,
@@ -144,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DAAD0F124FE2E0A0004765C /* hamburgerViewController.swift in Sources */,
+				8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */,
 				8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */,
 				8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */,
 				8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */,
