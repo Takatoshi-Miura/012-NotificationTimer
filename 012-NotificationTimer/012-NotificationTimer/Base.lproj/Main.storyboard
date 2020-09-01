@@ -81,14 +81,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5i-1v-mFC">
-                                <rect key="frame" x="27" y="371" width="52" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="27" y="371" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
-                                <rect key="frame" x="49" y="243.5" width="222" height="81.5"/>
-                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="60"/>
+                            <label opaque="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
+                                <rect key="frame" x="31" y="236.5" width="258" height="95"/>
+                                <fontDescription key="fontDescription" name="DevanagariSangamMN-Bold" family="Devanagari Sangam MN" pointSize="70"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -136,6 +136,7 @@
                     <connections>
                         <outlet property="imageView" destination="1wm-Dd-Kn1" id="MzY-n3-kKp"/>
                         <outlet property="resetButton" destination="ox5-9i-PYf" id="hcp-2E-MKu"/>
+                        <outlet property="resetLabel" destination="A5i-1v-mFC" id="urU-vl-KUZ"/>
                         <outlet property="startButton" destination="oAx-xE-3VS" id="NhR-fx-aNX"/>
                         <outlet property="tableView" destination="0yC-HT-xxf" id="LM7-lO-J36"/>
                         <outlet property="timeLabel" destination="oEU-4M-EXz" id="Cmk-4z-3lx"/>

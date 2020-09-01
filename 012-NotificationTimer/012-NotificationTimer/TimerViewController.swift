@@ -17,6 +17,10 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         // テーブルビュー初期設定
         tableViewInit()
+        
+        // ラベルの文字を縁取る
+        timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
+        resetLabel.makeOutLine(strokeWidth: -4.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +80,7 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     // リセットボタン
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var resetLabel: UILabel!
     @IBAction func resetButton(_ sender: Any) {
         if timer.isValid {
             // タイマーを停止
@@ -111,64 +116,8 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     // カメラボタン
     @IBAction func camaraButton(_ sender: Any) {
-        displayAlert()
-    }
-    
-    // アラート表示
-    func displayAlert() {
-        // アラート(アクションシート)の宣言
-        let alertController:UIAlertController = UIAlertController(title:"背景の設定", message: "どの画像を設定しますか？", preferredStyle: .actionSheet)
-        
-        // カメラロールボタンの宣言
-        let actionLibrary = UIAlertAction(title: "カメラロール", style: .default) {action in
-            // ライブラリが利用可能か判定
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                // ライブラリを起動
-                print("ライブラリは利用可能です")
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.sourceType = .photoLibrary
-                imagePickerController.delegate = self
-                self.present(imagePickerController, animated: true, completion: nil)
-            } else {
-                print("ライブラリは利用できません")
-            }
-        }
-        
-        // カメラボタンの宣言
-        let actionCamera = UIAlertAction(title: "カメラを起動", style: .default){action in
-            // カメラが利用可能か判定
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                print("カメラは利用可能です")
-                // カメラを起動
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.sourceType = .camera
-                imagePickerController.delegate = self
-                self.present(imagePickerController, animated: true, completion: nil)
-            } else {
-                print("カメラは利用できません")
-            }
-        }
-        
-        // キャンセルボタンの宣言
-        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel){(action) -> Void in
-        }
-        
-        // ボタンをセット
-        alertController.addAction(actionLibrary)
-        alertController.addAction(actionCamera)
-        alertController.addAction(actionCancel)
-        
         // アラートを表示
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    // 画像選択時に呼ばれるメソッド
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // 選択画像を背景にセット
-        imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        
-        // モーダルを閉じる
-        self.dismiss(animated: true, completion: .none)
+        displayAlert()
     }
     
     // テーブルビュー
@@ -406,5 +355,75 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // ラベルに反映
         timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
     }
+    
+    // アラート表示
+    func displayAlert() {
+        // アラート(アクションシート)の宣言
+        let alertController:UIAlertController = UIAlertController(title:"背景の設定", message: "どの画像を設定しますか？", preferredStyle: .actionSheet)
+        
+        // カメラロールボタンの宣言
+        let actionLibrary = UIAlertAction(title: "カメラロール", style: .default) {action in
+            // ライブラリが利用可能か判定
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                // ライブラリを起動
+                print("ライブラリは利用可能です")
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .photoLibrary
+                imagePickerController.delegate = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("ライブラリは利用できません")
+            }
+        }
+        
+        // カメラボタンの宣言
+        let actionCamera = UIAlertAction(title: "カメラを起動", style: .default){action in
+            // カメラが利用可能か判定
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                print("カメラは利用可能です")
+                // カメラを起動
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .camera
+                imagePickerController.delegate = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("カメラは利用できません")
+            }
+        }
+        
+        // キャンセルボタンの宣言
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel){(action) -> Void in
+        }
+        
+        // ボタンをセット
+        alertController.addAction(actionLibrary)
+        alertController.addAction(actionCamera)
+        alertController.addAction(actionCancel)
+        
+        // アラートを表示
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // 画像選択時に呼ばれるメソッド
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // 選択画像を背景にセット
+        imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        // モーダルを閉じる
+        self.dismiss(animated: true, completion: .none)
+    }
 
 }
+
+// 文字を縁取りにする
+extension UILabel {
+    func makeOutLine(strokeWidth: CGFloat, oulineColor: UIColor, foregroundColor: UIColor) {
+        let strokeTextAttributes = [
+            .strokeColor : oulineColor,
+            .foregroundColor : foregroundColor,
+            .strokeWidth : strokeWidth
+        ] as [NSAttributedString.Key : Any]
+        self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
+    }
+}
+
