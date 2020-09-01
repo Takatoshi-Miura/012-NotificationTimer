@@ -86,35 +86,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da1-nW-qlO">
-                                <rect key="frame" x="34.5" y="242" width="251" height="84"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="00:00:00">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="timeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5S-A1-Jd1"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
+                                <rect key="frame" x="49" y="243" width="222" height="82"/>
+                                <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0G0-cc-Xb0"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="1wm-Dd-Kn1" secondAttribute="bottom" id="2cV-DJ-2Kv"/>
                             <constraint firstItem="A5i-1v-mFC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="3Xc-lq-7pT"/>
-                            <constraint firstItem="Da1-nW-qlO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="819-rE-VGB"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EuB-ed-96g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1wm-Dd-Kn1" secondAttribute="trailing" id="IM7-hH-PXx"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="A5i-1v-mFC" secondAttribute="bottom" constant="42" id="LsV-WO-vDv"/>
                             <constraint firstItem="ox5-9i-PYf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NLS-cY-Pok"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="ox5-9i-PYf" secondAttribute="bottom" constant="16" id="NgP-cu-tcC"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="oAx-xE-3VS" secondAttribute="bottom" constant="16" id="Pft-OA-Gz0"/>
+                            <constraint firstItem="oEU-4M-EXz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R25-fr-1yk"/>
+                            <constraint firstItem="oEU-4M-EXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X3O-HT-1nP"/>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="YPV-pH-qLF"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zc0-rp-7gc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAx-xE-3VS" secondAttribute="trailing" constant="16" id="hHy-PP-hfe"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="oK3-r9-e8p"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tcv-bt-5Qi"/>
-                            <constraint firstItem="Da1-nW-qlO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vAP-RP-TEl"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xaI-ja-u1x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -124,7 +120,7 @@
                         <outlet property="resetButton" destination="ox5-9i-PYf" id="hcp-2E-MKu"/>
                         <outlet property="startButton" destination="oAx-xE-3VS" id="NhR-fx-aNX"/>
                         <outlet property="tableView" destination="0yC-HT-xxf" id="LM7-lO-J36"/>
-                        <outlet property="timeButton" destination="Da1-nW-qlO" id="qIt-yX-2T5"/>
+                        <outlet property="timeLabel" destination="oEU-4M-EXz" id="Cmk-4z-3lx"/>
                         <segue destination="fzK-ui-Qee" kind="show" identifier="goAudioSetting" id="iFK-GZ-65z"/>
                     </connections>
                 </viewController>
