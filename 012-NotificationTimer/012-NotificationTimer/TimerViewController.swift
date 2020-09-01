@@ -96,6 +96,9 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         } else if count > 0 {
             // 以前セットした時間に戻す
             timePickerDone()
+            
+            // ボタン画像をスタート用にセット
+            startButton.setImage(startImage, for: .normal)
         }
     }
     
