@@ -92,12 +92,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Meo-0R-SGr">
+                                <rect key="frame" x="264" y="60" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6Jk-kO-NJB"/>
+                                    <constraint firstAttribute="height" constant="40" id="lCB-IF-fpe"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="camera" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0G0-cc-Xb0"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="1wm-Dd-Kn1" secondAttribute="bottom" id="2cV-DJ-2Kv"/>
                             <constraint firstItem="A5i-1v-mFC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="3Xc-lq-7pT"/>
+                            <constraint firstItem="Meo-0R-SGr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="BJb-hi-Tz0"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EuB-ed-96g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1wm-Dd-Kn1" secondAttribute="trailing" id="IM7-hH-PXx"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="A5i-1v-mFC" secondAttribute="bottom" constant="42" id="LsV-WO-vDv"/>
@@ -105,13 +115,16 @@
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="ox5-9i-PYf" secondAttribute="bottom" constant="16" id="NgP-cu-tcC"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="top" secondItem="oAx-xE-3VS" secondAttribute="bottom" constant="16" id="Pft-OA-Gz0"/>
                             <constraint firstItem="oEU-4M-EXz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R25-fr-1yk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Meo-0R-SGr" secondAttribute="trailing" constant="16" id="RcW-wm-itk"/>
                             <constraint firstItem="oEU-4M-EXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X3O-HT-1nP"/>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="YPV-pH-qLF"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zc0-rp-7gc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAx-xE-3VS" secondAttribute="trailing" constant="16" id="hHy-PP-hfe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Meo-0R-SGr" secondAttribute="trailing" constant="16" id="jU7-Ak-z0N"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="oK3-r9-e8p"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tcv-bt-5Qi"/>
                             <constraint firstItem="0yC-HT-xxf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xaI-ja-u1x"/>
+                            <constraint firstItem="Meo-0R-SGr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="yRf-NS-nlF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -228,6 +241,7 @@
     <resources>
         <image name="Reset Button" width="74" height="74"/>
         <image name="Start Button" width="74" height="74"/>
+        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="ハンバーガーメニュー" width="200" height="200"/>
     </resources>
 </document>
