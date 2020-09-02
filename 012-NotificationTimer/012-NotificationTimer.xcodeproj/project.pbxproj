@@ -15,6 +15,7 @@
 		8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */; };
 		8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */; };
 		8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */; };
+		8DDA4B5524FF595000AD7C69 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA4B5424FF595000AD7C69 /* SettingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingViewController.swift; sourceTree = "<group>"; };
 		8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		8DDA4B5424FF595000AD7C69 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */,
 				8DA3F23D24FD00980029D5C3 /* Main.storyboard */,
 				8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */,
+				8DDA4B5424FF595000AD7C69 /* SettingData.swift */,
 				8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */,
 				8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */,
 				8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */,
@@ -148,6 +151,7 @@
 				8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */,
 				8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */,
 				8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */,
+				8DDA4B5524FF595000AD7C69 /* SettingData.swift in Sources */,
 				8DA3F23A24FD00980029D5C3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

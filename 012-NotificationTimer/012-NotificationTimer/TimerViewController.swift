@@ -10,7 +10,7 @@ import UIKit
 
 class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    // MARK: -ライフサイクルメソッド
+    // MARK:- ライフサイクルメソッド
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
-    // MARK: -UIの設定
+    // MARK:- UIの設定
     
     // 時間表示ラベル
     @IBOutlet weak var timeLabel: UILabel!
@@ -120,7 +120,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
-    // MARK: -変数の宣言
+    // MARK:- 変数の宣言
     
     // タイマー
     var timer = Timer()
@@ -136,7 +136,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
-    // MARK: -Pickerの設定
+    // MARK:- Pickerの設定
     
     // Pickerの列数を返却
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -273,7 +273,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
-    // MARK: -その他のメソッド
+    // MARK:- その他のメソッド
 
     //タイマーから呼び出されるメソッド
     @objc func countDown(){

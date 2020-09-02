@@ -10,7 +10,7 @@ import UIKit
 
 class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    // MARK: -ライフサイクルメソッド
+    // MARK:- ライフサイクルメソッド
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     
     
-    // MARK: -UIの設定
+    // MARK:- UIの設定
     
     // テーブルビュー
     @IBOutlet weak var tableView: UITableView!
@@ -48,7 +48,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     
     
-    // MARK: -テーブルビューの設定
+    // MARK:- テーブルビューの設定
     
     // 初期化メソッド
     func tableViewInit() {

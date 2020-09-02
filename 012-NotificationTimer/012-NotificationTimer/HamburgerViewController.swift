@@ -10,7 +10,7 @@ import UIKit
 
 class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    // MARK: - ライフサイクルメソッド
+    // MARK:- ライフサイクルメソッド
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,7 +24,7 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     
     
-    // MARK: - UIの設定
+    // MARK:- UIの設定
     
     // メニュービュー
     @IBOutlet weak var menuView: UIView!
@@ -34,7 +34,7 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     
     
-    // MARK: - テーブルビューの設定
+    // MARK:- テーブルビューの設定
     
     // セル数を返却
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +73,7 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     
     
-    // MARK: - その他のメソッド
+    // MARK:- その他のメソッド
     
     // メニューを表示するメソッド
     func openMenu() {
