@@ -28,10 +28,13 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBOutlet weak var timeLabel: UILabel!
     override func touchesBegan(_ touches: Set<UITouch>,with event: UIEvent?){
         // timeLabelをタップした時の処理
-        if touchedLabel(touches: touches,view:timeLabel){
-          // Pickerを出す
-          openPicker()
-          return
+        if touchedLabel(touches: touches,view:timeLabel) {
+            // Pickerを出す
+            openPicker()
+            return
+        } else {
+            // Pickerをしまう
+            closePicker()
         }
     }
     
