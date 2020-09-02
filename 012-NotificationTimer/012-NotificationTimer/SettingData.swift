@@ -14,6 +14,7 @@ class SettingData {
     //MARK:- 保持データ
     
     var backgroundImage:UIImage?    // 背景画像
+    var count:Float = 0.0           // 設定時間
     var mannerMode:Bool = false     // マナーモード（true:ON / false:OFF）
     var audioFinish:String?         // 終了時通知用 音声ファイル名
     var audioElapsed5min:String?    // 5分経過通知用 音声ファイル名
@@ -38,6 +39,10 @@ class SettingData {
     
     func setBackgroundImage(image:UIImage) {
         self.backgroundImage = image
+    }
+    
+    func setCount(time:Float) {
+        self.count = time
     }
     
     func setMannerMode(bool:Bool) {
@@ -114,6 +119,10 @@ class SettingData {
     
     func getBackgroundImage() -> UIImage? {
         return self.backgroundImage
+    }
+    
+    func getCount() -> Float {
+        return self.count
     }
     
     func getMannerMode() -> Bool {
