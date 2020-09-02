@@ -29,6 +29,13 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     // テーブルビュー
     @IBOutlet weak var tableView: UITableView!
     
+    // キャンセルボタン
+    @IBAction func cancelButton(_ sender: Any) {
+        // 音声設定を閉じる
+        self.dismiss(animated: true, completion: .none)
+    }
+    
+    
     // マナーモードスイッチ
     let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     @objc func switchTriggered(sender: UISwitch){

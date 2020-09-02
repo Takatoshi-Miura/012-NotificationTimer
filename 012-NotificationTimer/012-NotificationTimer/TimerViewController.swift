@@ -20,11 +20,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         resetLabel.makeOutLine(strokeWidth: -4.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        // ナビゲーションバーを非表示(音声選択画面から戻ってきた際も非表示にしたいため)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
     
     
     // MARK: -UIの設定
@@ -116,6 +111,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @IBAction func camaraButton(_ sender: Any) {
         // アラートを表示
         displayAlert()
+    }
+    
+    // オーディオボタン
+    @IBAction func audioButton(_ sender: Any) {
+        // セグエ遷移
     }
     
     
