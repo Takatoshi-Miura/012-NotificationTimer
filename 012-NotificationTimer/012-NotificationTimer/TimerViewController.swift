@@ -8,15 +8,12 @@
 
 import UIKit
 
-class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: -ライフサイクルメソッド
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // テーブルビュー初期設定
-        tableViewInit()
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -121,9 +118,6 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         displayAlert()
     }
     
-    // テーブルビュー
-    @IBOutlet weak var tableView: UITableView!
-    
     
     
     // MARK: -変数の宣言
@@ -139,56 +133,6 @@ class TimerViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     let second:[Int] = (0...59).map { $0 }
     var minuteIndex:Int = 0
     var secondIndex:Int = 0
-    
-    
-    
-    // MARK: -テーブルビューの設定
-    
-    // 初期化メソッド
-    func tableViewInit() {
-        // テーブルビューのスクロールを禁止
-        tableView.isScrollEnabled = false
-        
-        // データのないセルを非表示
-        tableView.tableFooterView = UIView()
-    }
-    
-    // セル数を返却
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1    // 音声セルのみ
-    }
-    
-    // セルを返却
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 音声セルを返却
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-        cell.textLabel!.text = "音声"
-        return cell
-    }
-    
-    // セクション名を返却
-    func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
-        return "設定"
-    }
-    
-    // セクションの個数を返却
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    // セクションの高さを返却
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
-    
-    // セルをタップしたときの処理
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // タップしたときの選択色を消去
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        
-        // 音声設定画面に遷移
-        self.performSegue(withIdentifier: "goAudioSetting", sender: nil)
-    }
     
     
     
