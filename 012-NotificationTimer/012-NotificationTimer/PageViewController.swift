@@ -24,7 +24,7 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
         // 各画面にSettingDataを渡す
         for num in 0...self.controllers.count - 1 {
             let VC = self.controllers[num] as! TimerViewController
-            //VC.imageView.image = settingDataArray[num].getBackgroundImage()
+            VC.settingData = loadSettingData(forKey: "SettingData_\(num)")
         }
         
         // PageViewController初期化メソッド
@@ -43,8 +43,20 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     var pageViewController: UIPageViewController!
     var pageControl: UIPageControl!
     
-    // SettingData
-    var settingDataArray = [SettingData]()
+    
+    
+    //MARK:- データ関連
+    
+    // SettingDataをロードするメソッド
+    func loadSettingData(forKey key:String) -> SettingData {
+        if let storedData = UserDefaults.standard.object(forKey: key) as? Data {
+            if let unarchivedObject = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(storedData) as? SettingData {
+                return unarchivedObject
+            }
+        }
+        let settingData = SettingData(dataNumber: 99)
+        return settingData
+    }
     
     
     

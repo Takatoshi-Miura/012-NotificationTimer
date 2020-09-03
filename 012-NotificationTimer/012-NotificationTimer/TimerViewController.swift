@@ -137,6 +137,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var minuteIndex:Int = 0
     var secondIndex:Int = 0
     
+    // 設定データ
+    var settingData:SettingData?
+    
     
     
     // MARK:- Pickerの設定
@@ -259,6 +262,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         UIView.animate(withDuration: 0.3) {
             self.pickerView.frame.origin.y = UIScreen.main.bounds.size.height - self.pickerView.bounds.size.height
         }
+        
+        print("SettingData_\(self.settingData?.getCount())")
     }
     
     // Pickerをしまうメソッド
@@ -272,6 +277,17 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             // ビューの初期化
             self.pickerView.removeFromSuperview()
         }
+    }
+    
+    
+    
+    // MARK:- データ関連
+    
+    // 設定データをUserDefaultsに保存するメソッド
+    func saveSettingData() {
+        // 保存
+        let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: settingData, requiringSecureCoding: false)
+        UserDefaults.standard.set(archivedData, forKey: "SettingData_\(settingData?.getDataNumber())")
     }
     
     

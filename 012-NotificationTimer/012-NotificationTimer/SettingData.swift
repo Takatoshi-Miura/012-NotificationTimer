@@ -9,10 +9,11 @@
 import UIKit
 import AVFoundation
 
-class SettingData {
+class SettingData: NSObject, NSSecureCoding {
     
     //MARK:- 保持データ
     
+    var dataNumber:Int              // データ番号
     var backgroundImage:UIImage?    // 背景画像
     var count:Float = 0.0           // 設定時間
     var mannerMode:Bool = false     // マナーモード（true:ON / false:OFF）
@@ -35,7 +36,19 @@ class SettingData {
     
     
     
+    //MARK:- イニシャライザ
+    
+    init(dataNumber num:Int) {
+        self.dataNumber = num
+    }
+    
+    
+    
     //MARK:- セッター
+    
+    func setDataNumber(number:Int) {
+        self.dataNumber = number
+    }
     
     func setBackgroundImage(image:UIImage) {
         self.backgroundImage = image
@@ -117,6 +130,10 @@ class SettingData {
     
     //MARK:- ゲッター
     
+    func getDataNumber() -> Int {
+        return self.dataNumber
+    }
+    
     func getBackgroundImage() -> UIImage? {
         return self.backgroundImage
     }
@@ -191,6 +208,44 @@ class SettingData {
     
     func getAudioAppFinish() -> String? {
         return self.audioAppFinish
+    }
+    
+    
+    
+    //MARK:- NSKeyedArchiver関連
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
+    
+    // シリアライズ処理
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.dataNumber, forKey: "dataNumber")
+        //aCoder.encode(self.backgroundImage, forKey: "dataNumber")
+        aCoder.encode(self.count, forKey: "count")
+        aCoder.encode(self.mannerMode, forKey: "mannerMode")
+        aCoder.encode(self.audioFinish, forKey: "audioFinish")
+        aCoder.encode(self.audioElapsed5min, forKey: "audioElapsed5min")
+        aCoder.encode(self.audioElapsed10min, forKey: "audioElapsed10min")
+        aCoder.encode(self.audioElapsed15min, forKey: "audioElapsed15min")
+        aCoder.encode(self.audioElapsed20min, forKey: "audioElapsed20min")
+        aCoder.encode(self.audioElapsed25min, forKey: "audioElapsed25min")
+        aCoder.encode(self.audioElapsed30min, forKey: "audioElapsed30min")
+        aCoder.encode(self.audioElapsed35min, forKey: "audioElapsed35min")
+        aCoder.encode(self.audioElapsed40min, forKey: "audioElapsed40min")
+        aCoder.encode(self.audioElapsed45min, forKey: "audioElapsed45min")
+        aCoder.encode(self.audioElapsed50min, forKey: "audioElapsed50min")
+        aCoder.encode(self.audioRemaining30sec, forKey: "audioRemaining30sec")
+        aCoder.encode(self.audioRemaining1min, forKey: "audioRemaining1min")
+        aCoder.encode(self.audioRemaining3min, forKey: "audioRemaining3min")
+        aCoder.encode(self.audioAppStartUp, forKey: "audioAppStartUp")
+        aCoder.encode(self.audioAppFinish, forKey: "audioAppFinish")
+    }
+    
+    // デシリアライズ処理
+    required init?(coder aDecoder: NSCoder) {
+        self.dataNumber = aDecoder.decodeObject(forKey: "dataNumber") as? Int ?? 0
+        self.count = aDecoder.decodeObject(forKey: "count") as? Float ?? 0.0
     }
     
     

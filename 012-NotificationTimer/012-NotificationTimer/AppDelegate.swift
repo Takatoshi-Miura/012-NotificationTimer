@@ -11,10 +11,24 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // 初回起動判定(初期値を登録)
+        UserDefaults.standard.register(defaults: ["firstLaunch": true])
+        
+        // 初回起動時の処理
+        if UserDefaults.standard.bool(forKey: "firstLaunch") {
+            // データ作成
+            for num in 0...4 {
+                // データ保存
+                let settingData = SettingData(dataNumber: num)
+                let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: settingData, requiringSecureCoding: false)
+                UserDefaults.standard.set(archivedData, forKey: "SettingData_\(settingData.getDataNumber())")
+            }
+        }
+        
+        // 2回目以降の起動では「firstLaunch」のkeyをfalseに
+        UserDefaults.standard.set(false, forKey: "firstLaunch")
+        
         return true
     }
 
