@@ -18,6 +18,15 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
         resetLabel.makeOutLine(strokeWidth: -4.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
+        
+        // バックグラウンド,フォアグラウンド判定の追加
+        addNotification()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // 通知の削除
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -128,6 +137,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // タイマー
     var timer = Timer()
     var count:Float = 0.00
+    var backgroundDate: NSDate!
     
     // pickerView
     var pickerView = UIView()
@@ -375,6 +385,53 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // モーダルを閉じる
         self.dismiss(animated: true, completion: .none)
+    }
+    
+    // バックグラウンド、フォアグラウンド以降判定メソッド
+    func addNotification() {
+        // 通知の登録
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    // フォアグラウンドになった時に呼ばれる
+    @objc func didBecomeActive(notify: NSNotification) {
+        if let backgroundDate = backgroundDate, self.count > 0 {
+            // Int型へ変換
+            var count_Int = Int(self.count)
+            
+            // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得 ※簡易的にIntにキャストしています。
+            let timeDiff = Int(NSDate().timeIntervalSince(backgroundDate as Date))
+            print("経過時間 : \(timeDiff)")
+
+            // 経過時間よりタイマーの残り時間が多かった場合、再度タイマースタート
+            if timeDiff < count_Int {
+                count_Int -= timeDiff
+                count = Float(count_Int)
+                timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
+            } else {
+                // ゼロにリセット
+                self.count = 0
+                timer.invalidate()
+                
+                // ボタン画像をスタート用にセット
+                startButton.setImage(startImage, for: .normal)
+                
+                // ラベルに反映
+                timeLabel.text = "00:00.00"
+            }
+        }
+        
+        
+    }
+
+    // バックグラウンドに入った時に呼ばれる
+    @objc func didEnterBackground(notify: NSNotification) {
+        // タイマー停止
+        timer.invalidate()
+        
+        // バックグラウンドに入った時間を保持
+        backgroundDate = NSDate()
     }
 
 }
