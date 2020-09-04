@@ -21,6 +21,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // バックグラウンド,フォアグラウンド判定の追加
         addNotification()
+        
+        print("SettingData_\(self.settingData?.getDataNumber())")
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 初回起動時の処理
         if UserDefaults.standard.bool(forKey: "firstLaunch") {
-            // データ作成
-            for num in 0...4 {
-                // データ保存
-                let settingData = SettingData(dataNumber: num)
-                let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: settingData, requiringSecureCoding: false)
-                UserDefaults.standard.set(archivedData, forKey: "SettingData_\(settingData.getDataNumber())")
-            }
         }
         
         // 2回目以降の起動では「firstLaunch」のkeyをfalseに

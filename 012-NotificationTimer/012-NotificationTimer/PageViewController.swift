@@ -12,19 +12,26 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // ViewControllerを配列に登録
-        let VC1 = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        let VC2 = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        let VC3 = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        let VC4 = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        let VC5 = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-        self.controllers = [VC1,VC2,VC3,VC4,VC5]
         
-        // 各画面にSettingDataを渡す
-        for num in 0...self.controllers.count - 1 {
-            let VC = self.controllers[num] as! TimerViewController
-            VC.settingData = loadSettingData(forKey: "SettingData_\(num)")
+        // SettingDataをロード(なければ作成)し、各画面に渡す
+        for num in 0...4 {
+            // データのロード
+            if let storedData = UserDefaults.standard.object(forKey: "SettingData_\(num)") as? Data {
+                if let unarchivedObject = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(storedData) as? SettingData {
+                    // データを各画面に渡す
+                    let VC = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+                    VC.settingData = unarchivedObject
+                    self.controllers.append(VC)
+                }
+            } else {
+                // データを作成
+                let settingData = SettingData(dataNumber: num)
+                
+                // データを各画面に渡す
+                let VC = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+                VC.settingData = settingData
+                self.controllers.append(VC)
+            }
         }
         
         // PageViewController初期化メソッド
@@ -42,21 +49,6 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     var controllers: [UIViewController] = []
     var pageViewController: UIPageViewController!
     var pageControl: UIPageControl!
-    
-    
-    
-    //MARK:- データ関連
-    
-    // SettingDataをロードするメソッド
-    func loadSettingData(forKey key:String) -> SettingData {
-        if let storedData = UserDefaults.standard.object(forKey: key) as? Data {
-            if let unarchivedObject = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(storedData) as? SettingData {
-                return unarchivedObject
-            }
-        }
-        let settingData = SettingData(dataNumber: 99)
-        return settingData
-    }
     
     
     
@@ -100,7 +92,6 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
         // ビューに追加
         self.view.addSubview(self.pageControl)
     }
-    
     
 }
 
