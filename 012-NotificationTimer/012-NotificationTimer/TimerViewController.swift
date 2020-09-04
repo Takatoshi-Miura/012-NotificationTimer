@@ -221,7 +221,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         timeLabel.text = "\(minuteText):\(secondText).00"
         
         // 秒数を計算し、タイマーに時間をセットセット
-        self.settingData.count = Float(minute[minuteIndex] * 60 + second[secondIndex])
+        self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
         
         // SettingDataに保存
         saveSettingData()
@@ -310,7 +310,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 if let unarchivedData = try NSKeyedUnarchiver.unarchivedObject(ofClass: SettingData.self, from: storedData) {
                     print("SettingData_0をロードしました")
                     print("デシリアライズデータ:\(unarchivedData.getCount())")
-                    self.settingData.count = unarchivedData.getCount()
+                    self.settingData.setCount(time: unarchivedData.getCount())
                 }
             } catch  {
                 print("error:\(error)")
@@ -350,19 +350,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timer.invalidate()
         }
         
-        // 分秒に変換
-        let minute:Int = Int(self.settingData.count / 60)
-        let second:Int = Int(self.settingData.count.truncatingRemainder(dividingBy: 60))
-        let count_Int:Int = Int(self.settingData.count)
-        let mili:Float = (self.settingData.count - Float(count_Int)) * 100
-        
-        // フォーマット揃え
-        let minuteText = NSString(format: "%02d", minute)
-        let secondText = NSString(format: "%02d", second)
-        let miliText = NSString(format: "%02d", Int(mili))
-        
         // ラベルに反映
-        timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
+        displayCount()
     }
     
     // countの値をラベルに表示するメソッド
@@ -473,8 +462,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 timeLabel.text = "00:00.00"
             }
         }
-        
-        
     }
 
     // バックグラウンドに入った時に呼ばれる

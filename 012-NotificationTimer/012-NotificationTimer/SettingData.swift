@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import RealmSwift
 import AVFoundation
 
 class SettingData: NSObject, NSSecureCoding {
