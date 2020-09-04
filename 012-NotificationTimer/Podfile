@@ -6,7 +6,7 @@ target '012-NotificationTimer' do
   use_frameworks!
 
   # Pods for 012-NotificationTimer
-  pod 'RealmSwift'
+  pod 'RealmSwift', '~> 3.18.0'
 
 
 end

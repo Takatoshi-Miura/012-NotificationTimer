@@ -11,34 +11,38 @@ import Foundation
 import RealmSwift
 import AVFoundation
 
-class SettingData {
+class SettingData:Object {
     
     //MARK:- 保持データ
     
-    var dataNumber:Int = 0              // データ番号
-    //var backgroundImage:UIImage?    // 背景画像
-    var count:Float = 0.0               // 設定時間
-    var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
-    var audioFinish:String = ""         // 終了時通知用 音声ファイル名
-    var audioElapsed5min:String = ""    // 5分経過通知用 音声ファイル名
-    var audioElapsed10min:String = ""   // 10分経過通知用 音声ファイル名
-    var audioElapsed15min:String = ""   // 15分経過通知用 音声ファイル名
-    var audioElapsed20min:String = ""   // 20分経過通知用 音声ファイル名
-    var audioElapsed25min:String = ""   // 25分経過通知用 音声ファイル名
-    var audioElapsed30min:String = ""   // 30分経過通知用 音声ファイル名
-    var audioElapsed35min:String = ""   // 35分経過通知用 音声ファイル名
-    var audioElapsed40min:String = ""   // 40分経過通知用 音声ファイル名
-    var audioElapsed45min:String = ""   // 45分経過通知用 音声ファイル名
-    var audioElapsed50min:String = ""   // 50分経過通知用 音声ファイル名
-    var audioRemaining30sec:String = "" // 残り30秒通知用 音声ファイル名
-    var audioRemaining1min:String = ""  // 残り1分通知用 音声ファイル名
-    var audioRemaining3min:String = ""  // 残り3分通知用 音声ファイル名
-    var audioAppStartUp:String = ""     // アプリ起動音 音声ファイル名
-    var audioAppFinish:String = ""      // アプリ終了音 音声ファイル名
+    @objc dynamic var dataNumber:Int = 0              // データ番号
+    //@objc dynamic var backgroundImage:UIImage?        // 背景画像
+    @objc dynamic var count:Float = 0.0               // 設定時間
+    @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
+    @objc dynamic var audioFinish:String = ""         // 終了時通知用 音声ファイル名
+    @objc dynamic var audioElapsed5min:String = ""    // 5分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed10min:String = ""   // 10分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed15min:String = ""   // 15分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed20min:String = ""   // 20分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed25min:String = ""   // 25分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed30min:String = ""   // 30分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed35min:String = ""   // 35分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed40min:String = ""   // 40分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed45min:String = ""   // 45分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed50min:String = ""   // 50分経過通知用 音声ファイル名
+    @objc dynamic var audioRemaining30sec:String = "" // 残り30秒通知用 音声ファイル名
+    @objc dynamic var audioRemaining1min:String = ""  // 残り1分通知用 音声ファイル名
+    @objc dynamic var audioRemaining3min:String = ""  // 残り3分通知用 音声ファイル名
+    @objc dynamic var audioAppStartUp:String = ""     // アプリ起動音 音声ファイル名
+    @objc dynamic var audioAppFinish:String = ""      // アプリ終了音 音声ファイル名
     
     
     
     //MARK:- イニシャライザ
+    
+    required init() {
+        
+    }
     
     init(dataNumber num:Int) {
         self.dataNumber = num
@@ -148,69 +152,116 @@ class SettingData {
         return self.mannerMode
     }
     
-    func getAudioFinish() -> String? {
+    func getAudioFinish() -> String {
         return self.audioFinish
     }
     
-    func getAudioElapsed5min() -> String? {
+    func getAudioElapsed5min() -> String {
         return self.audioElapsed5min
     }
     
-    func getAudioElapsed10min() -> String? {
+    func getAudioElapsed10min() -> String {
         return self.audioElapsed10min
     }
     
-    func getAudioElapsed15min() -> String? {
+    func getAudioElapsed15min() -> String {
         return self.audioElapsed15min
     }
     
-    func getAudioElapsed20min() -> String? {
+    func getAudioElapsed20min() -> String {
         return self.audioElapsed20min
     }
     
-    func getAudioElapsed25min() -> String? {
+    func getAudioElapsed25min() -> String {
         return self.audioElapsed25min
     }
     
-    func getAudioElapsed30min() -> String? {
+    func getAudioElapsed30min() -> String {
         return self.audioElapsed30min
     }
     
-    func getAudioElapsed35min() -> String? {
+    func getAudioElapsed35min() -> String {
         return self.audioElapsed35min
     }
     
-    func getAudioElapsed40min() -> String? {
+    func getAudioElapsed40min() -> String {
         return self.audioElapsed40min
     }
     
-    func getAudioElapsed45min() -> String? {
+    func getAudioElapsed45min() -> String {
         return self.audioElapsed45min
     }
     
-    func getAudioElapsed50min() -> String? {
+    func getAudioElapsed50min() -> String {
         return self.audioElapsed50min
     }
     
-    func getAudioRemaining30sec() -> String? {
+    func getAudioRemaining30sec() -> String {
         return self.audioRemaining30sec
     }
     
-    func getAudioRemaining1min() -> String? {
+    func getAudioRemaining1min() -> String {
         return self.audioRemaining1min
     }
     
-    func getAudioRemaining3min() -> String? {
+    func getAudioRemaining3min() -> String {
         return self.audioRemaining3min
     }
     
-    func getAudioAppStartUp() -> String? {
+    func getAudioAppStartUp() -> String {
         return self.audioAppStartUp
     }
     
-    func getAudioAppFinish() -> String? {
+    func getAudioAppFinish() -> String {
         return self.audioAppFinish
     }
+    
+    
+    
+    //MARK:- データ関連
+    
+    // データをUserDefaultsからロードするメソッド
+    func loadSettingData(dataNumber num:Int) {
+        // Realmデータベースにアクセス
+        let realm = try! Realm()
+        
+        // データの取得
+        let object = realm.objects(SettingData.self)//.filter("dataNumber = \(num)")
+        
+        // データの反映
+        self.dataNumber          = object[0].getDataNumber()
+//        self.backgroundImage     = object[0].getBackgroundImage()
+        self.count               = object[0].getCount()
+        self.mannerMode          = object[0].getMannerMode()
+        self.audioFinish         = object[0].getAudioFinish()
+        self.audioElapsed5min    = object[0].getAudioElapsed5min()
+        self.audioElapsed10min   = object[0].getAudioElapsed10min()
+        self.audioElapsed15min   = object[0].getAudioElapsed15min()
+        self.audioElapsed20min   = object[0].getAudioElapsed20min()
+        self.audioElapsed25min   = object[0].getAudioElapsed25min()
+        self.audioElapsed30min   = object[0].getAudioElapsed30min()
+        self.audioElapsed35min   = object[0].getAudioElapsed35min()
+        self.audioElapsed40min   = object[0].getAudioElapsed40min()
+        self.audioElapsed45min   = object[0].getAudioElapsed45min()
+        self.audioElapsed50min   = object[0].getAudioElapsed50min()
+        self.audioRemaining30sec = object[0].getAudioRemaining30sec()
+        self.audioRemaining1min  = object[0].getAudioRemaining1min()
+        self.audioRemaining3min  = object[0].getAudioRemaining3min()
+        self.audioAppStartUp     = object[0].getAudioAppStartUp()
+        self.audioAppFinish      = object[0].getAudioAppFinish()
+    }
+    
+    // データをUserDefaultsに保存するメソッド
+    func saveSettingData() {
+        // Realmデータベースにアクセス
+        let realm = try! Realm()
+        
+        // Realmデータベースに書き込み
+        try! realm.write {
+            realm.add(self)
+        }
+    }
+    
     
     
     

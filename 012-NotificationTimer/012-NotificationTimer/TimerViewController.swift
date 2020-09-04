@@ -23,7 +23,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         addNotification()
         
         // SettingDataをロード
-        loadSettingData()
+        self.settingData.loadSettingData(dataNumber: 0)
         
         // ラベルにcountを反映
         displayCount()
@@ -224,7 +224,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
         
         // SettingDataに保存
-        saveSettingData()
+        self.settingData.saveSettingData()
         
         // Pickerをしまう
         closePicker()
@@ -292,46 +292,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             // ビューの初期化
             self.pickerView.removeFromSuperview()
-        }
-    }
-    
-    
-    
-    // MARK:- データ関連
-    
-    // データをUserDefaultsからロードするメソッド
-    func loadSettingData() {
-        // UserDefaultsの参照
-        let userDefaults = UserDefaults.standard
-            
-        // デシリアライズ処理
-        if let storedData = userDefaults.object(forKey: "SettingData_0") as? Data {
-            do {
-                if let unarchivedData = try NSKeyedUnarchiver.unarchivedObject(ofClass: SettingData.self, from: storedData) {
-                    print("SettingData_0をロードしました")
-                    print("デシリアライズデータ:\(unarchivedData.getCount())")
-                    self.settingData.setCount(time: unarchivedData.getCount())
-                }
-            } catch  {
-                print("error:\(error)")
-                print("SettingData_0をロードできませんでした")
-            }
-        }
-    }
-    
-    // データをUserDefaultsに保存するメソッド
-    func saveSettingData() {
-        // UserDefaultsの参照
-        let userDefaults = UserDefaults.standard
-        
-        // Data型にシリアライズ処理
-        do {
-            let archiveData:Data = try NSKeyedArchiver.archivedData(withRootObject: self.settingData, requiringSecureCoding: true)
-            userDefaults.set(archiveData, forKey: "SettingData_0")
-            print("SettingData_0を保存しました")
-        } catch {
-            print("error:\(error)")
-            print("SettingData_0の保存に失敗しました")
         }
     }
     
@@ -473,7 +433,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         backgroundDate = NSDate()
         
         // SettingDataを保存
-        saveSettingData()
+        self.settingData.saveSettingData()
     }
 
 }
