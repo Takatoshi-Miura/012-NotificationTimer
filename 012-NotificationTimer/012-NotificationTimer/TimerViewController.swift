@@ -22,7 +22,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // バックグラウンド,フォアグラウンド判定の追加
         addNotification()
         
-        print("SettingData_\(self.settingData?.getDataNumber())")
+        // SettingDataをロード
+        loadSettingData()
+        
+        // ラベルにcountを反映
+        displayCount()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -66,13 +70,13 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     private let startImage = UIImage(named: "Start Button")
     private let stopImage  = UIImage(named: "Stop Button")
     @IBAction func startButton(_ sender: Any) {
-        if timer.isValid && count > 0 {
+        if timer.isValid && self.settingData.count > 0 {
             // タイマー稼動中にタップで一時停止
             timer.invalidate()
             
             // ボタン画像をスタート用にセット
             startButton.setImage(startImage, for: .normal)
-        } else if count > 0 {
+        } else if self.settingData.count > 0 {
             // タイマー停止中にタップで再開
             timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
             
@@ -93,9 +97,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timer.invalidate()
         }
         
-        if count == Float(minute[minuteIndex] * 60 + second[secondIndex]) && count > 0 {
+        if self.settingData.count == Float(minute[minuteIndex] * 60 + second[secondIndex]) && self.settingData.count > 0 {
             // ゼロにセット
-            count = 0
+            self.settingData.count = 0
             timePicker.selectRow(0, inComponent: 0, animated: true)
             timePicker.selectRow(0, inComponent: 1, animated: true)
             
@@ -104,7 +108,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             
             // ボタン画像をスタート用にセット
             startButton.setImage(startImage, for: .normal)
-        } else if count > 0 {
+        } else if self.settingData.count > 0 {
             // 以前セットした時間に戻す
             timePickerDone()
             
@@ -138,7 +142,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // タイマー
     var timer = Timer()
-    var count:Float = 0.00
     var backgroundDate: NSDate!
     
     // pickerView
@@ -150,7 +153,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var secondIndex:Int = 0
     
     // 設定データ
-    var settingData:SettingData?
+    var settingData:SettingData = SettingData(dataNumber: 0)
     
     
     
@@ -218,7 +221,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         timeLabel.text = "\(minuteText):\(secondText).00"
         
         // 秒数を計算し、タイマーに時間をセットセット
-        count = Float(minute[minuteIndex] * 60 + second[secondIndex])
+        self.settingData.count = Float(minute[minuteIndex] * 60 + second[secondIndex])
+        
+        // SettingDataに保存
+        saveSettingData()
         
         // Pickerをしまう
         closePicker()
@@ -274,8 +280,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         UIView.animate(withDuration: 0.3) {
             self.pickerView.frame.origin.y = UIScreen.main.bounds.size.height - self.pickerView.bounds.size.height
         }
-        
-        print("SettingData_\(self.settingData?.getCount())")
     }
     
     // Pickerをしまうメソッド
@@ -295,11 +299,40 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // MARK:- データ関連
     
-    // 設定データをUserDefaultsに保存するメソッド
+    // データをUserDefaultsからロードするメソッド
+    func loadSettingData() {
+        // UserDefaultsの参照
+        let userDefaults = UserDefaults.standard
+            
+        // デシリアライズ処理
+        if let storedData = userDefaults.object(forKey: "SettingData_0") as? Data {
+            do {
+                if let unarchivedData = try NSKeyedUnarchiver.unarchivedObject(ofClass: SettingData.self, from: storedData) {
+                    print("SettingData_0をロードしました")
+                    print("デシリアライズデータ:\(unarchivedData.getCount())")
+                    self.settingData.count = unarchivedData.getCount()
+                }
+            } catch  {
+                print("error:\(error)")
+                print("SettingData_0をロードできませんでした")
+            }
+        }
+    }
+    
+    // データをUserDefaultsに保存するメソッド
     func saveSettingData() {
-        // 保存
-        let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: settingData, requiringSecureCoding: false)
-        UserDefaults.standard.set(archivedData, forKey: "SettingData_\(settingData?.getDataNumber())")
+        // UserDefaultsの参照
+        let userDefaults = UserDefaults.standard
+        
+        // Data型にシリアライズ処理
+        do {
+            let archiveData:Data = try NSKeyedArchiver.archivedData(withRootObject: self.settingData, requiringSecureCoding: true)
+            userDefaults.set(archiveData, forKey: "SettingData_0")
+            print("SettingData_0を保存しました")
+        } catch {
+            print("error:\(error)")
+            print("SettingData_0の保存に失敗しました")
+        }
     }
     
     
@@ -309,19 +342,36 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     //タイマーから呼び出されるメソッド
     @objc func countDown(){
         // 残り時間の計算
-        count -= 0.01
+        self.settingData.count -= 0.01
         
         // ゼロならタイマーを停止
-        if count < 0 {
-            count = 0
+        if self.settingData.count < 0 {
+            self.settingData.count = 0
             timer.invalidate()
         }
         
         // 分秒に変換
-        let minute:Int = Int(count / 60)
-        let second:Int = Int(count.truncatingRemainder(dividingBy: 60))
-        let count_Int:Int = Int(count)
-        let mili:Float = (count - Float(count_Int)) * 100
+        let minute:Int = Int(self.settingData.count / 60)
+        let second:Int = Int(self.settingData.count.truncatingRemainder(dividingBy: 60))
+        let count_Int:Int = Int(self.settingData.count)
+        let mili:Float = (self.settingData.count - Float(count_Int)) * 100
+        
+        // フォーマット揃え
+        let minuteText = NSString(format: "%02d", minute)
+        let secondText = NSString(format: "%02d", second)
+        let miliText = NSString(format: "%02d", Int(mili))
+        
+        // ラベルに反映
+        timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
+    }
+    
+    // countの値をラベルに表示するメソッド
+    func displayCount() {
+        // 分秒に変換
+        let minute:Int = Int(self.settingData.count / 60)
+        let second:Int = Int(self.settingData.count.truncatingRemainder(dividingBy: 60))
+        let count_Int:Int = Int(self.settingData.count)
+        let mili:Float = (self.settingData.count - Float(count_Int)) * 100
         
         // フォーマット揃え
         let minuteText = NSString(format: "%02d", minute)
@@ -398,9 +448,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // フォアグラウンドになった時に呼ばれる
     @objc func didBecomeActive(notify: NSNotification) {
-        if let backgroundDate = backgroundDate, self.count > 0 {
+        if let backgroundDate = backgroundDate, self.self.settingData.count > 0 {
             // Int型へ変換
-            var count_Int = Int(self.count)
+            var count_Int = Int(self.self.settingData.count)
             
             // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得 ※簡易的にIntにキャストしています。
             let timeDiff = Int(NSDate().timeIntervalSince(backgroundDate as Date))
@@ -409,11 +459,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             // 経過時間よりタイマーの残り時間が多かった場合、再度タイマースタート
             if timeDiff < count_Int {
                 count_Int -= timeDiff
-                count = Float(count_Int)
+                self.settingData.count = Float(count_Int)
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
             } else {
                 // ゼロにリセット
-                self.count = 0
+                self.self.settingData.count = 0
                 timer.invalidate()
                 
                 // ボタン画像をスタート用にセット
@@ -434,6 +484,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // バックグラウンドに入った時間を保持
         backgroundDate = NSDate()
+        
+        // SettingDataを保存
+        saveSettingData()
     }
 
 }

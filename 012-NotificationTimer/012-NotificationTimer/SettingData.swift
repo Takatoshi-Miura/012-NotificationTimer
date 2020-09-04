@@ -7,32 +7,33 @@
 //
 
 import UIKit
+import Foundation
 import AVFoundation
 
 class SettingData: NSObject, NSSecureCoding {
     
     //MARK:- 保持データ
     
-    var dataNumber:Int              // データ番号
-    var backgroundImage:UIImage?    // 背景画像
-    var count:Float = 0.0           // 設定時間
-    var mannerMode:Bool = false     // マナーモード（true:ON / false:OFF）
-    var audioFinish:String?         // 終了時通知用 音声ファイル名
-    var audioElapsed5min:String?    // 5分経過通知用 音声ファイル名
-    var audioElapsed10min:String?   // 10分経過通知用 音声ファイル名
-    var audioElapsed15min:String?   // 15分経過通知用 音声ファイル名
-    var audioElapsed20min:String?   // 20分経過通知用 音声ファイル名
-    var audioElapsed25min:String?   // 25分経過通知用 音声ファイル名
-    var audioElapsed30min:String?   // 30分経過通知用 音声ファイル名
-    var audioElapsed35min:String?   // 35分経過通知用 音声ファイル名
-    var audioElapsed40min:String?   // 40分経過通知用 音声ファイル名
-    var audioElapsed45min:String?   // 45分経過通知用 音声ファイル名
-    var audioElapsed50min:String?   // 50分経過通知用 音声ファイル名
-    var audioRemaining30sec:String? // 残り30秒通知用 音声ファイル名
-    var audioRemaining1min:String?  // 残り1分通知用 音声ファイル名
-    var audioRemaining3min:String?  // 残り3分通知用 音声ファイル名
-    var audioAppStartUp:String?     // アプリ起動音 音声ファイル名
-    var audioAppFinish:String?      // アプリ終了音 音声ファイル名
+    var dataNumber:Int = 0              // データ番号
+    //var backgroundImage:UIImage?    // 背景画像
+    var count:Float = 0.0               // 設定時間
+    var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
+    var audioFinish:String = ""         // 終了時通知用 音声ファイル名
+    var audioElapsed5min:String = ""    // 5分経過通知用 音声ファイル名
+    var audioElapsed10min:String = ""   // 10分経過通知用 音声ファイル名
+    var audioElapsed15min:String = ""   // 15分経過通知用 音声ファイル名
+    var audioElapsed20min:String = ""   // 20分経過通知用 音声ファイル名
+    var audioElapsed25min:String = ""   // 25分経過通知用 音声ファイル名
+    var audioElapsed30min:String = ""   // 30分経過通知用 音声ファイル名
+    var audioElapsed35min:String = ""   // 35分経過通知用 音声ファイル名
+    var audioElapsed40min:String = ""   // 40分経過通知用 音声ファイル名
+    var audioElapsed45min:String = ""   // 45分経過通知用 音声ファイル名
+    var audioElapsed50min:String = ""   // 50分経過通知用 音声ファイル名
+    var audioRemaining30sec:String = "" // 残り30秒通知用 音声ファイル名
+    var audioRemaining1min:String = ""  // 残り1分通知用 音声ファイル名
+    var audioRemaining3min:String = ""  // 残り3分通知用 音声ファイル名
+    var audioAppStartUp:String = ""     // アプリ起動音 音声ファイル名
+    var audioAppFinish:String = ""      // アプリ終了音 音声ファイル名
     
     
     
@@ -50,9 +51,9 @@ class SettingData: NSObject, NSSecureCoding {
         self.dataNumber = number
     }
     
-    func setBackgroundImage(image:UIImage) {
-        self.backgroundImage = image
-    }
+//    func setBackgroundImage(image:UIImage) {
+//        self.backgroundImage = image
+//    }
     
     func setCount(time:Float) {
         self.count = time
@@ -134,9 +135,9 @@ class SettingData: NSObject, NSSecureCoding {
         return self.dataNumber
     }
     
-    func getBackgroundImage() -> UIImage? {
-        return self.backgroundImage
-    }
+//    func getBackgroundImage() -> UIImage? {
+//        return self.backgroundImage
+//    }
     
     func getCount() -> Float {
         return self.count
@@ -221,7 +222,7 @@ class SettingData: NSObject, NSSecureCoding {
     // シリアライズ処理
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.dataNumber, forKey: "dataNumber")
-        //aCoder.encode(self.backgroundImage, forKey: "dataNumber")
+//        aCoder.encode(self.backgroundImage, forKey: "dataNumber")
         aCoder.encode(self.count, forKey: "count")
         aCoder.encode(self.mannerMode, forKey: "mannerMode")
         aCoder.encode(self.audioFinish, forKey: "audioFinish")
@@ -244,8 +245,25 @@ class SettingData: NSObject, NSSecureCoding {
     
     // デシリアライズ処理
     required init?(coder aDecoder: NSCoder) {
-        self.dataNumber = aDecoder.decodeObject(forKey: "dataNumber") as? Int ?? 0
-        self.count = aDecoder.decodeObject(forKey: "count") as? Float ?? 0.0
+        self.dataNumber          = aDecoder.decodeObject(forKey: "dataNumber") as? Int ?? 0
+        self.count               = aDecoder.decodeObject(forKey: "count") as? Float ?? 0.0
+        self.mannerMode          = aDecoder.decodeBool(forKey: "mannerMode")
+        self.audioFinish         = aDecoder.decodeObject(forKey: "audioFinish") as? String ?? ""
+        self.audioElapsed5min    = aDecoder.decodeObject(forKey: "audioElapsed5min") as? String ?? ""
+        self.audioElapsed10min   = aDecoder.decodeObject(forKey: "audioElapsed10min") as? String ?? ""
+        self.audioElapsed15min   = aDecoder.decodeObject(forKey: "audioElapsed15min") as? String ?? ""
+        self.audioElapsed20min   = aDecoder.decodeObject(forKey: "audioElapsed20min") as? String ?? ""
+        self.audioElapsed25min   = aDecoder.decodeObject(forKey: "audioElapsed25min") as? String ?? ""
+        self.audioElapsed30min   = aDecoder.decodeObject(forKey: "audioElapsed30min") as? String ?? ""
+        self.audioElapsed35min   = aDecoder.decodeObject(forKey: "audioElapsed35min") as? String ?? ""
+        self.audioElapsed40min   = aDecoder.decodeObject(forKey: "audioElapsed40min") as? String ?? ""
+        self.audioElapsed45min   = aDecoder.decodeObject(forKey: "audioElapsed45min") as? String ?? ""
+        self.audioElapsed50min   = aDecoder.decodeObject(forKey: "audioElapsed50min") as? String ?? ""
+        self.audioRemaining30sec = aDecoder.decodeObject(forKey: "audioRemaining30sec") as? String ?? ""
+        self.audioRemaining1min  = aDecoder.decodeObject(forKey: "audioRemaining1min") as? String ?? ""
+        self.audioRemaining3min  = aDecoder.decodeObject(forKey: "audioRemaining3min") as? String ?? ""
+        self.audioAppStartUp     = aDecoder.decodeObject(forKey: "audioAppStartUp") as? String ?? ""
+        self.audioAppFinish      = aDecoder.decodeObject(forKey: "audioAppFinish") as? String ?? ""
     }
     
     
@@ -272,8 +290,5 @@ class SettingData: NSObject, NSSecureCoding {
             print("ファイルが設定されていません")
         }
     }
-    
-    
-    
     
 }

@@ -68,12 +68,12 @@
 				8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */,
 				8DA3F23D24FD00980029D5C3 /* Main.storyboard */,
 				8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */,
-				8DDA4B5824FF6F7300AD7C69 /* PageViewController.swift */,
 				8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */,
 				8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */,
 				8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */,
 				8DDA4B5424FF595000AD7C69 /* SettingData.swift */,
 				8DA3F24024FD009B0029D5C3 /* Assets.xcassets */,
+				8DDA4B5824FF6F7300AD7C69 /* PageViewController.swift */,
 				8DA3F24524FD009B0029D5C3 /* Info.plist */,
 			);
 			path = "012-NotificationTimer";
