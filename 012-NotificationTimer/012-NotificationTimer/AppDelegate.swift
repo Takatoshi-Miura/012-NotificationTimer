@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 初回起動時の処理
         if UserDefaults.standard.bool(forKey: "firstLaunch") {
+            // SettingDataを作成
+            let settingData = SettingData(dataNumber: 0)
+            
+            // Realmデータベースにアクセス
+            let realm = try! Realm()
+            
+            // Realmデータベースに書き込み
+            try! realm.write {
+                realm.add(settingData)
+            }
         }
         
         // 2回目以降の起動では「firstLaunch」のkeyをfalseに

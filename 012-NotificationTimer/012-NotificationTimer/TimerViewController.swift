@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -14,6 +15,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // データベースのパスを取得
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -23,7 +27,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         addNotification()
         
         // SettingDataをロード
-        self.settingData.loadSettingData(dataNumber: 0)
+        loadSettingData()
         
         // ラベルにcountを反映
         displayCount()
@@ -224,7 +228,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
         
         // SettingDataに保存
-        self.settingData.saveSettingData()
+        updateSettingData()
         
         // Pickerをしまう
         closePicker()
@@ -292,6 +296,61 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             // ビューの初期化
             self.pickerView.removeFromSuperview()
+        }
+    }
+    
+    
+    
+    // MARK:- データ関連
+    
+    // データを取得するメソッド
+    func loadSettingData() {
+        // Realmデータベースにアクセス
+        let realm = try! Realm()
+    
+        // データの取得
+        let object = realm.objects(SettingData.self)
+        
+        // データの反映
+        self.settingData.setDataNumber(number: object[0].getDataNumber())
+        //        self.backgroundImage     = object[0].getBackgroundImage()
+        self.settingData.setCount(time: object[0].getCount())
+        self.settingData.setMannerMode(bool: object[0].getMannerMode())
+        self.settingData.setAudioFinish(fileName: object[0].getAudioFinish())
+        self.settingData.setAudioElapsed5min(fileName: object[0].getAudioElapsed5min())
+        self.settingData.setAudioElapsed10min(fileName: object[0].getAudioElapsed10min())
+        self.settingData.setAudioElapsed15min(fileName: object[0].getAudioElapsed15min())
+        self.settingData.setAudioElapsed20min(fileName: object[0].getAudioElapsed20min())
+        self.settingData.setAudioElapsed25min(fileName: object[0].getAudioElapsed25min())
+        self.settingData.setAudioElapsed30min(fileName: object[0].getAudioElapsed30min())
+        self.settingData.setAudioElapsed35min(fileName: object[0].getAudioElapsed35min())
+        self.settingData.setAudioElapsed40min(fileName: object[0].getAudioElapsed40min())
+        self.settingData.setAudioElapsed45min(fileName: object[0].getAudioElapsed45min())
+        self.settingData.setAudioElapsed50min(fileName: object[0].getAudioElapsed50min())
+        self.settingData.setAudioRemaining30sec(fileName: object[0].getAudioRemaining30sec())
+        self.settingData.setAudioRemaining1min(fileName: object[0].getAudioRemaining1min())
+        self.settingData.setAudioRemaining3min(fileName: object[0].getAudioRemaining3min())
+        self.settingData.setAudioAppStartUp(fileName: object[0].getAudioAppStartUp())
+        self.settingData.setAudioAppFinish(fileName: object[0].getAudioAppFinish())
+        
+        print("データをロードしました")
+    }
+    
+    // データを保存するメソッド
+    func updateSettingData() {
+        // Realmデータベースにアクセス
+        let realm = try! Realm()
+        
+        // Realmデータベースに書き込み
+        try! realm.write {
+            // データの取得
+            let object = realm.objects(SettingData.self)
+            
+            // データの更新
+            object[0].setDataNumber(number: self.settingData.getDataNumber())
+            object[0].setCount(time: self.settingData.getCount())
+            
+            print("データを更新しました")
         }
     }
     
@@ -433,7 +492,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         backgroundDate = NSDate()
         
         // SettingDataを保存
-        self.settingData.saveSettingData()
+        updateSettingData()
     }
 
 }

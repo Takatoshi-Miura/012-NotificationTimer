@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 import RealmSwift
 import AVFoundation
 
@@ -40,11 +39,8 @@ class SettingData:Object {
     
     //MARK:- イニシャライザ
     
-    required init() {
-        
-    }
-    
-    init(dataNumber num:Int) {
+    convenience init(dataNumber num:Int) {
+        self.init()
         self.dataNumber = num
     }
     
@@ -215,53 +211,6 @@ class SettingData:Object {
     func getAudioAppFinish() -> String {
         return self.audioAppFinish
     }
-    
-    
-    
-    //MARK:- データ関連
-    
-    // データをUserDefaultsからロードするメソッド
-    func loadSettingData(dataNumber num:Int) {
-        // Realmデータベースにアクセス
-        let realm = try! Realm()
-        
-        // データの取得
-        let object = realm.objects(SettingData.self)//.filter("dataNumber = \(num)")
-        
-        // データの反映
-        self.dataNumber          = object[0].getDataNumber()
-//        self.backgroundImage     = object[0].getBackgroundImage()
-        self.count               = object[0].getCount()
-        self.mannerMode          = object[0].getMannerMode()
-        self.audioFinish         = object[0].getAudioFinish()
-        self.audioElapsed5min    = object[0].getAudioElapsed5min()
-        self.audioElapsed10min   = object[0].getAudioElapsed10min()
-        self.audioElapsed15min   = object[0].getAudioElapsed15min()
-        self.audioElapsed20min   = object[0].getAudioElapsed20min()
-        self.audioElapsed25min   = object[0].getAudioElapsed25min()
-        self.audioElapsed30min   = object[0].getAudioElapsed30min()
-        self.audioElapsed35min   = object[0].getAudioElapsed35min()
-        self.audioElapsed40min   = object[0].getAudioElapsed40min()
-        self.audioElapsed45min   = object[0].getAudioElapsed45min()
-        self.audioElapsed50min   = object[0].getAudioElapsed50min()
-        self.audioRemaining30sec = object[0].getAudioRemaining30sec()
-        self.audioRemaining1min  = object[0].getAudioRemaining1min()
-        self.audioRemaining3min  = object[0].getAudioRemaining3min()
-        self.audioAppStartUp     = object[0].getAudioAppStartUp()
-        self.audioAppFinish      = object[0].getAudioAppFinish()
-    }
-    
-    // データをUserDefaultsに保存するメソッド
-    func saveSettingData() {
-        // Realmデータベースにアクセス
-        let realm = try! Realm()
-        
-        // Realmデータベースに書き込み
-        try! realm.write {
-            realm.add(self)
-        }
-    }
-    
     
     
     
