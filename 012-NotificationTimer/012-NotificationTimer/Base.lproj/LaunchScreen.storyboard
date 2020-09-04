@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -32,12 +32,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AquesTalk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7q-LY-ev4">
+                                <rect key="frame" x="16" y="541" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.95487004519999996" green="0.74410760399999998" blue="0.54113686080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="c7q-LY-ev4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2D8-2k-vo0"/>
                             <constraint firstItem="zWC-h8-G9E" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Bni-SG-XiW"/>
                             <constraint firstItem="zWC-h8-G9E" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="V2m-b2-ALz"/>
                             <constraint firstItem="lov-9A-E3X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Wky-Z8-DUq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c7q-LY-ev4" secondAttribute="bottom" constant="6" id="lQj-G0-Mfk"/>
                             <constraint firstItem="lov-9A-E3X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pnu-4j-Z0q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
