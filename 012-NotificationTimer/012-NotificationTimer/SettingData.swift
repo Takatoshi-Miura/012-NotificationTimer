@@ -11,7 +11,7 @@ import Foundation
 import RealmSwift
 import AVFoundation
 
-class SettingData: NSObject, NSSecureCoding {
+class SettingData {
     
     //MARK:- 保持データ
     
@@ -210,61 +210,6 @@ class SettingData: NSObject, NSSecureCoding {
     
     func getAudioAppFinish() -> String? {
         return self.audioAppFinish
-    }
-    
-    
-    
-    //MARK:- NSKeyedArchiver関連
-    
-    static var supportsSecureCoding: Bool {
-        return true
-    }
-    
-    // シリアライズ処理
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.dataNumber, forKey: "dataNumber")
-//        aCoder.encode(self.backgroundImage, forKey: "dataNumber")
-        aCoder.encode(self.count, forKey: "count")
-        aCoder.encode(self.mannerMode, forKey: "mannerMode")
-        aCoder.encode(self.audioFinish, forKey: "audioFinish")
-        aCoder.encode(self.audioElapsed5min, forKey: "audioElapsed5min")
-        aCoder.encode(self.audioElapsed10min, forKey: "audioElapsed10min")
-        aCoder.encode(self.audioElapsed15min, forKey: "audioElapsed15min")
-        aCoder.encode(self.audioElapsed20min, forKey: "audioElapsed20min")
-        aCoder.encode(self.audioElapsed25min, forKey: "audioElapsed25min")
-        aCoder.encode(self.audioElapsed30min, forKey: "audioElapsed30min")
-        aCoder.encode(self.audioElapsed35min, forKey: "audioElapsed35min")
-        aCoder.encode(self.audioElapsed40min, forKey: "audioElapsed40min")
-        aCoder.encode(self.audioElapsed45min, forKey: "audioElapsed45min")
-        aCoder.encode(self.audioElapsed50min, forKey: "audioElapsed50min")
-        aCoder.encode(self.audioRemaining30sec, forKey: "audioRemaining30sec")
-        aCoder.encode(self.audioRemaining1min, forKey: "audioRemaining1min")
-        aCoder.encode(self.audioRemaining3min, forKey: "audioRemaining3min")
-        aCoder.encode(self.audioAppStartUp, forKey: "audioAppStartUp")
-        aCoder.encode(self.audioAppFinish, forKey: "audioAppFinish")
-    }
-    
-    // デシリアライズ処理
-    required init?(coder aDecoder: NSCoder) {
-        self.dataNumber          = aDecoder.decodeObject(forKey: "dataNumber") as? Int ?? 0
-        self.count               = aDecoder.decodeObject(forKey: "count") as? Float ?? 0.0
-        self.mannerMode          = aDecoder.decodeBool(forKey: "mannerMode")
-        self.audioFinish         = aDecoder.decodeObject(forKey: "audioFinish") as? String ?? ""
-        self.audioElapsed5min    = aDecoder.decodeObject(forKey: "audioElapsed5min") as? String ?? ""
-        self.audioElapsed10min   = aDecoder.decodeObject(forKey: "audioElapsed10min") as? String ?? ""
-        self.audioElapsed15min   = aDecoder.decodeObject(forKey: "audioElapsed15min") as? String ?? ""
-        self.audioElapsed20min   = aDecoder.decodeObject(forKey: "audioElapsed20min") as? String ?? ""
-        self.audioElapsed25min   = aDecoder.decodeObject(forKey: "audioElapsed25min") as? String ?? ""
-        self.audioElapsed30min   = aDecoder.decodeObject(forKey: "audioElapsed30min") as? String ?? ""
-        self.audioElapsed35min   = aDecoder.decodeObject(forKey: "audioElapsed35min") as? String ?? ""
-        self.audioElapsed40min   = aDecoder.decodeObject(forKey: "audioElapsed40min") as? String ?? ""
-        self.audioElapsed45min   = aDecoder.decodeObject(forKey: "audioElapsed45min") as? String ?? ""
-        self.audioElapsed50min   = aDecoder.decodeObject(forKey: "audioElapsed50min") as? String ?? ""
-        self.audioRemaining30sec = aDecoder.decodeObject(forKey: "audioRemaining30sec") as? String ?? ""
-        self.audioRemaining1min  = aDecoder.decodeObject(forKey: "audioRemaining1min") as? String ?? ""
-        self.audioRemaining3min  = aDecoder.decodeObject(forKey: "audioRemaining3min") as? String ?? ""
-        self.audioAppStartUp     = aDecoder.decodeObject(forKey: "audioAppStartUp") as? String ?? ""
-        self.audioAppFinish      = aDecoder.decodeObject(forKey: "audioAppFinish") as? String ?? ""
     }
     
     
