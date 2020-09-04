@@ -142,7 +142,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // pickerView
     var pickerView = UIView()
     var timePicker = UIPickerView()
-    let minute:[Int] = (0...59).map { $0 }
+    let minute:[Int] = (0...99).map { $0 }
     let second:[Int] = (0...59).map { $0 }
     var minuteIndex:Int = 0
     var secondIndex:Int = 0
