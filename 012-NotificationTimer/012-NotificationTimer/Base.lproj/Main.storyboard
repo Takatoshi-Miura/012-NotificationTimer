@@ -205,7 +205,6 @@
                                                 <action selector="cancelButton:" destination="fzK-ui-Qee" id="dt0-W1-k9A"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="uqd-yH-ufJ"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

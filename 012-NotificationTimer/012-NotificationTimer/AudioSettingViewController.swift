@@ -18,6 +18,9 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         // テーブルビュー初期設定
         tableViewInit()
         
+        // マナーモードスイッチ初期設定
+        mannerModeSwitchInit()
+        
         // ナビゲーションバーを表示
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
@@ -31,18 +34,31 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // キャンセルボタン
     @IBAction func cancelButton(_ sender: Any) {
-        // 音声設定を閉じる
-        self.dismiss(animated: true, completion: .none)
+        // 遷移元に画面を取得する
+        if let controller = self.presentingViewController as? TimerViewController {
+            // 設定データを渡す
+            controller.settingData = self.settingData
+            print("データをTimerViewControllerに渡しました")
+            
+            // 音声設定を閉じる
+            controller.dismiss(animated: true, completion: nil)
+        }
     }
     
     
     // マナーモードスイッチ
     let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    @objc func switchTriggered(sender: UISwitch){
+    @objc func switchTriggered(sender: UISwitch) {
         if sender.isOn {
             // ONの処理
+            
+            // 設定データに反映
+            self.settingData.setMannerMode(bool: true)
         } else {
             // OFFの処理
+            
+            // 設定データに反映
+            self.settingData.setMannerMode(bool: false)
         }
     }
     
@@ -143,6 +159,18 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
     
+    
+    
+    // MARK:- その他のメソッド
+    
+    // マナーモードスイッチ初期化メソッド
+    func mannerModeSwitchInit() {
+        if self.settingData.getMannerMode() == true {
+            switchView.isOn = true
+        } else {
+            // OFF
+        }
+    }
 
 
 
