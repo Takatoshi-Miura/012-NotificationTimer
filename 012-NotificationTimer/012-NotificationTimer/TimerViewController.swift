@@ -313,7 +313,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // データの反映
         self.settingData.setDataNumber(number: object[0].getDataNumber())
-        //        self.backgroundImage     = object[0].getBackgroundImage()
         self.settingData.setCount(time: object[0].getCount())
         self.settingData.setMannerMode(bool: object[0].getMannerMode())
         self.settingData.setAudioFinish(fileName: object[0].getAudioFinish())
@@ -336,7 +335,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         print("データをロードしました")
     }
     
-    // データを保存するメソッド
+    // データを更新するメソッド
     func updateSettingData() {
         // Realmデータベースにアクセス
         let realm = try! Realm()
@@ -349,6 +348,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             // データの更新
             object[0].setDataNumber(number: self.settingData.getDataNumber())
             object[0].setCount(time: self.settingData.getCount())
+            object[0].setMannerMode(bool: self.settingData.getMannerMode())
+            object[0].setAudioFinish(fileName: self.settingData.getAudioFinish())
+            object[0].setAudioElapsed5min(fileName: self.settingData.getAudioElapsed5min())
+            object[0].setAudioElapsed10min(fileName: self.settingData.getAudioElapsed10min())
+            object[0].setAudioElapsed15min(fileName: self.settingData.getAudioElapsed15min())
+            object[0].setAudioElapsed20min(fileName: self.settingData.getAudioElapsed20min())
+            object[0].setAudioElapsed25min(fileName: self.settingData.getAudioElapsed25min())
+            object[0].setAudioElapsed30min(fileName: self.settingData.getAudioElapsed30min())
+            object[0].setAudioElapsed35min(fileName: self.settingData.getAudioElapsed35min())
+            object[0].setAudioElapsed40min(fileName: self.settingData.getAudioElapsed40min())
+            object[0].setAudioElapsed45min(fileName: self.settingData.getAudioElapsed45min())
+            object[0].setAudioElapsed50min(fileName: self.settingData.getAudioElapsed50min())
+            object[0].setAudioRemaining30sec(fileName: self.settingData.getAudioRemaining30sec())
+            object[0].setAudioRemaining1min(fileName: self.settingData.getAudioRemaining1min())
+            object[0].setAudioRemaining3min(fileName: self.settingData.getAudioRemaining3min())
+            object[0].setAudioAppStartUp(fileName: self.settingData.getAudioAppStartUp())
+            object[0].setAudioAppFinish(fileName: self.settingData.getAudioAppFinish())
             
             print("データを更新しました")
         }
@@ -456,22 +472,22 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // フォアグラウンドになった時に呼ばれる
     @objc func didBecomeActive(notify: NSNotification) {
-        if let backgroundDate = backgroundDate, self.self.settingData.count > 0 {
+        if let backgroundDate = backgroundDate, self.settingData.count > 0 {
             // Int型へ変換
             var count_Int = Int(self.self.settingData.count)
             
-            // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得 ※簡易的にIntにキャストしています。
+            // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得
             let timeDiff = Int(NSDate().timeIntervalSince(backgroundDate as Date))
             print("経過時間 : \(timeDiff)")
 
             // 経過時間よりタイマーの残り時間が多かった場合、再度タイマースタート
             if timeDiff < count_Int {
                 count_Int -= timeDiff
-                self.settingData.count = Float(count_Int)
+                self.settingData.setCount(time: Float(count_Int))
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
             } else {
                 // ゼロにリセット
-                self.self.settingData.count = 0
+                self.settingData.setCount(time: 0)
                 timer.invalidate()
                 
                 // ボタン画像をスタート用にセット
