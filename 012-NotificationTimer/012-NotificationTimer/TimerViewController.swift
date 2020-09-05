@@ -19,6 +19,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // データベースのパスを取得
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+        // アプリフォルダ構成の初期化
+        directoryInit()
+        
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
         resetLabel.makeOutLine(strokeWidth: -4.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -402,6 +405,28 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     // MARK:- その他のメソッド
+    
+    // フォルダ構成の初期化
+    func directoryInit() {
+        // ファイル共有
+        let fm = FileManager.default
+        
+        // アプリフォルダのパス
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        // ユーザーが操作不可なファイルを入れるフォルダ
+        let appSupportPath = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first!
+        
+        // フォルダが存在しなければ作成
+        let filePathList = [documentsPath + "/Picture",documentsPath + "/Audio"]
+        
+        for filePath in filePathList {
+            if !fm.fileExists(atPath: filePath) {
+                try! fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: [:])
+                print("Picture,Audioフォルダを作成しました")
+            }
+        }
+    }
 
     //タイマーから呼び出されるメソッド
     @objc func countDown(){

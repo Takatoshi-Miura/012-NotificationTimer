@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,7 +56,6 @@
 				26EA20D01F17E8E46A504816 /* Pods-012-NotificationTimer.debug.xcconfig */,
 				8CFEDB70F92CC72D9F7090B3 /* Pods-012-NotificationTimer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

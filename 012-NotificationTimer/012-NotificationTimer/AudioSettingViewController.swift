@@ -51,12 +51,12 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     @objc func switchTriggered(sender: UISwitch) {
         if sender.isOn {
             // ONの処理
-            
+            print("マナーモードをONにしました")
             // 設定データに反映
             self.settingData.setMannerMode(bool: true)
         } else {
             // OFFの処理
-            
+            print("マナーモードをOFFにしました")
             // 設定データに反映
             self.settingData.setMannerMode(bool: false)
         }
