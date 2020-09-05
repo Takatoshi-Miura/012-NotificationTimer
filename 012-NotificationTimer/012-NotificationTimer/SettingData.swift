@@ -207,6 +207,79 @@ class SettingData:Object {
     
     //MARK:- その他のメソッド
     
+    // 規定時間を通知するメソッド
+    // Fix:何度も起動してしまう
+    func notificationTime(elapsedTime time:Float) {
+        // 経過時間の通知
+        switch Int(time) {
+        case 60 * 5:
+            // 5分経過
+            audioPlay(fileName: self.audioElapsed5min)
+            print("5分経過")
+        case 60 * 10:
+            // 10分経過
+            audioPlay(fileName: self.audioElapsed10min)
+            print("10分経過")
+        case 60 * 15:
+            // 15分経過
+            audioPlay(fileName: self.audioElapsed15min)
+            print("15分経過")
+        case 60 * 20:
+            // 20分経過
+            audioPlay(fileName: self.audioElapsed20min)
+            print("20分経過")
+        case 60 * 25:
+            // 25分経過
+            audioPlay(fileName: self.audioElapsed25min)
+            print("25分経過")
+        case 60 * 30:
+            // 30分経過
+            audioPlay(fileName: self.audioElapsed30min)
+            print("30分経過")
+        case 60 * 35:
+            // 35分経過
+            audioPlay(fileName: self.audioElapsed35min)
+            print("35分経過")
+        case 60 * 40:
+            // 40分経過
+            audioPlay(fileName: self.audioElapsed40min)
+            print("40分経過")
+        case 60 * 45:
+            // 45分経過
+            audioPlay(fileName: self.audioElapsed45min)
+            print("45分経過")
+        case 60 * 50:
+            // 50分経過
+            audioPlay(fileName: self.audioElapsed50min)
+            print("50分経過")
+        default:
+            break
+        }
+        
+        // 残り時間の通知
+        switch Int(self.count) {
+        case 60 * 3:
+            // 残り3分
+            audioPlay(fileName: self.audioRemaining3min)
+            print("残り3分")
+        case 60 * 1:
+            // 残り1分
+            audioPlay(fileName: self.audioRemaining1min)
+            print("残り1分")
+        case 30:
+            // 残り30秒
+            audioPlay(fileName: self.audioRemaining30sec)
+            print("残り30秒")
+        case 0:
+            // 終了
+            audioPlay(fileName: self.audioFinish)
+            print("終了")
+        default:
+            break
+        }
+        
+    }
+    
     // 音声を再生するメソッド
     func audioPlay(fileName name:String?) {
         if let fileName = name {

@@ -170,6 +170,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var timer = Timer()
     var backgroundDate: NSDate!
     var timerIsStart:Bool = false
+    var pre_count:Float = 0.0
     
     // pickerView
     var pickerView = UIView()
@@ -242,6 +243,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // 秒数を計算し、タイマーに時間をセットセット
         self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
+        
+        // 経過時間を計算するためcountの値を保持
+        pre_count = self.settingData.getCount()
         
         // ラベルにセット
         displayCount()
@@ -460,6 +464,12 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @objc func countDown(){
         // 残り時間の計算
         self.settingData.count -= 0.01
+        
+        // 経過時間の計算
+        let elapsedTime = pre_count - self.settingData.getCount()
+        
+        // 規定時間なら通知
+        self.settingData.notificationTime(elapsedTime: elapsedTime)
         
         // ゼロならタイマーを停止
         if self.settingData.count < 0 {
