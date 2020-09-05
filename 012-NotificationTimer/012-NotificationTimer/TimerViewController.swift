@@ -78,11 +78,17 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             // タイマー稼動中にタップで一時停止
             timer.invalidate()
             
+            // フラグ設定
+            timerIsStart = false
+            
             // ボタン画像をスタート用にセット
             startButton.setImage(startImage, for: .normal)
         } else if self.settingData.count > 0 {
             // タイマー停止中にタップで再開
             timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
+            
+            // フラグ設定
+            timerIsStart = true
             
             // ボタン画像を一時停止用にセット
             startButton.setImage(stopImage, for: .normal)
@@ -99,6 +105,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         if timer.isValid {
             // タイマーを停止
             timer.invalidate()
+            
+            // フラグ設定
+            timerIsStart = false
         }
         
         if self.settingData.count == Float(minute[minuteIndex] * 60 + second[secondIndex]) && self.settingData.count > 0 {
@@ -108,13 +117,22 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timePicker.selectRow(0, inComponent: 1, animated: true)
             
             // 時間表示に反映
-            timeLabel.text = "00:00.00"
+            displayCount()
+            
+            // フラグ設定
+            timerIsStart = false
             
             // ボタン画像をスタート用にセット
             startButton.setImage(startImage, for: .normal)
         } else if self.settingData.count > 0 {
             // 以前セットした時間に戻す
-            timePickerDone()
+            self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
+            
+            // ラベルにセット
+            displayCount()
+            
+            // フラグ設定
+            timerIsStart = false
             
             // ボタン画像をスタート用にセット
             startButton.setImage(startImage, for: .normal)
@@ -147,6 +165,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // タイマー
     var timer = Timer()
     var backgroundDate: NSDate!
+    var timerIsStart:Bool = false
     
     // pickerView
     var pickerView = UIView()
@@ -217,15 +236,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         minuteIndex = timePicker.selectedRow(inComponent: 0)
         secondIndex = timePicker.selectedRow(inComponent: 1)
         
-        // ゼロ埋め
-        let minuteText = NSString(format: "%02d", minute[minuteIndex])
-        let secondText = NSString(format: "%02d", second[secondIndex])
-        
-        // 時間表示に反映
-        timeLabel.text = "\(minuteText):\(secondText).00"
-        
         // 秒数を計算し、タイマーに時間をセットセット
         self.settingData.setCount(time: Float(minute[minuteIndex] * 60 + second[secondIndex]))
+        
+        // ラベルにセット
+        displayCount()
         
         // SettingDataに保存
         updateSettingData()
@@ -481,20 +496,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             print("経過時間 : \(timeDiff)")
 
             // 経過時間よりタイマーの残り時間が多かった場合、再度タイマースタート
-            if timeDiff < count_Int {
+            if timeDiff < count_Int && timerIsStart == true {
                 count_Int -= timeDiff
                 self.settingData.setCount(time: Float(count_Int))
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
+            } else if timeDiff < count_Int && timerIsStart == false {
+                // ラベルに反映
+                displayCount()
             } else {
                 // ゼロにリセット
                 self.settingData.setCount(time: 0)
                 timer.invalidate()
                 
+                // ラベルに反映
+                displayCount()
+                
                 // ボタン画像をスタート用にセット
                 startButton.setImage(startImage, for: .normal)
-                
-                // ラベルに反映
-                timeLabel.text = "00:00.00"
             }
         }
     }
