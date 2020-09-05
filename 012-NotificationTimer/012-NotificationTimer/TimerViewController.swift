@@ -414,18 +414,21 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // アプリフォルダのパス
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         
-        // ユーザーが操作不可なファイルを入れるフォルダ
-        let appSupportPath = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first!
-        
-        // フォルダが存在しなければ作成
+        // Picture,Audioフォルダが存在しなければ作成
         let filePathList = [documentsPath + "/Picture",documentsPath + "/Audio"]
-        
         for filePath in filePathList {
             if !fm.fileExists(atPath: filePath) {
                 try! fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: [:])
                 print("Picture,Audioフォルダを作成しました")
             }
         }
+        
+        // Application SupportフォルダをRealmの保存先に指定
+        let applicationSupportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let path = applicationSupportDir.appendingPathComponent("default.realm")
+        var config = Realm.Configuration.defaultConfiguration
+        config.fileURL = path
+        Realm.Configuration.defaultConfiguration = config
     }
 
     //タイマーから呼び出されるメソッド

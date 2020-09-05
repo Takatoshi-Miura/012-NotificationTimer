@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 初回起動時の処理
         if UserDefaults.standard.bool(forKey: "firstLaunch") {
+            // Application Supportフォルダを作成
+            let applicationSupportDir = try! FileManager.default.url(for: .applicationSupportDirectory,in: .userDomainMask,appropriateFor: nil,create: true)
+            
+            // Application SupportフォルダをRealmの保存先に指定
+            let path = applicationSupportDir.appendingPathComponent("default.realm")
+            var config = Realm.Configuration.defaultConfiguration
+            config.fileURL = path
+            Realm.Configuration.defaultConfiguration = config
+            
             // SettingDataを作成
             let settingData = SettingData(dataNumber: 0)
             
@@ -28,10 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! realm.write {
                 realm.add(settingData)
             }
+            
+            // 2回目以降の起動では「firstLaunch」のkeyをfalseに
+            UserDefaults.standard.set(false, forKey: "firstLaunch")
         }
-        
-        // 2回目以降の起動では「firstLaunch」のkeyをfalseに
-        UserDefaults.standard.set(false, forKey: "firstLaunch")
         
         return true
     }
