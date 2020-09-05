@@ -87,7 +87,7 @@
                                 <state key="normal" image="speaker.3" catalog="system"/>
                                 <connections>
                                     <action selector="audioButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dkz-aN-ytE"/>
-                                    <segue destination="fzK-ui-Qee" kind="show" id="7ig-jn-cvA"/>
+                                    <segue destination="fzK-ui-Qee" kind="show" identifier="goAudioSettingViewController" id="7ig-jn-cvA"/>
                                 </connections>
                             </button>
                         </subviews>

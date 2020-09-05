@@ -387,6 +387,20 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
+    // MARK:- 画面遷移
+    
+    // 画面遷移時に呼ばれる処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goAudioSettingViewController" {
+            // settingDataを渡す
+            let audioSettingViewController = segue.destination as! AudioSettingViewController
+            audioSettingViewController.settingData = self.settingData
+            print("データをAudioSettingViewControllerに渡しました")
+        }
+    }
+    
+    
+    
     // MARK:- その他のメソッド
 
     //タイマーから呼び出されるメソッド

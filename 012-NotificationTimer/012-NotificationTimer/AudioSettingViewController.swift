@@ -48,6 +48,12 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     
     
+    // MARK:- 変数の宣言
+    
+    var settingData = SettingData(dataNumber: 0)
+    
+    
+    
     // MARK:- テーブルビューの設定
     
     // 初期化メソッド
