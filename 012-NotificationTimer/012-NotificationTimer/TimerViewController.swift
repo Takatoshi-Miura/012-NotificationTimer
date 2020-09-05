@@ -29,8 +29,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // バックグラウンド,フォアグラウンド判定の追加
         addNotification()
         
-        // SettingDataをロード
+        // データをロード
         loadSettingData()
+        loadBackgroundImage()
         
         // ラベルにcountを反映
         displayCount()
@@ -349,8 +350,20 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setAudioRemaining3min(fileName: object[0].getAudioRemaining3min())
         self.settingData.setAudioAppStartUp(fileName: object[0].getAudioAppStartUp())
         self.settingData.setAudioAppFinish(fileName: object[0].getAudioAppFinish())
-        
         print("データをロードしました")
+    }
+    
+    // 背景画像を取得するメソッド
+    func loadBackgroundImage() {
+        // 背景画像の取得
+        let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let imagePath = documentURL.appendingPathComponent("backgroundImage.png")
+        do {
+            try self.imageView.image = UIImage(data: Data(contentsOf: imagePath))
+            print("背景画像を取得しました")
+        } catch {
+            print("背景画像がありません")
+        }
     }
     
     // データを更新するメソッド
@@ -383,8 +396,20 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             object[0].setAudioRemaining3min(fileName: self.settingData.getAudioRemaining3min())
             object[0].setAudioAppStartUp(fileName: self.settingData.getAudioAppStartUp())
             object[0].setAudioAppFinish(fileName: self.settingData.getAudioAppFinish())
-            
             print("データを更新しました")
+        }
+    }
+    
+    // 背景画像を保存するメソッド
+    func saveBackgroundImage() {
+        // 背景画像を保存
+        let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let imagePath = documentURL.appendingPathComponent("backgroundImage.png")
+        do {
+            try self.imageView.image?.pngData()!.write(to: imagePath)
+            print("背景画像を保存しました")
+        } catch {
+            print("背景画像を保存できませんでした")
         }
     }
     
@@ -515,6 +540,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // 選択画像を背景にセット
         imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        // 背景画像を保存
+        saveBackgroundImage()
         
         // モーダルを閉じる
         self.dismiss(animated: true, completion: .none)

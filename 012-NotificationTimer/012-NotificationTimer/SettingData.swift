@@ -15,7 +15,6 @@ class SettingData:Object {
     //MARK:- 保持データ
     
     @objc dynamic var dataNumber:Int = 0              // データ番号
-    //@objc dynamic var backgroundImage:UIImage?        // 背景画像
     @objc dynamic var count:Float = 0.0               // 設定時間
     @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
     @objc dynamic var audioFinish:String = ""         // 終了時通知用 音声ファイル名
@@ -51,10 +50,6 @@ class SettingData:Object {
     func setDataNumber(number:Int) {
         self.dataNumber = number
     }
-    
-//    func setBackgroundImage(image:UIImage) {
-//        self.backgroundImage = image
-//    }
     
     func setCount(time:Float) {
         self.count = time
@@ -135,10 +130,6 @@ class SettingData:Object {
     func getDataNumber() -> Int {
         return self.dataNumber
     }
-    
-//    func getBackgroundImage() -> UIImage? {
-//        return self.backgroundImage
-//    }
     
     func getCount() -> Float {
         return self.count
