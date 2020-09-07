@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import AVFoundation
 
 class SettingData:Object {
     
@@ -17,22 +16,22 @@ class SettingData:Object {
     @objc dynamic var dataNumber:Int = 0              // データ番号
     @objc dynamic var count:Float = 0.0               // 設定時間
     @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
-    @objc dynamic var audioFinish:String = ""         // 終了時通知用 音声ファイル名
-    @objc dynamic var audioElapsed5min:String = ""    // 5分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed10min:String = ""   // 10分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed15min:String = ""   // 15分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed20min:String = ""   // 20分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed25min:String = ""   // 25分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed30min:String = ""   // 30分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed35min:String = ""   // 35分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed40min:String = ""   // 40分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed45min:String = ""   // 45分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed50min:String = ""   // 50分経過通知用 音声ファイル名
-    @objc dynamic var audioRemaining30sec:String = "" // 残り30秒通知用 音声ファイル名
-    @objc dynamic var audioRemaining1min:String = ""  // 残り1分通知用 音声ファイル名
-    @objc dynamic var audioRemaining3min:String = ""  // 残り3分通知用 音声ファイル名
-    @objc dynamic var audioAppStartUp:String = ""     // アプリ起動音 音声ファイル名
-    @objc dynamic var audioAppFinish:String = ""      // アプリ終了音 音声ファイル名
+    @objc dynamic var audioFinish:String = "デフォルト(終了時)"             // 終了時通知用 音声ファイル名
+    @objc dynamic var audioElapsed5min:String = "デフォルト(5分経過)"       // 5分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed10min:String = "デフォルト(10分経過)"     // 10分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed15min:String = "デフォルト(15分経過)"     // 15分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed20min:String = "デフォルト(20分経過)"     // 20分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed25min:String = "デフォルト(25分経過)"     // 25分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed30min:String = "デフォルト(30分経過)"     // 30分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed35min:String = "デフォルト(35分経過)"     // 35分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed40min:String = "デフォルト(40分経過)"     // 40分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed45min:String = "デフォルト(45分経過)"     // 45分経過通知用 音声ファイル名
+    @objc dynamic var audioElapsed50min:String = "デフォルト(50分経過)"     // 50分経過通知用 音声ファイル名
+    @objc dynamic var audioRemaining30sec:String = "デフォルト(残り30秒)"   // 残り30秒通知用 音声ファイル名
+    @objc dynamic var audioRemaining1min:String = "デフォルト(残り1分)"     // 残り1分通知用 音声ファイル名
+    @objc dynamic var audioRemaining3min:String = "デフォルト(残り3分)"     // 残り3分通知用 音声ファイル名
+    @objc dynamic var audioAppStartUp:String = "デフォルト(アプリ起動時)"    // アプリ起動音 音声ファイル名
+    @objc dynamic var audioAppFinish:String = "デフォルト(アプリ終了時)"     // アプリ終了音 音声ファイル名
     
     
     
@@ -203,102 +202,5 @@ class SettingData:Object {
         return self.audioAppFinish
     }
     
-    
-    
-    //MARK:- その他のメソッド
-    
-    // 規定時間を通知するメソッド
-    // Fix:何度も起動してしまう
-    func notificationTime(elapsedTime time:Float) {
-        // 経過時間の通知
-        switch Int(time) {
-        case 60 * 5:
-            // 5分経過
-            audioPlay(fileName: self.audioElapsed5min)
-            print("5分経過")
-        case 60 * 10:
-            // 10分経過
-            audioPlay(fileName: self.audioElapsed10min)
-            print("10分経過")
-        case 60 * 15:
-            // 15分経過
-            audioPlay(fileName: self.audioElapsed15min)
-            print("15分経過")
-        case 60 * 20:
-            // 20分経過
-            audioPlay(fileName: self.audioElapsed20min)
-            print("20分経過")
-        case 60 * 25:
-            // 25分経過
-            audioPlay(fileName: self.audioElapsed25min)
-            print("25分経過")
-        case 60 * 30:
-            // 30分経過
-            audioPlay(fileName: self.audioElapsed30min)
-            print("30分経過")
-        case 60 * 35:
-            // 35分経過
-            audioPlay(fileName: self.audioElapsed35min)
-            print("35分経過")
-        case 60 * 40:
-            // 40分経過
-            audioPlay(fileName: self.audioElapsed40min)
-            print("40分経過")
-        case 60 * 45:
-            // 45分経過
-            audioPlay(fileName: self.audioElapsed45min)
-            print("45分経過")
-        case 60 * 50:
-            // 50分経過
-            audioPlay(fileName: self.audioElapsed50min)
-            print("50分経過")
-        default:
-            break
-        }
-        
-        // 残り時間の通知
-        switch Int(self.count) {
-        case 60 * 3:
-            // 残り3分
-            audioPlay(fileName: self.audioRemaining3min)
-            print("残り3分")
-        case 60 * 1:
-            // 残り1分
-            audioPlay(fileName: self.audioRemaining1min)
-            print("残り1分")
-        case 30:
-            // 残り30秒
-            audioPlay(fileName: self.audioRemaining30sec)
-            print("残り30秒")
-        case 0:
-            // 終了
-            audioPlay(fileName: self.audioFinish)
-            print("終了")
-        default:
-            break
-        }
-        
-    }
-    
-    // 音声を再生するメソッド
-    func audioPlay(fileName name:String?) {
-        if let fileName = name {
-            // パスを作成
-            let path = Bundle.main.bundleURL.appendingPathComponent(fileName)
-            
-            // プレイヤーを作成
-            var player = AVAudioPlayer()
-            
-            // 再生
-            do {
-                player = try AVAudioPlayer(contentsOf: path, fileTypeHint: nil)
-                player.play()
-            } catch {
-                print("再生処理でエラーが発生しました")
-            }
-        } else {
-            print("ファイルが設定されていません")
-        }
-    }
     
 }

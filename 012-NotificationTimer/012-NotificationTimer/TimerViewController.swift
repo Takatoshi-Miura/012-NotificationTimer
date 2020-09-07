@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import AVFoundation
 
-class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate,AVAudioPlayerDelegate {
 
     // MARK:- ライフサイクルメソッド
     
@@ -35,6 +36,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // ラベルにcountを反映
         displayCount()
+        
+        // デリゲートの設定
+        player.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -81,6 +85,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         if timer.isValid && self.settingData.count > 0 {
             // タイマー稼動中にタップで一時停止
             timer.invalidate()
+            timerNotification.invalidate()
             
             // フラグ設定
             timerIsStart = false
@@ -90,6 +95,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         } else if self.settingData.count > 0 {
             // タイマー停止中にタップで再開
             timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
+            timerNotification = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(notification), userInfo:nil, repeats:true)
             
             // フラグ設定
             timerIsStart = true
@@ -109,6 +115,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         if timer.isValid {
             // タイマーを停止
             timer.invalidate()
+            timerNotification.invalidate()
             
             // フラグ設定
             timerIsStart = false
@@ -168,6 +175,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // タイマー
     var timer = Timer()
+    var timerNotification = Timer()
     var backgroundDate: NSDate!
     var timerIsStart:Bool = false
     var pre_count:Float = 0.0
@@ -182,6 +190,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // 設定データ
     var settingData:SettingData = SettingData(dataNumber: 0)
+    
+    // 音声再生用
+    var player = AVAudioPlayer()
     
     
     
@@ -465,20 +476,115 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // 残り時間の計算
         self.settingData.count -= 0.01
         
-        // 経過時間の計算
-        let elapsedTime = pre_count - self.settingData.getCount()
-        
-        // 規定時間なら通知
-        self.settingData.notificationTime(elapsedTime: elapsedTime)
-        
         // ゼロならタイマーを停止
         if self.settingData.count < 0 {
             self.settingData.count = 0
             timer.invalidate()
+            timerNotification.invalidate()
         }
         
         // ラベルに反映
         displayCount()
+    }
+    
+    // タイマーから呼び出されるメソッド
+    @objc func notification() {
+        // 経過時間の計算
+        let elapsedTime = pre_count - self.settingData.getCount()
+        
+        // 規定時間なら通知
+        self.notificationTime(elapsedTime: elapsedTime)
+    }
+    
+    // 規定時間を通知するメソッド
+    func notificationTime(elapsedTime time:Float) {
+        // 経過時間の通知
+        switch Int(time) {
+        case 60 * 5:
+            // 5分経過
+            audioPlay(fileName: self.settingData.audioElapsed5min)
+            print("5分経過")
+        case 60 * 10:
+            // 10分経過
+            audioPlay(fileName: self.settingData.audioElapsed10min)
+            print("10分経過")
+        case 60 * 15:
+            // 15分経過
+            audioPlay(fileName: self.settingData.audioElapsed15min)
+            print("15分経過")
+        case 60 * 20:
+            // 20分経過
+            audioPlay(fileName: self.settingData.audioElapsed20min)
+            print("20分経過")
+        case 60 * 25:
+            // 25分経過
+            audioPlay(fileName: self.settingData.audioElapsed25min)
+            print("25分経過")
+        case 60 * 30:
+            // 30分経過
+            audioPlay(fileName: self.settingData.audioElapsed30min)
+            print("30分経過")
+        case 60 * 35:
+            // 35分経過
+            audioPlay(fileName: self.settingData.audioElapsed35min)
+            print("35分経過")
+        case 60 * 40:
+            // 40分経過
+            audioPlay(fileName: self.settingData.audioElapsed40min)
+            print("40分経過")
+        case 60 * 45:
+            // 45分経過
+            audioPlay(fileName: self.settingData.audioElapsed45min)
+            print("45分経過")
+        case 60 * 50:
+            // 50分経過
+            audioPlay(fileName: self.settingData.audioElapsed50min)
+            print("50分経過")
+        default:
+            break
+        }
+        
+        // 残り時間の通知
+        switch Int(self.settingData.count) {
+        case 60 * 3:
+            // 残り3分
+            audioPlay(fileName: self.settingData.audioRemaining3min)
+            print("残り3分")
+        case 60 * 1:
+            // 残り1分
+            audioPlay(fileName: self.settingData.audioRemaining1min)
+            print("残り1分")
+        case 30:
+            // 残り30秒
+            audioPlay(fileName: self.settingData.audioRemaining30sec)
+            print("残り30秒")
+        case 0:
+            // 終了
+            audioPlay(fileName: self.settingData.audioFinish)
+            print("終了")
+        default:
+            break
+        }
+        
+    }
+    
+    // 音声を再生するメソッド
+    func audioPlay(fileName name:String?) {
+        if let fileName = name {
+            // パスを作成
+            let audioPath = Bundle.main.path(forResource: "\(fileName)", ofType:"mp3")!
+            let audioUrl  = URL(fileURLWithPath: audioPath)
+            
+            // 再生
+            do {
+                player = try AVAudioPlayer(contentsOf: audioUrl)
+                player.play()
+            } catch {
+                print("再生処理でエラーが発生しました")
+            }
+        } else {
+            print("ファイルが設定されていません")
+        }
     }
     
     // countの値をラベルに表示するメソッド
