@@ -115,21 +115,19 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // カスタムサウンド再生メソッド
     func playCustomSound(fileName name:String?) {
-        if let fileName = name {
-            // パスを作成
-            if let audioPath = Bundle.main.path(forResource: "\(fileName)", ofType:"mp3") {
-                let audioUrl  = URL(fileURLWithPath: audioPath)
-                
-                // 再生
-                do {
-                    player = try AVAudioPlayer(contentsOf: audioUrl)
-                    player.play()
-                } catch {
-                    print("再生処理でエラーが発生しました")
-                }
+        // パスを作成
+        if let audioPath = Bundle.main.path(forResource: "\(name!)", ofType:"mp3") {
+            let audioUrl  = URL(fileURLWithPath: audioPath)
+            
+            // 再生
+            do {
+                player = try AVAudioPlayer(contentsOf: audioUrl)
+                player.play()
+            } catch {
+                print("再生処理でエラーが発生しました")
             }
         } else {
-            print("ファイルが設定されていません")
+            print("ファイルがありません")
         }
     }
     
@@ -144,6 +142,8 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         // システムサウンドを設定
         cellTitleArray[1] = systemSoundTitleArray
+        
+        // 取り込んだ音声データを設定
     }
     
     
