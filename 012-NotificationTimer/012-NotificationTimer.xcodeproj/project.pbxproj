@@ -24,6 +24,7 @@
 		8D4E627025061FDA007CDADC /* デフォルト(アプリ終了時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E626025061FDA007CDADC /* デフォルト(アプリ終了時).mp3 */; };
 		8D4E627125061FDA007CDADC /* デフォルト(10分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E626125061FDA007CDADC /* デフォルト(10分経過).mp3 */; };
 		8D4E627225061FDA007CDADC /* デフォルト(45分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D4E626225061FDA007CDADC /* デフォルト(45分経過).mp3 */; };
+		8D6BFD7625075678003FAF2A /* AudioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFD7525075678003FAF2A /* AudioListViewController.swift */; };
 		8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23724FD00980029D5C3 /* AppDelegate.swift */; };
 		8DA3F23A24FD00980029D5C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */; };
 		8DA3F23F24FD00980029D5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3F23D24FD00980029D5C3 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		8D4E626025061FDA007CDADC /* デフォルト(アプリ終了時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ終了時).mp3"; sourceTree = "<group>"; };
 		8D4E626125061FDA007CDADC /* デフォルト(10分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(10分経過).mp3"; sourceTree = "<group>"; };
 		8D4E626225061FDA007CDADC /* デフォルト(45分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(45分経過).mp3"; sourceTree = "<group>"; };
+		8D6BFD7525075678003FAF2A /* AudioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewController.swift; sourceTree = "<group>"; };
 		8DA3F23424FD00980029D5C3 /* 012-NotificationTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "012-NotificationTimer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA3F23724FD00980029D5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */,
 				8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */,
 				8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */,
+				8D6BFD7525075678003FAF2A /* AudioListViewController.swift */,
 				8DDA4B5424FF595000AD7C69 /* SettingData.swift */,
 				8DA3F24024FD009B0029D5C3 /* Assets.xcassets */,
 				8DDA4B5824FF6F7300AD7C69 /* PageViewController.swift */,
@@ -295,6 +298,7 @@
 				8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */,
 				8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */,
 				8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */,
+				8D6BFD7625075678003FAF2A /* AudioListViewController.swift in Sources */,
 				8DDA4B5524FF595000AD7C69 /* SettingData.swift in Sources */,
 				8DA3F23A24FD00980029D5C3 /* SceneDelegate.swift in Sources */,
 			);
