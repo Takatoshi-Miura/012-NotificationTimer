@@ -85,7 +85,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         case 2:
             return 10   // 経過時間通知セル
         case 3:
-            return 3    // 残り時間通知セル
+            return 4    // 残り時間通知セル
         case 4:
             return 2    // アプリ起動/終了セル
         default:
@@ -121,7 +121,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         case 3:
             // 音声セルを返却
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-            let cellTitle:[String] = ["残り30秒","残り1分","残り3分"]
+            let cellTitle:[String] = ["残り30秒","残り1分","残り3分","残り5分"]
             cell.textLabel!.text = cellTitle[indexPath.row]
             return cell
         case 4:
