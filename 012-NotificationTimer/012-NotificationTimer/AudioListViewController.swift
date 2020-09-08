@@ -18,6 +18,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         // ナビゲーションタイトルの設定
         self.navigationBar.items![0].title = self.navigationTitle
+        
+        // テーブルビュー初期化
+        tableViewInit()
     }
     
     
@@ -31,10 +34,28 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // MARK:- 変数の宣言
     
+    // ナビゲーションバー
     var navigationTitle = ""
+    
+    // 設定データ
     var settingData = SettingData()
-    let cellTitleArray:[[String]] = [["test"],["test"],["test"]]
+    
+    // テーブルビュー
+    var cellTitleArray:[[String]]  = [["navigationTitle"],["systemSoundTitleArray"],[]]
     let sectionTitleArray:[String] = ["デフォルト","Apple","取り込んだデータ"]
+    let systemSoundArray:[SystemSoundID] = [1336,1314,1309,1322,1332,
+                                            1330,1331,1335,1308,1016,
+                                            1334,1300,1328,1329,1326,
+                                            1325,1310,1327,1323,
+                                            1304,1324,1302,1333,1321,1320]
+    let systemSoundTitleArray:[String]   = ["アップデート","エレクトロニック","ガラス","カリプソ","サスペンス",
+                                            "シャーウッドの森","スペル","タイプライター","チャイム","ツイート",
+                                            "つま先","トライトーン","ニュースフラッシュ","ノアール","はしご",
+                                            "ファンファーレ","ホルン","メヌエット","機関車","警告",
+                                            "降下","鐘","電報","曇り","予感"]
+    
+    // サウンド
+    var player = AVAudioPlayer()
     
     
     
@@ -64,6 +85,66 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // セルをタップしたときの処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // タップしたときの選択色を消去
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        
+        switch indexPath.section {
+        case 0:
+            // カスタムサウンドを再生
+            playCustomSound(fileName: "デフォルト(\(navigationTitle))")
+        case 1:
+            // システムサウンドを再生
+            playSystemSound(soundID: systemSoundArray[indexPath.row])
+        default:
+            break
+        }
     }
-
+    
+    
+    
+    // MARK:- サウンド関連
+    
+    // システムサウンド再生メソッド
+    func playSystemSound(soundID id:SystemSoundID) {
+        var soundID = id
+        if let soundUrl = CFBundleCopyResourceURL(CFBundleGetMainBundle(), nil, nil, nil) {
+            AudioServicesCreateSystemSoundID(soundUrl, &soundID)
+            AudioServicesPlaySystemSound(soundID)
+        }
+    }
+    
+    // カスタムサウンド再生メソッド
+    func playCustomSound(fileName name:String?) {
+        if let fileName = name {
+            // パスを作成
+            if let audioPath = Bundle.main.path(forResource: "\(fileName)", ofType:"mp3") {
+                let audioUrl  = URL(fileURLWithPath: audioPath)
+                
+                // 再生
+                do {
+                    player = try AVAudioPlayer(contentsOf: audioUrl)
+                    player.play()
+                } catch {
+                    print("再生処理でエラーが発生しました")
+                }
+            }
+        } else {
+            print("ファイルが設定されていません")
+        }
+    }
+    
+    
+    
+    // MARK:- その他
+    
+    // テーブルビュー初期化
+    func tableViewInit() {
+        // デフォルトサウンドを設定
+        cellTitleArray[0] = ["\(navigationTitle)(デフォルト)"]
+        
+        // システムサウンドを設定
+        cellTitleArray[1] = systemSoundTitleArray
+    }
+    
+    
 }

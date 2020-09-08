@@ -455,11 +455,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         
         // Picture,Audioフォルダが存在しなければ作成
-        let filePathList = [documentsPath + "/Picture",documentsPath + "/Audio"]
+        let filePathList = [documentsPath + "/Audio"]
         for filePath in filePathList {
             if !fm.fileExists(atPath: filePath) {
                 try! fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: [:])
-                print("Picture,Audioフォルダを作成しました")
+                print("Audioフォルダを作成しました")
             }
         }
         
