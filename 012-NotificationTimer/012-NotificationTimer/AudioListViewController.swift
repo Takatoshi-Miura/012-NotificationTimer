@@ -30,7 +30,10 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
-
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     // MARK:- 変数の宣言
     
@@ -114,9 +117,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     // カスタムサウンド再生メソッド
-    func playCustomSound(fileName name:String?) {
+    func playCustomSound(fileName name:String) {
         // パスを作成
-        if let audioPath = Bundle.main.path(forResource: "\(name!)", ofType:"mp3") {
+        if let audioPath = Bundle.main.path(forResource: "\(name)", ofType:"mp3") {
             let audioUrl  = URL(fileURLWithPath: audioPath)
             
             // 再生
@@ -138,7 +141,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     // テーブルビュー初期化
     func tableViewInit() {
         // デフォルトサウンドを設定
-        cellTitleArray[0] = ["\(navigationTitle)(デフォルト)"]
+        cellTitleArray[0] = ["\(navigationTitle)"]
         
         // システムサウンドを設定
         cellTitleArray[1] = systemSoundTitleArray
