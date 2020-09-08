@@ -19,6 +19,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         // ナビゲーションタイトルの設定
         self.navigationBar.items![0].title = self.navigationTitle
         
+        // ユーザーが保存した音声ファイルを取得
+        loadUserSoundData()
+        
         // テーブルビュー初期化
         tableViewInit()
     }
@@ -33,6 +36,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     
     // MARK:- 変数の宣言
@@ -56,6 +60,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
                                             "つま先","トライトーン","ニュースフラッシュ","ノアール","はしご",
                                             "ファンファーレ","ホルン","メヌエット","機関車","警告",
                                             "降下","鐘","電報","曇り","予感"]
+    var userAudioTitleArray:[String] = []
     
     // サウンド
     var player = AVAudioPlayer()
@@ -98,6 +103,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         case 1:
             // システムサウンドを再生
             playSystemSound(soundID: systemSoundArray[indexPath.row])
+        case 2:
+            // ユーザーが取り込んだmp3ファイルを再生
+            playUserAudio(fileName: userAudioTitleArray[indexPath.row])
         default:
             break
         }
@@ -134,6 +142,21 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
     }
     
+    // ユーザーが取り込んだサウンドの再生メソッド
+    func playUserAudio(fileName name:String) {
+        // ユーザーが取り込んだ音声データフォルダのパスを取得＆URLに変換
+        let userAudioPath = NSHomeDirectory() + "/Documents/Audio/\(name)"
+        let userAudioURL  = URL(fileURLWithPath: userAudioPath)
+        
+        // 再生
+        do {
+            player = try AVAudioPlayer(contentsOf: userAudioURL)
+            player.play()
+        } catch {
+            print("再生処理でエラーが発生しました")
+        }
+    }
+    
     
     
     // MARK:- その他
@@ -147,6 +170,23 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         cellTitleArray[1] = systemSoundTitleArray
         
         // 取り込んだ音声データを設定
+        cellTitleArray[2] = userAudioTitleArray
+    }
+    
+    // ユーザーが取り込んだ音声データをロードするメソッド
+    func loadUserSoundData() {
+        // ユーザーが取り込んだ音声データフォルダのパスを取得
+        let userAudioPath = NSHomeDirectory() + "/Documents/Audio"
+        
+        // フォルダ内のmp3データ名を全て取得＆50音順にソート
+        do {
+            self.userAudioTitleArray = try FileManager.default.contentsOfDirectory(atPath: userAudioPath)
+            self.userAudioTitleArray = self.userAudioTitleArray.sorted()
+            print(self.userAudioTitleArray)
+        } catch {
+            print(error)
+        }
+        
     }
     
     
