@@ -250,7 +250,7 @@
                                     <constraint firstAttribute="height" constant="44" id="5Aw-fa-ypa"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Title" id="mpM-9u-Adt"/>
+                                    <navigationItem title="音声選択" id="mpM-9u-Adt"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Edz-hV-EN7">
@@ -290,6 +290,9 @@
                         <viewLayoutGuide key="safeArea" id="pAh-2i-dOD"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bni-jI-ZQX"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="9SS-8l-sgU" id="JUl-L8-dxm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOm-zh-Y0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

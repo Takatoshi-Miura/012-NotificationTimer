@@ -67,6 +67,12 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     // MARK:- 変数の宣言
     
     var settingData = SettingData(dataNumber: 0)
+    var cellTitle:String = ""
+    var cellTitleArray:[[String]] = [["マナーモード"],
+                                     ["終了時"],
+                                     ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"],
+                                     ["残り30秒","残り1分","残り3分","残り5分"],
+                                     ["アプリ起動時","アプリ終了時"]]
     
     
     
@@ -80,58 +86,27 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // セル数を返却
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // セクションによって分岐
-        switch section {
-        case 2:
-            return 10   // 経過時間通知セル
-        case 3:
-            return 4    // 残り時間通知セル
-        case 4:
-            return 2    // アプリ起動/終了セル
-        default:
-            return 1
-        }
+        // セクション毎のセル数
+        return cellTitleArray[section].count
     }
     
     // セルを返却
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セクションによって分岐
-        switch indexPath.section {
-        case 0:
+        if indexPath.section == 0 {
             // マナーモードセルを返却
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "mannerCell", for: indexPath)
-            cell.textLabel!.text = "マナーモード"
+            cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
             
             // スイッチを追加
             switchView.addTarget(self, action: #selector(switchTriggered), for: .valueChanged)
             cell.accessoryView = switchView
             
             return cell
-        case 1:
+        } else {
             // 音声セルを返却
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-            cell.textLabel!.text = "終了時"
-            return cell
-        case 2:
-            // 音声セルを返却
-            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-            let cellTitle:[String] = ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"]
-            cell.textLabel!.text = cellTitle[indexPath.row]
-            return cell
-        case 3:
-            // 音声セルを返却
-            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-            let cellTitle:[String] = ["残り30秒","残り1分","残り3分","残り5分"]
-            cell.textLabel!.text = cellTitle[indexPath.row]
-            return cell
-        case 4:
-            // 音声セルを返却
-            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
-            let cellTitle:[String] = ["アプリ起動時","アプリ終了時"]
-            cell.textLabel!.text = cellTitle[indexPath.row]
-            return cell
-        default:
-            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
+            cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
             return cell
         }
     }
@@ -155,8 +130,34 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // セルをタップしたときの処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // タップしたときの選択色を消去
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        if indexPath.section == 0 {
+            // タップしたときの選択色を消去
+            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        } else {
+            // タップしたときの選択色を消去
+            tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+            
+            // セルのタイトルを取得
+            self.cellTitle = cellTitleArray[indexPath.section][indexPath.row]
+            
+            // AudioListViewControllerへ遷移
+            self.performSegue(withIdentifier: "goAudioListViewController", sender: nil)
+        }
+    }
+    
+    
+    
+    // MARK:- 画面遷移
+    
+    // 画面遷移時に呼ばれる処理
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goAudioListViewController" {
+            // データを渡す
+            let audioListViewController = segue.destination as! AudioListViewController
+            audioListViewController.settingData = self.settingData
+            audioListViewController.navigationTitle = self.cellTitle
+            print("データをAudioListViewControllerに渡しました")
+        }
     }
     
     

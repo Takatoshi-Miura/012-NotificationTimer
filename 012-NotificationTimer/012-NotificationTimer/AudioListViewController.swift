@@ -8,23 +8,29 @@
 
 import UIKit
 
-class AudioListViewController: UIViewController {
+class AudioListViewController: UIViewController,UINavigationBarDelegate {
 
+    // MARK:- ライフサイクルメソッド
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // ナビゲーションタイトルの設定
+        self.navigationBar.items![0].title = self.navigationTitle
     }
     
+    
+    
+    // MARK:- UIの設定
+    
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    // MARK:- 変数の宣言
+    
+    var navigationTitle = ""
+    var settingData = SettingData()
+    
 
 }
