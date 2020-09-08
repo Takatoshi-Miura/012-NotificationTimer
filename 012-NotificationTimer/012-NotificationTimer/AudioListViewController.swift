@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class AudioListViewController: UIViewController,UINavigationBarDelegate {
+class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     // MARK:- ライフサイクルメソッド
     
@@ -24,6 +25,7 @@ class AudioListViewController: UIViewController,UINavigationBarDelegate {
     // MARK:- UIの設定
     
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var tableView: UITableView!
     
 
     
@@ -31,6 +33,37 @@ class AudioListViewController: UIViewController,UINavigationBarDelegate {
     
     var navigationTitle = ""
     var settingData = SettingData()
+    let cellTitleArray:[[String]] = [["test"],["test"],["test"]]
+    let sectionTitleArray:[String] = ["デフォルト","Apple","取り込んだデータ"]
     
+    
+    
+    // MARK:- テーブルビューの設定
+    
+    // セル数を返却
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellTitleArray[section].count
+    }
+    
+    // セルを返却
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
+        cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
+        return cell
+    }
+    
+    // セクション名を返却
+    func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
+        return sectionTitleArray[section]
+    }
+    
+    // セクションの個数を返却
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitleArray.count
+    }
+    
+    // セルをタップしたときの処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
 
 }

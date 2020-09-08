@@ -255,9 +255,9 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Edz-hV-EN7">
                                 <rect key="frame" x="0.0" y="44" width="320" height="504"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sfe-aQ-La5" style="IBUITableViewCellStyleDefault" id="GqY-Wl-OfU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="audioCell" textLabel="sfe-aQ-La5" style="IBUITableViewCellStyleDefault" id="GqY-Wl-OfU">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GqY-Wl-OfU" id="n6h-CU-jeS">
@@ -275,6 +275,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xY1-6J-pwn" id="1Wa-5Z-EkS"/>
+                                    <outlet property="delegate" destination="xY1-6J-pwn" id="Upo-VG-fHm"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -292,6 +296,7 @@
                     <navigationItem key="navigationItem" id="Bni-jI-ZQX"/>
                     <connections>
                         <outlet property="navigationBar" destination="9SS-8l-sgU" id="JUl-L8-dxm"/>
+                        <outlet property="tableView" destination="Edz-hV-EN7" id="gDm-b4-7wa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOm-zh-Y0d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -68,11 +68,12 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     var settingData = SettingData(dataNumber: 0)
     var cellTitle:String = ""
-    var cellTitleArray:[[String]] = [["マナーモード"],
+    let cellTitleArray:[[String]] = [["マナーモード"],
                                      ["終了時"],
                                      ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"],
                                      ["残り30秒","残り1分","残り3分","残り5分"],
                                      ["アプリ起動時","アプリ終了時"]]
+    let sectionTitleArray:[String] = ["一括設定","音量がゼロになり、バイブレーションでの通知となります。\n\n終了時","経過時間通知","残り時間通知","その他"]
     
     
     
@@ -112,7 +113,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     // セクション名を返却
-    let sectionTitleArray:[String] = ["一括設定","音量がゼロになり、バイブレーションでの通知となります。\n\n終了時","経過時間通知","残り時間通知","その他"]
     func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
         return sectionTitleArray[section]
     }
