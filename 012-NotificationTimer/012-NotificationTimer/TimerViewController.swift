@@ -363,6 +363,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setAudioRemaining30sec(filePath: object[0].getAudioRemaining30sec())
         self.settingData.setAudioRemaining1min(filePath: object[0].getAudioRemaining1min())
         self.settingData.setAudioRemaining3min(filePath: object[0].getAudioRemaining3min())
+        self.settingData.setAudioRemaining5min(filePath: object[0].getAudioRemaining5min())
         self.settingData.setAudioAppStartUp(filePath: object[0].getAudioAppStartUp())
         self.settingData.setAudioAppFinish(filePath: object[0].getAudioAppFinish())
         print("データをロードしました")
@@ -396,6 +397,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             object[0].setAudioRemaining30sec(filePath: self.settingData.getAudioRemaining30sec())
             object[0].setAudioRemaining1min(filePath: self.settingData.getAudioRemaining1min())
             object[0].setAudioRemaining3min(filePath: self.settingData.getAudioRemaining3min())
+            object[0].setAudioRemaining5min(filePath: self.settingData.getAudioRemaining5min())
             object[0].setAudioAppStartUp(filePath: self.settingData.getAudioAppStartUp())
             object[0].setAudioAppFinish(filePath: self.settingData.getAudioAppFinish())
             print("データを更新しました")
@@ -550,6 +552,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // 残り時間の通知
         switch Int(self.settingData.count) {
+        case 60 * 5:
+            // 残り5分
+            audioPlay(filePath: self.settingData.audioRemaining5min)
+            print("残り5分")
         case 60 * 3:
             // 残り3分
             audioPlay(filePath: self.settingData.audioRemaining3min)
