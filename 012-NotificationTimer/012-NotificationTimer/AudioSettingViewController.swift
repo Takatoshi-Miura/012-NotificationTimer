@@ -117,6 +117,8 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // 音声セルを返却
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
             cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
+            cell.detailTextLabel?.text = self.getFileName(indexPath: indexPath)
+            cell.detailTextLabel?.textColor = UIColor.systemGray
             return cell
         }
     }
@@ -179,6 +181,65 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             switchView.isOn = true
         } else {
             // OFF
+        }
+    }
+    
+    // 設定データの音源ファイル名(拡張子なし)を返却するメソッド
+    func getFileName(indexPath:IndexPath) -> String {
+        if indexPath.section == 1 {
+            // 終了時
+            return URL(fileURLWithPath: self.settingData.getAudioFinish()).deletingPathExtension().lastPathComponent
+        } else if indexPath.section == 2 {
+            // 経過時間通知
+            switch indexPath.row {
+            case 0:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed5min()).deletingPathExtension().lastPathComponent
+            case 1:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed10min()).deletingPathExtension().lastPathComponent
+            case 2:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed15min()).deletingPathExtension().lastPathComponent
+            case 3:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed20min()).deletingPathExtension().lastPathComponent
+            case 4:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed25min()).deletingPathExtension().lastPathComponent
+            case 5:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed30min()).deletingPathExtension().lastPathComponent
+            case 6:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed35min()).deletingPathExtension().lastPathComponent
+            case 7:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed40min()).deletingPathExtension().lastPathComponent
+            case 8:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed45min()).deletingPathExtension().lastPathComponent
+            case 9:
+                return URL(fileURLWithPath: self.settingData.getAudioElapsed50min()).deletingPathExtension().lastPathComponent
+            default:
+                return "detail"
+            }
+        } else if indexPath.section == 3 {
+            // 残り時間通知
+            switch indexPath.row {
+            case 0:
+                return URL(fileURLWithPath: self.settingData.getAudioRemaining30sec()).deletingPathExtension().lastPathComponent
+            case 1:
+                return URL(fileURLWithPath: self.settingData.getAudioRemaining1min()).deletingPathExtension().lastPathComponent
+            case 2:
+                return URL(fileURLWithPath: self.settingData.getAudioRemaining3min()).deletingPathExtension().lastPathComponent
+            case 3:
+                return "5分"
+            default:
+                return "detail"
+            }
+        } else {
+            // アプリ起動/終了時
+            switch indexPath.row {
+            case 0:
+                return URL(fileURLWithPath: self.settingData.getAudioAppStartUp()).deletingPathExtension().lastPathComponent
+            case 1:
+                return URL(fileURLWithPath: self.settingData.getAudioAppFinish()).deletingPathExtension().lastPathComponent
+            
+            default:
+                return "detail"
+            }
         }
     }
 
