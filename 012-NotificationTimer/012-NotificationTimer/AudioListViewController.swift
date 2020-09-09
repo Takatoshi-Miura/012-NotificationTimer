@@ -272,7 +272,8 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
             self.settingData.setAudioRemaining1min(filePath: path)
         case "残り3分":
             self.settingData.setAudioRemaining3min(filePath: path)
-            
+        case "残り5分":
+            self.settingData.setAudioRemaining5min(filePath: path)
         case "アプリ起動時":
             self.settingData.setAudioAppStartUp(filePath: path)
         case "アプリ終了時":

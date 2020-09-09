@@ -225,7 +225,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             case 2:
                 return URL(fileURLWithPath: self.settingData.getAudioRemaining3min()).deletingPathExtension().lastPathComponent
             case 3:
-                return "5分"
+                return URL(fileURLWithPath: self.settingData.getAudioRemaining5min()).deletingPathExtension().lastPathComponent
             default:
                 return "detail"
             }
