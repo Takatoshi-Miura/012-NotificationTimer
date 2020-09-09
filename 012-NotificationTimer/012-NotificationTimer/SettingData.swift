@@ -34,6 +34,7 @@ class SettingData:Object {
     @objc dynamic var audioRemaining30sec:String = Bundle.main.path(forResource: "デフォルト(残り30秒)", ofType:"mp3")! // 残り30秒通知用 音声ファイルパス
     @objc dynamic var audioRemaining1min:String = Bundle.main.path(forResource: "デフォルト(残り1分)", ofType:"mp3")!   // 残り1分通知用 音声ファイルパス
     @objc dynamic var audioRemaining3min:String = Bundle.main.path(forResource: "デフォルト(残り3分)", ofType:"mp3")!   // 残り3分通知用 音声ファイルパス
+    @objc dynamic var audioRemaining5min:String = Bundle.main.path(forResource: "デフォルト(残り5分)", ofType:"mp3")!   // 残り5分通知用 音声ファイルパス
     @objc dynamic var audioAppStartUp:String = Bundle.main.path(forResource: "デフォルト(アプリ起動時)", ofType:"mp3")!  // アプリ起動音 音声ファイルパス
     @objc dynamic var audioAppFinish:String = Bundle.main.path(forResource: "デフォルト(アプリ終了時)", ofType:"mp3")!   // アプリ終了音 音声ファイルパス
     
@@ -118,6 +119,10 @@ class SettingData:Object {
         self.audioRemaining3min = filePath
     }
     
+    func setAudioRemaining5min(filePath:String) {
+        self.audioRemaining5min = filePath
+    }
+    
     func setAudioAppStartUp(filePath:String) {
         self.audioAppStartUp = filePath
     }
@@ -196,6 +201,10 @@ class SettingData:Object {
     
     func getAudioRemaining3min() -> String {
         return self.audioRemaining3min
+    }
+    
+    func getAudioRemaining5min() -> String {
+        return self.audioRemaining5min
     }
     
     func getAudioAppStartUp() -> String {

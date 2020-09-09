@@ -25,6 +25,7 @@
 		8D6BFDD42507A6D6003FAF2A /* デフォルト(15分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC42507A6D5003FAF2A /* デフォルト(15分経過).mp3 */; };
 		8D6BFDD52507A6D6003FAF2A /* デフォルト(20分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC52507A6D5003FAF2A /* デフォルト(20分経過).mp3 */; };
 		8D6BFDD62507A6D6003FAF2A /* デフォルト(残り3分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */; };
+		8D71E7592508C1820045FD20 /* デフォルト(残り5分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */; };
 		8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23724FD00980029D5C3 /* AppDelegate.swift */; };
 		8DA3F23A24FD00980029D5C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */; };
 		8DA3F23F24FD00980029D5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3F23D24FD00980029D5C3 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		8D6BFDC42507A6D5003FAF2A /* デフォルト(15分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(15分経過).mp3"; sourceTree = "<group>"; };
 		8D6BFDC52507A6D5003FAF2A /* デフォルト(20分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(20分経過).mp3"; sourceTree = "<group>"; };
 		8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り3分).mp3"; sourceTree = "<group>"; };
+		8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り5分).mp3"; sourceTree = "<group>"; };
 		8DA3F23424FD00980029D5C3 /* 012-NotificationTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "012-NotificationTimer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA3F23724FD00980029D5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */,
 				8D6BFDB92507A6D5003FAF2A /* デフォルト(残り1分).mp3 */,
 				8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */,
+				8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */,
 				8D6BFDBB2507A6D5003FAF2A /* デフォルト(残り30秒).mp3 */,
 				8D6BFDBC2507A6D5003FAF2A /* デフォルト(終了時).mp3 */,
 			);
@@ -233,6 +236,7 @@
 				8D6BFDCD2507A6D6003FAF2A /* デフォルト(25分経過).mp3 in Resources */,
 				8D6BFDD12507A6D6003FAF2A /* デフォルト(45分経過).mp3 in Resources */,
 				8DA3F24124FD009B0029D5C3 /* Assets.xcassets in Resources */,
+				8D71E7592508C1820045FD20 /* デフォルト(残り5分).mp3 in Resources */,
 				8D6BFDD22507A6D6003FAF2A /* デフォルト(50分経過).mp3 in Resources */,
 				8D6BFDD62507A6D6003FAF2A /* デフォルト(残り3分).mp3 in Resources */,
 				8D6BFDCE2507A6D6003FAF2A /* デフォルト(30分経過).mp3 in Resources */,
