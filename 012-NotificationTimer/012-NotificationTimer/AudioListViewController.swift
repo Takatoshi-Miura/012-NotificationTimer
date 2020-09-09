@@ -30,10 +30,24 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // MARK:- UIの設定
     
+    // ナビゲーションバー
     @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    // テーブルビュー
     @IBOutlet weak var tableView: UITableView!
     
+    // キャンセルボタン
     @IBAction func cancelButton(_ sender: Any) {
+        // モーダルを閉じる
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 保存ボタン
+    @IBAction func saveButton(_ sender: Any) {
+        // SettingDataを保存する
+        
+        
+        // モーダルを閉じる
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -79,6 +93,15 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
         cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
+        if self.selectIndex != nil {
+            if indexPath == self.selectIndex {
+                cell.textLabel?.textColor = UIColor.systemBlue
+                cell.accessoryType = .checkmark
+            } else {
+                cell.textLabel?.textColor = UIColor.label
+                cell.accessoryType = .none
+            }
+        }
         return cell
     }
     
@@ -94,6 +117,21 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // セルをタップしたときの処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 前に選択されていたセルからチェックマークを外す
+        if let index = self.selectIndex {
+            let cell = tableView.cellForRow(at:index)
+            cell?.textLabel?.textColor = UIColor.label
+            cell?.accessoryType = .none
+        }
+        
+        // indexを取得
+        self.selectIndex = indexPath
+        
+        // セルにチェックマークをつける
+        let cell = tableView.cellForRow(at:indexPath)
+        cell?.textLabel?.textColor = UIColor.systemBlue
+        cell?.accessoryType = .checkmark
+        
         // タップしたときの選択色を消去
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         

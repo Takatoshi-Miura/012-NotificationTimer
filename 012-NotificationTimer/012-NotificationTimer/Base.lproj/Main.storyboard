@@ -245,7 +245,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SS-8l-sgU">
-                                <rect key="frame" x="0.0" y="0.0" width="226" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5Aw-fa-ypa"/>
                                 </constraints>
@@ -254,6 +254,11 @@
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="mIZ-fQ-rCv">
                                             <connections>
                                                 <action selector="cancelButton:" destination="xY1-6J-pwn" id="Ngj-vf-sK5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="JDQ-lk-Go6">
+                                            <connections>
+                                                <action selector="saveButton:" destination="xY1-6J-pwn" id="Ifa-b2-aUh"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
