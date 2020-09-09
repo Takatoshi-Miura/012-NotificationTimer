@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import AudioToolbox
 import AVFoundation
 
 class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -44,11 +46,17 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // 保存ボタン
     @IBAction func saveButton(_ sender: Any) {
-        // SettingDataを保存する
-        
-        
-        // モーダルを閉じる
-        self.dismiss(animated: true, completion: nil)
+        // 最終的な保存はAudioSettingViewControllerで行うため、現状のsettingDataを渡すだけ
+        // 遷移元に画面を取得する
+        if let controller = self.presentingViewController as? AudioSettingViewController {
+            // 設定データを渡す
+            controller.settingData = self.settingData
+            controller.tableView.reloadData()
+            print("データをAudioSettingViewControllerに渡しました")
+            
+            // モーダルを閉じる
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -62,7 +70,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     var settingData = SettingData()
     
     // テーブルビュー
-    var selectIndex:IndexPath?
+    var selectIndex:IndexPath?      // AudioListViewControllerでタップしたセルのindex
     var cellTitleArray:[[String]]  = [[],[],[],[]]
     let sectionTitleArray:[String] = ["通知","デフォルト","Apple","取り込んだデータ"]
     let systemSoundArray:[SystemSoundID] = [1336,1314,1309,1322,1332,
@@ -70,6 +78,11 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
                                             1334,1300,1328,1329,1326,
                                             1325,1310,1327,1323,
                                             1304,1324,1302,1333,1321,1320]
+    let systemSoundFileTitleArray:[String] = ["Update.caf","sms-received6.caf","sms-received3.caf","Calypso.caf","Suspense.caf",
+                                              "Sherwood_Forest.caf","Spell.caf","Typewriters.caf","sms-received2.caf","tweet_sent.caf",
+                                              "Tiptoes.caf","Voicemail.caf","News_Flash.caf","Noir.caf","Ladder.caf",
+                                              "Fanfare.caf","sms-received4.caf","Minuet.caf","Choo_Choo.caf","alarm.caf",
+                                              "Descent.caf","new-mail.caf","Telegraph.caf","Bloom.caf","Anticipate.caf"]
     let systemSoundTitleArray:[String]   = ["アップデート","エレクトロニック","ガラス","カリプソ","サスペンス",
                                             "シャーウッドの森","スペル","タイプライター","チャイム","ツイート",
                                             "つま先","トライトーン","ニュースフラッシュ","ノアール","はしご",
@@ -117,6 +130,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // セルをタップしたときの処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // タップしたときの選択色を消去
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        
         // 前に選択されていたセルからチェックマークを外す
         if let index = self.selectIndex {
             let cell = tableView.cellForRow(at:index)
@@ -132,67 +148,62 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell?.textLabel?.textColor = UIColor.systemBlue
         cell?.accessoryType = .checkmark
         
-        // タップしたときの選択色を消去
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        // パスを作成
+        var audioPath:String = ""
         
         switch indexPath.section {
         case 1:
-            // カスタムサウンドを再生
-            playCustomSound(fileName: "デフォルト(\(navigationTitle))")
+            // パスを作成
+            audioPath = Bundle.main.path(forResource: "デフォルト(\(navigationTitle))", ofType:"mp3")!
         case 2:
-            // システムサウンドを再生
-            playSystemSound(soundID: systemSoundArray[indexPath.row])
+            // パスを作成
+            audioPath = NSHomeDirectory() + "/Library/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
         case 3:
-            // ユーザーが取り込んだmp3ファイルを再生
-            playUserAudio(fileName: userAudioTitleArray[indexPath.row])
+            // パスを作成
+            audioPath = NSHomeDirectory() + "/Documents/Audio/\(userAudioTitleArray[indexPath.row])"
         default:
             break
         }
+        
+        // 設定データに反映
+        updateSettingData(filePath: audioPath)
+        
+        // サウンドを再生
+        playAudio(filePath: audioPath, soundID: Int(systemSoundArray[indexPath.row]))
     }
     
     
     
     // MARK:- サウンド関連
     
-    // システムサウンド再生メソッド
-    func playSystemSound(soundID id:SystemSoundID) {
-        var soundID = id
-        if let soundUrl = CFBundleCopyResourceURL(CFBundleGetMainBundle(), nil, nil, nil) {
-            AudioServicesCreateSystemSoundID(soundUrl, &soundID)
-            AudioServicesPlaySystemSound(soundID)
-        }
-    }
-    
-    // カスタムサウンド再生メソッド
-    func playCustomSound(fileName name:String) {
-        // パスを作成
-        if let audioPath = Bundle.main.path(forResource: "\(name)", ofType:"mp3") {
-            let audioUrl  = URL(fileURLWithPath: audioPath)
+    // オーディオ再生メソッド
+    func playAudio(filePath path:String?,soundID id:Int) {
+        if let audioPath = path {
+            // URLを作成
+            let audioURL = URL(fileURLWithPath: audioPath)
+            
+            // 再生中なら停止
+            if player.isPlaying {
+                player.stop()
+            }
             
             // 再生
             do {
-                player = try AVAudioPlayer(contentsOf: audioUrl)
+                // カスタムオーディオの再生
+                player = try AVAudioPlayer(contentsOf: audioURL)
                 player.play()
             } catch {
-                print("再生処理でエラーが発生しました")
+                // システムサウンドの再生
+                if let soundUrl:URL = URL(string: audioPath) {
+                    var soundID:SystemSoundID = SystemSoundID(id)
+                    AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+                    AudioServicesPlaySystemSound(soundID)
+                } else {
+                    print("再生処理でエラーが発生しました")
+                }
             }
         } else {
             print("ファイルがありません")
-        }
-    }
-    
-    // ユーザーが取り込んだサウンドの再生メソッド
-    func playUserAudio(fileName name:String) {
-        // ユーザーが取り込んだ音声データフォルダのパスを取得＆URLに変換
-        let userAudioPath = NSHomeDirectory() + "/Documents/Audio/\(name)"
-        let userAudioURL  = URL(fileURLWithPath: userAudioPath)
-        
-        // 再生
-        do {
-            player = try AVAudioPlayer(contentsOf: userAudioURL)
-            player.play()
-        } catch {
-            print("再生処理でエラーが発生しました")
         }
     }
     
@@ -228,7 +239,47 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         } catch {
             print(error)
         }
-        
+    }
+    
+    // 設定データを更新するメソッド
+    func updateSettingData(filePath path:String) {
+        switch self.navigationTitle {
+        case "終了時":
+            self.settingData.setAudioFinish(filePath: path)
+        case "5分経過":
+            self.settingData.setAudioElapsed5min(filePath: path)
+        case "10分経過":
+            self.settingData.setAudioElapsed10min(filePath: path)
+        case "15分経過":
+            self.settingData.setAudioElapsed15min(filePath: path)
+        case "20分経過":
+            self.settingData.setAudioElapsed20min(filePath: path)
+        case "25分経過":
+            self.settingData.setAudioElapsed25min(filePath: path)
+        case "30分経過":
+            self.settingData.setAudioElapsed30min(filePath: path)
+        case "35分経過":
+            self.settingData.setAudioElapsed35min(filePath: path)
+        case "40分経過":
+            self.settingData.setAudioElapsed40min(filePath: path)
+        case "45分経過":
+            self.settingData.setAudioElapsed45min(filePath: path)
+        case "50分経過":
+            self.settingData.setAudioElapsed50min(filePath: path)
+        case "残り30秒":
+            self.settingData.setAudioRemaining30sec(filePath: path)
+        case "残り1分":
+            self.settingData.setAudioRemaining1min(filePath: path)
+        case "残り3分":
+            self.settingData.setAudioRemaining3min(filePath: path)
+            
+        case "アプリ起動時":
+            self.settingData.setAudioAppStartUp(filePath: path)
+        case "アプリ終了時":
+            self.settingData.setAudioAppFinish(filePath: path)
+        default:
+            break
+        }
     }
     
     
