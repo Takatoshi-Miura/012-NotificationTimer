@@ -48,8 +48,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     var settingData = SettingData()
     
     // テーブルビュー
-    var cellTitleArray:[[String]]  = [["navigationTitle"],["systemSoundTitleArray"],[]]
-    let sectionTitleArray:[String] = ["デフォルト","Apple","取り込んだデータ"]
+    var selectIndex:IndexPath?
+    var cellTitleArray:[[String]]  = [[],[],[],[]]
+    let sectionTitleArray:[String] = ["通知","デフォルト","Apple","取り込んだデータ"]
     let systemSoundArray:[SystemSoundID] = [1336,1314,1309,1322,1332,
                                             1330,1331,1335,1308,1016,
                                             1334,1300,1328,1329,1326,
@@ -97,13 +98,13 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         
         switch indexPath.section {
-        case 0:
+        case 1:
             // カスタムサウンドを再生
             playCustomSound(fileName: "デフォルト(\(navigationTitle))")
-        case 1:
+        case 2:
             // システムサウンドを再生
             playSystemSound(soundID: systemSoundArray[indexPath.row])
-        case 2:
+        case 3:
             // ユーザーが取り込んだmp3ファイルを再生
             playUserAudio(fileName: userAudioTitleArray[indexPath.row])
         default:
@@ -163,14 +164,17 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // テーブルビュー初期化
     func tableViewInit() {
+        // OFFを設定
+        cellTitleArray[0] = ["OFF"]
+        
         // デフォルトサウンドを設定
-        cellTitleArray[0] = ["\(navigationTitle)"]
+        cellTitleArray[1] = ["\(navigationTitle)"]
         
         // システムサウンドを設定
-        cellTitleArray[1] = systemSoundTitleArray
+        cellTitleArray[2] = systemSoundTitleArray
         
         // 取り込んだ音声データを設定
-        cellTitleArray[2] = userAudioTitleArray
+        cellTitleArray[3] = userAudioTitleArray
     }
     
     // ユーザーが取り込んだ音声データをロードするメソッド
