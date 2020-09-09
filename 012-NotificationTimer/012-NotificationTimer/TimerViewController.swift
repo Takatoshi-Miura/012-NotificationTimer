@@ -368,19 +368,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         print("データをロードしました")
     }
     
-    // 背景画像を取得するメソッド
-    func loadBackgroundImage() {
-        // 背景画像の取得
-        let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let imagePath = documentURL.appendingPathComponent("backgroundImage.png")
-        do {
-            try self.imageView.image = UIImage(data: Data(contentsOf: imagePath))
-            print("背景画像を取得しました")
-        } catch {
-            print("背景画像がありません")
-        }
-    }
-    
     // データを更新するメソッド
     func updateSettingData() {
         // Realmデータベースにアクセス
@@ -415,11 +402,28 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
     }
     
+    // 背景画像を取得するメソッド
+    func loadBackgroundImage() {
+        // 背景画像の取得
+        let backgroundPath = NSHomeDirectory() + "/Library"
+        let backgroundURL  = URL(fileURLWithPath: backgroundPath)
+        let imagePath = backgroundURL.appendingPathComponent("backgroundImage.png")
+        do {
+            try self.imageView.image = UIImage(data: Data(contentsOf: imagePath))
+            print("背景画像を取得しました")
+        } catch {
+            print("背景画像がありません")
+        }
+    }
+    
     // 背景画像を保存するメソッド
     func saveBackgroundImage() {
+        // 保存先のパスを取得＆URLに変換
+        let backgroundPath = NSHomeDirectory() + "/Library"
+        let backgroundURL  = URL(fileURLWithPath: backgroundPath)
+        
         // 背景画像を保存
-        let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let imagePath = documentURL.appendingPathComponent("backgroundImage.png")
+        let imagePath = backgroundURL.appendingPathComponent("backgroundImage.png")
         do {
             try self.imageView.image?.pngData()!.write(to: imagePath)
             print("背景画像を保存しました")
