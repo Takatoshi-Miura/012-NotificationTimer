@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -41,6 +42,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     // 保存ボタン
     @IBAction func saveButton(_ sender: Any) {
         // SettingDataに設定を反映する
+        updateSettingData()
         
         // 遷移元に画面を取得する
         if let controller = self.presentingViewController as? TimerViewController {
@@ -168,6 +170,44 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             audioListViewController.settingData = self.settingData
             audioListViewController.navigationTitle = self.cellTitle
             print("データをAudioListViewControllerに渡しました")
+        }
+    }
+    
+    
+    // MARK:- データ関連
+    
+    // データを更新するメソッド
+    func updateSettingData() {
+        // Realmデータベースにアクセス
+        let realm = try! Realm()
+        
+        // Realmデータベースに書き込み
+        try! realm.write {
+            // データの取得
+            let object = realm.objects(SettingData.self)
+            
+            // データの更新
+            object[0].setDataNumber(number: self.settingData.getDataNumber())
+            object[0].setCount(time: self.settingData.getCount())
+            object[0].setMannerMode(bool: self.settingData.getMannerMode())
+            object[0].setAudioFinish(filePath: self.settingData.getAudioFinish())
+            object[0].setAudioElapsed5min(filePath: self.settingData.getAudioElapsed5min())
+            object[0].setAudioElapsed10min(filePath: self.settingData.getAudioElapsed10min())
+            object[0].setAudioElapsed15min(filePath: self.settingData.getAudioElapsed15min())
+            object[0].setAudioElapsed20min(filePath: self.settingData.getAudioElapsed20min())
+            object[0].setAudioElapsed25min(filePath: self.settingData.getAudioElapsed25min())
+            object[0].setAudioElapsed30min(filePath: self.settingData.getAudioElapsed30min())
+            object[0].setAudioElapsed35min(filePath: self.settingData.getAudioElapsed35min())
+            object[0].setAudioElapsed40min(filePath: self.settingData.getAudioElapsed40min())
+            object[0].setAudioElapsed45min(filePath: self.settingData.getAudioElapsed45min())
+            object[0].setAudioElapsed50min(filePath: self.settingData.getAudioElapsed50min())
+            object[0].setAudioRemaining30sec(filePath: self.settingData.getAudioRemaining30sec())
+            object[0].setAudioRemaining1min(filePath: self.settingData.getAudioRemaining1min())
+            object[0].setAudioRemaining3min(filePath: self.settingData.getAudioRemaining3min())
+            object[0].setAudioRemaining5min(filePath: self.settingData.getAudioRemaining5min())
+            object[0].setAudioAppStartUp(filePath: self.settingData.getAudioAppStartUp())
+            object[0].setAudioAppFinish(filePath: self.settingData.getAudioAppFinish())
+            print("データを更新しました")
         }
     }
     

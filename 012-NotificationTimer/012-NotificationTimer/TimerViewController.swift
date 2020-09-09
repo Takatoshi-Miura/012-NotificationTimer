@@ -580,24 +580,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // 音声を再生するメソッド
     func playAudio(filePath path:String?) {
-        if let filePath = path {
-            // URLを作成
-            let audioUrl = URL(fileURLWithPath: filePath)
-            
-            // 再生
-            do {
-                player = try AVAudioPlayer(contentsOf: audioUrl)
-                player.play()
-            } catch {
-                print("再生処理でエラーが発生しました")
-            }
-        } else {
-            print("ファイルが設定されていません")
-        }
-    }
-    
-    // オーディオ再生メソッド
-    func playAudio(filePath path:String?,soundID id:Int) {
         if let audioPath = path {
             // URLを作成
             let audioURL = URL(fileURLWithPath: audioPath)
@@ -615,7 +597,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             } catch {
                 // システムサウンドの再生
                 if let soundUrl:URL = URL(string: audioPath) {
-                    var soundID:SystemSoundID = SystemSoundID(id)
+                    var soundID:SystemSoundID = SystemSoundID(self.settingData.getSoundID())
                     AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
                     AudioServicesPlaySystemSound(soundID)
                 } else {

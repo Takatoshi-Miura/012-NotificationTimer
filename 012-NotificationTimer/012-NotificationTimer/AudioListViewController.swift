@@ -196,6 +196,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
                 // システムサウンドの再生
                 if let soundUrl:URL = URL(string: audioPath) {
                     var soundID:SystemSoundID = SystemSoundID(id)
+                    self.settingData.setSoundID(id: id)
                     AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
                     AudioServicesPlaySystemSound(soundID)
                 } else {
