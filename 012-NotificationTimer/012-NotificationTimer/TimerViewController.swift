@@ -506,43 +506,43 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(time) {
         case 60 * 5:
             // 5分経過
-            audioPlay(fileName: self.settingData.audioElapsed5min)
+            audioPlay(filePath: self.settingData.audioElapsed5min)
             print("5分経過")
         case 60 * 10:
             // 10分経過
-            audioPlay(fileName: self.settingData.audioElapsed10min)
+            audioPlay(filePath: self.settingData.audioElapsed10min)
             print("10分経過")
         case 60 * 15:
             // 15分経過
-            audioPlay(fileName: self.settingData.audioElapsed15min)
+            audioPlay(filePath: self.settingData.audioElapsed15min)
             print("15分経過")
         case 60 * 20:
             // 20分経過
-            audioPlay(fileName: self.settingData.audioElapsed20min)
+            audioPlay(filePath: self.settingData.audioElapsed20min)
             print("20分経過")
         case 60 * 25:
             // 25分経過
-            audioPlay(fileName: self.settingData.audioElapsed25min)
+            audioPlay(filePath: self.settingData.audioElapsed25min)
             print("25分経過")
         case 60 * 30:
             // 30分経過
-            audioPlay(fileName: self.settingData.audioElapsed30min)
+            audioPlay(filePath: self.settingData.audioElapsed30min)
             print("30分経過")
         case 60 * 35:
             // 35分経過
-            audioPlay(fileName: self.settingData.audioElapsed35min)
+            audioPlay(filePath: self.settingData.audioElapsed35min)
             print("35分経過")
         case 60 * 40:
             // 40分経過
-            audioPlay(fileName: self.settingData.audioElapsed40min)
+            audioPlay(filePath: self.settingData.audioElapsed40min)
             print("40分経過")
         case 60 * 45:
             // 45分経過
-            audioPlay(fileName: self.settingData.audioElapsed45min)
+            audioPlay(filePath: self.settingData.audioElapsed45min)
             print("45分経過")
         case 60 * 50:
             // 50分経過
-            audioPlay(fileName: self.settingData.audioElapsed50min)
+            audioPlay(filePath: self.settingData.audioElapsed50min)
             print("50分経過")
         default:
             break
@@ -552,19 +552,19 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(self.settingData.count) {
         case 60 * 3:
             // 残り3分
-            audioPlay(fileName: self.settingData.audioRemaining3min)
+            audioPlay(filePath: self.settingData.audioRemaining3min)
             print("残り3分")
         case 60 * 1:
             // 残り1分
-            audioPlay(fileName: self.settingData.audioRemaining1min)
+            audioPlay(filePath: self.settingData.audioRemaining1min)
             print("残り1分")
         case 30:
             // 残り30秒
-            audioPlay(fileName: self.settingData.audioRemaining30sec)
+            audioPlay(filePath: self.settingData.audioRemaining30sec)
             print("残り30秒")
         case 0:
             // 終了
-            audioPlay(fileName: self.settingData.audioFinish)
+            audioPlay(filePath: self.settingData.audioFinish)
             print("終了")
         default:
             break
@@ -573,11 +573,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     }
     
     // 音声を再生するメソッド
-    func audioPlay(fileName name:String?) {
-        if let fileName = name {
-            // パスを作成
-            let audioPath = Bundle.main.path(forResource: "\(fileName)", ofType:"mp3")!
-            let audioUrl  = URL(fileURLWithPath: audioPath)
+    func audioPlay(filePath path:String?) {
+        if let filePath = path {
+            // URLを作成
+            let audioUrl = URL(fileURLWithPath: filePath)
             
             // 再生
             do {

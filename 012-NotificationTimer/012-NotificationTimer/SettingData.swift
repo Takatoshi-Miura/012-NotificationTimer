@@ -5,6 +5,10 @@
 //  Created by Takatoshi Miura on 2020/09/02.
 //  Copyright © 2020 Takatoshi Miura. All rights reserved.
 //
+//  ＜メモ＞
+//　・mp3を再生するには保持データにplayerを持たせなければならない。しかし、Realmはplayerをサポートしないため、ここには持たせられない。
+//　・
+
 
 import UIKit
 import RealmSwift
@@ -16,22 +20,22 @@ class SettingData:Object {
     @objc dynamic var dataNumber:Int = 0              // データ番号
     @objc dynamic var count:Float = 0.0               // 設定時間
     @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
-    @objc dynamic var audioFinish:String = "デフォルト(終了時)"             // 終了時通知用 音声ファイル名
-    @objc dynamic var audioElapsed5min:String = "デフォルト(5分経過)"       // 5分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed10min:String = "デフォルト(10分経過)"     // 10分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed15min:String = "デフォルト(15分経過)"     // 15分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed20min:String = "デフォルト(20分経過)"     // 20分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed25min:String = "デフォルト(25分経過)"     // 25分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed30min:String = "デフォルト(30分経過)"     // 30分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed35min:String = "デフォルト(35分経過)"     // 35分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed40min:String = "デフォルト(40分経過)"     // 40分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed45min:String = "デフォルト(45分経過)"     // 45分経過通知用 音声ファイル名
-    @objc dynamic var audioElapsed50min:String = "デフォルト(50分経過)"     // 50分経過通知用 音声ファイル名
-    @objc dynamic var audioRemaining30sec:String = "デフォルト(残り30秒)"   // 残り30秒通知用 音声ファイル名
-    @objc dynamic var audioRemaining1min:String = "デフォルト(残り1分)"     // 残り1分通知用 音声ファイル名
-    @objc dynamic var audioRemaining3min:String = "デフォルト(残り3分)"     // 残り3分通知用 音声ファイル名
-    @objc dynamic var audioAppStartUp:String = "デフォルト(アプリ起動時)"    // アプリ起動音 音声ファイル名
-    @objc dynamic var audioAppFinish:String = "デフォルト(アプリ終了時)"     // アプリ終了音 音声ファイル名
+    @objc dynamic var audioFinish:String = Bundle.main.path(forResource: "デフォルト(終了時)", ofType:"mp3")!           // 終了時通知用 音声ファイルパス
+    @objc dynamic var audioElapsed5min:String = Bundle.main.path(forResource: "デフォルト(5分経過)", ofType:"mp3")!     // 5分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed10min:String = Bundle.main.path(forResource: "デフォルト(10分経過)", ofType:"mp3")!   // 10分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed15min:String = Bundle.main.path(forResource: "デフォルト(15分経過)", ofType:"mp3")!   // 15分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed20min:String = Bundle.main.path(forResource: "デフォルト(20分経過)", ofType:"mp3")!   // 20分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed25min:String = Bundle.main.path(forResource: "デフォルト(25分経過)", ofType:"mp3")!   // 25分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed30min:String = Bundle.main.path(forResource: "デフォルト(30分経過)", ofType:"mp3")!   // 30分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed35min:String = Bundle.main.path(forResource: "デフォルト(35分経過)", ofType:"mp3")!   // 35分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed40min:String = Bundle.main.path(forResource: "デフォルト(40分経過)", ofType:"mp3")!   // 40分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed45min:String = Bundle.main.path(forResource: "デフォルト(45分経過)", ofType:"mp3")!   // 45分経過通知用 音声ファイルパス
+    @objc dynamic var audioElapsed50min:String = Bundle.main.path(forResource: "デフォルト(50分経過)", ofType:"mp3")!   // 50分経過通知用 音声ファイルパス
+    @objc dynamic var audioRemaining30sec:String = Bundle.main.path(forResource: "デフォルト(残り30秒)", ofType:"mp3")! // 残り30秒通知用 音声ファイルパス
+    @objc dynamic var audioRemaining1min:String = Bundle.main.path(forResource: "デフォルト(残り1分)", ofType:"mp3")!   // 残り1分通知用 音声ファイルパス
+    @objc dynamic var audioRemaining3min:String = Bundle.main.path(forResource: "デフォルト(残り3分)", ofType:"mp3")!   // 残り3分通知用 音声ファイルパス
+    @objc dynamic var audioAppStartUp:String = Bundle.main.path(forResource: "デフォルト(アプリ起動時)", ofType:"mp3")!  // アプリ起動音 音声ファイルパス
+    @objc dynamic var audioAppFinish:String = Bundle.main.path(forResource: "デフォルト(アプリ終了時)", ofType:"mp3")!   // アプリ終了音 音声ファイルパス
     
     
     
