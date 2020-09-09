@@ -34,15 +34,8 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // キャンセルボタン
     @IBAction func cancelButton(_ sender: Any) {
-        // 遷移元に画面を取得する
-        if let controller = self.presentingViewController as? TimerViewController {
-            // 設定データを渡す
-            controller.settingData = self.settingData
-            print("データをTimerViewControllerに渡しました")
-            
-            // 音声設定を閉じる
-            controller.dismiss(animated: true, completion: nil)
-        }
+        // 音声設定を閉じる
+        self.dismiss(animated: true, completion: nil)
     }
     
     // 保存ボタン

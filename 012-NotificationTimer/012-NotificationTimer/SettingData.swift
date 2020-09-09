@@ -62,68 +62,68 @@ class SettingData:Object {
         self.mannerMode = bool
     }
     
-    func setAudioFinish(fileName:String) {
-        self.audioFinish = fileName
+    func setAudioFinish(filePath:String) {
+        self.audioFinish = filePath
     }
     
-    func setAudioElapsed5min(fileName:String) {
-        self.audioElapsed5min = fileName
+    func setAudioElapsed5min(filePath:String) {
+        self.audioElapsed5min = filePath
     }
     
-    func setAudioElapsed10min(fileName:String) {
-        self.audioElapsed10min = fileName
+    func setAudioElapsed10min(filePath:String) {
+        self.audioElapsed10min = filePath
     }
     
-    func setAudioElapsed15min(fileName:String) {
-        self.audioElapsed15min = fileName
+    func setAudioElapsed15min(filePath:String) {
+        self.audioElapsed15min = filePath
     }
     
-    func setAudioElapsed20min(fileName:String) {
-        self.audioElapsed20min = fileName
+    func setAudioElapsed20min(filePath:String) {
+        self.audioElapsed20min = filePath
     }
     
-    func setAudioElapsed25min(fileName:String) {
-        self.audioElapsed25min = fileName
+    func setAudioElapsed25min(filePath:String) {
+        self.audioElapsed25min = filePath
     }
     
-    func setAudioElapsed30min(fileName:String) {
-        self.audioElapsed30min = fileName
+    func setAudioElapsed30min(filePath:String) {
+        self.audioElapsed30min = filePath
     }
     
-    func setAudioElapsed35min(fileName:String) {
-        self.audioElapsed35min = fileName
+    func setAudioElapsed35min(filePath:String) {
+        self.audioElapsed35min = filePath
     }
     
-    func setAudioElapsed40min(fileName:String) {
-        self.audioElapsed40min = fileName
+    func setAudioElapsed40min(filePath:String) {
+        self.audioElapsed40min = filePath
     }
     
-    func setAudioElapsed45min(fileName:String) {
-        self.audioElapsed45min = fileName
+    func setAudioElapsed45min(filePath:String) {
+        self.audioElapsed45min = filePath
     }
     
-    func setAudioElapsed50min(fileName:String) {
-        self.audioElapsed50min = fileName
+    func setAudioElapsed50min(filePath:String) {
+        self.audioElapsed50min = filePath
     }
     
-    func setAudioRemaining30sec(fileName:String) {
-        self.audioRemaining30sec = fileName
+    func setAudioRemaining30sec(filePath:String) {
+        self.audioRemaining30sec = filePath
     }
     
-    func setAudioRemaining1min(fileName:String) {
-        self.audioRemaining1min = fileName
+    func setAudioRemaining1min(filePath:String) {
+        self.audioRemaining1min = filePath
     }
     
-    func setAudioRemaining3min(fileName:String) {
-        self.audioRemaining3min = fileName
+    func setAudioRemaining3min(filePath:String) {
+        self.audioRemaining3min = filePath
     }
     
-    func setAudioAppStartUp(fileName:String) {
-        self.audioAppStartUp = fileName
+    func setAudioAppStartUp(filePath:String) {
+        self.audioAppStartUp = filePath
     }
     
-    func setAudioAppFinish(fileName:String) {
-        self.audioAppFinish = fileName
+    func setAudioAppFinish(filePath:String) {
+        self.audioAppFinish = filePath
     }
     
     
