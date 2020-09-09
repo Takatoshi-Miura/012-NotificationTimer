@@ -45,6 +45,22 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         }
     }
     
+    // 保存ボタン
+    @IBAction func saveButton(_ sender: Any) {
+        // SettingDataに設定を反映する
+        
+        // 遷移元に画面を取得する
+        if let controller = self.presentingViewController as? TimerViewController {
+            // 設定データを渡す
+            controller.settingData = self.settingData
+            print("データをTimerViewControllerに渡しました")
+            
+            // 音声設定を閉じる
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
     
     // マナーモードスイッチ
     let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
