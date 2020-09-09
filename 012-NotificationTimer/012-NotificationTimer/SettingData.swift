@@ -20,6 +20,7 @@ class SettingData:Object {
     @objc dynamic var dataNumber:Int = 0              // データ番号
     @objc dynamic var count:Float = 0.0               // 設定時間
     @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
+    @objc dynamic var soundID:Int = 0                 // サウンドID(システムサウンド再生用)
     @objc dynamic var audioFinish:String = Bundle.main.path(forResource: "デフォルト(終了時)", ofType:"mp3")!           // 終了時通知用 音声ファイルパス
     @objc dynamic var audioElapsed5min:String = Bundle.main.path(forResource: "デフォルト(5分経過)", ofType:"mp3")!     // 5分経過通知用 音声ファイルパス
     @objc dynamic var audioElapsed10min:String = Bundle.main.path(forResource: "デフォルト(10分経過)", ofType:"mp3")!   // 10分経過通知用 音声ファイルパス
@@ -61,6 +62,10 @@ class SettingData:Object {
     
     func setMannerMode(bool:Bool) {
         self.mannerMode = bool
+    }
+    
+    func setSoundID(id:Int) {
+        self.soundID = id
     }
     
     func setAudioFinish(filePath:String) {
@@ -145,6 +150,10 @@ class SettingData:Object {
     
     func getMannerMode() -> Bool {
         return self.mannerMode
+    }
+    
+    func getSoundID() -> Int {
+        return self.soundID
     }
     
     func getAudioFinish() -> String {

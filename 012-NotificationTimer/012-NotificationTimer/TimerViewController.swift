@@ -508,43 +508,43 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(time) {
         case 60 * 5:
             // 5分経過
-            audioPlay(filePath: self.settingData.audioElapsed5min)
+            playAudio(filePath: self.settingData.audioElapsed5min)
             print("5分経過")
         case 60 * 10:
             // 10分経過
-            audioPlay(filePath: self.settingData.audioElapsed10min)
+            playAudio(filePath: self.settingData.audioElapsed10min)
             print("10分経過")
         case 60 * 15:
             // 15分経過
-            audioPlay(filePath: self.settingData.audioElapsed15min)
+            playAudio(filePath: self.settingData.audioElapsed15min)
             print("15分経過")
         case 60 * 20:
             // 20分経過
-            audioPlay(filePath: self.settingData.audioElapsed20min)
+            playAudio(filePath: self.settingData.audioElapsed20min)
             print("20分経過")
         case 60 * 25:
             // 25分経過
-            audioPlay(filePath: self.settingData.audioElapsed25min)
+            playAudio(filePath: self.settingData.audioElapsed25min)
             print("25分経過")
         case 60 * 30:
             // 30分経過
-            audioPlay(filePath: self.settingData.audioElapsed30min)
+            playAudio(filePath: self.settingData.audioElapsed30min)
             print("30分経過")
         case 60 * 35:
             // 35分経過
-            audioPlay(filePath: self.settingData.audioElapsed35min)
+            playAudio(filePath: self.settingData.audioElapsed35min)
             print("35分経過")
         case 60 * 40:
             // 40分経過
-            audioPlay(filePath: self.settingData.audioElapsed40min)
+            playAudio(filePath: self.settingData.audioElapsed40min)
             print("40分経過")
         case 60 * 45:
             // 45分経過
-            audioPlay(filePath: self.settingData.audioElapsed45min)
+            playAudio(filePath: self.settingData.audioElapsed45min)
             print("45分経過")
         case 60 * 50:
             // 50分経過
-            audioPlay(filePath: self.settingData.audioElapsed50min)
+            playAudio(filePath: self.settingData.audioElapsed50min)
             print("50分経過")
         default:
             break
@@ -554,23 +554,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(self.settingData.count) {
         case 60 * 5:
             // 残り5分
-            audioPlay(filePath: self.settingData.audioRemaining5min)
+            playAudio(filePath: self.settingData.audioRemaining5min)
             print("残り5分")
         case 60 * 3:
             // 残り3分
-            audioPlay(filePath: self.settingData.audioRemaining3min)
+            playAudio(filePath: self.settingData.audioRemaining3min)
             print("残り3分")
         case 60 * 1:
             // 残り1分
-            audioPlay(filePath: self.settingData.audioRemaining1min)
+            playAudio(filePath: self.settingData.audioRemaining1min)
             print("残り1分")
         case 30:
             // 残り30秒
-            audioPlay(filePath: self.settingData.audioRemaining30sec)
+            playAudio(filePath: self.settingData.audioRemaining30sec)
             print("残り30秒")
         case 0:
             // 終了
-            audioPlay(filePath: self.settingData.audioFinish)
+            playAudio(filePath: self.settingData.audioFinish)
             print("終了")
         default:
             break
@@ -579,7 +579,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     }
     
     // 音声を再生するメソッド
-    func audioPlay(filePath path:String?) {
+    func playAudio(filePath path:String?) {
         if let filePath = path {
             // URLを作成
             let audioUrl = URL(fileURLWithPath: filePath)
@@ -593,6 +593,37 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             }
         } else {
             print("ファイルが設定されていません")
+        }
+    }
+    
+    // オーディオ再生メソッド
+    func playAudio(filePath path:String?,soundID id:Int) {
+        if let audioPath = path {
+            // URLを作成
+            let audioURL = URL(fileURLWithPath: audioPath)
+            
+            // 再生中なら停止
+            if player.isPlaying {
+                player.stop()
+            }
+            
+            // 再生
+            do {
+                // カスタムオーディオの再生
+                player = try AVAudioPlayer(contentsOf: audioURL)
+                player.play()
+            } catch {
+                // システムサウンドの再生
+                if let soundUrl:URL = URL(string: audioPath) {
+                    var soundID:SystemSoundID = SystemSoundID(id)
+                    AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+                    AudioServicesPlaySystemSound(soundID)
+                } else {
+                    print("再生処理でエラーが発生しました")
+                }
+            }
+        } else {
+            print("ファイルがありません")
         }
     }
     

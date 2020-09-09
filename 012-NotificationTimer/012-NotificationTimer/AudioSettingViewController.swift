@@ -236,7 +236,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
                 return URL(fileURLWithPath: self.settingData.getAudioAppStartUp()).deletingPathExtension().lastPathComponent
             case 1:
                 return URL(fileURLWithPath: self.settingData.getAudioAppFinish()).deletingPathExtension().lastPathComponent
-            
             default:
                 return "detail"
             }
