@@ -7,6 +7,7 @@ target '012-NotificationTimer' do
 
   # Pods for 012-NotificationTimer
   pod 'RealmSwift', '~> 3.18.0'
+  pod 'Firebase/AdMob'
 
 
 end

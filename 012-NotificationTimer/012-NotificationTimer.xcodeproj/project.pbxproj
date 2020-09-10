@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68B4486075A905BF160AD064 /* Pods_012_NotificationTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9A7A2526A440A34EB4CD54 /* Pods_012_NotificationTimer.framework */; };
+		8D1DA6A52509DD4600F6D4AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DA6A42509DD4600F6D4AE /* GoogleService-Info.plist */; };
 		8D6BFD7625075678003FAF2A /* AudioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFD7525075678003FAF2A /* AudioListViewController.swift */; };
 		8D6BFDC72507A6D6003FAF2A /* デフォルト(アプリ起動時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB72507A6D5003FAF2A /* デフォルト(アプリ起動時).mp3 */; };
 		8D6BFDC82507A6D6003FAF2A /* デフォルト(アプリ終了時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */; };
@@ -42,6 +43,7 @@
 		26EA20D01F17E8E46A504816 /* Pods-012-NotificationTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-012-NotificationTimer.debug.xcconfig"; path = "Target Support Files/Pods-012-NotificationTimer/Pods-012-NotificationTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		6E9A7A2526A440A34EB4CD54 /* Pods_012_NotificationTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_012_NotificationTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFEDB70F92CC72D9F7090B3 /* Pods-012-NotificationTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-012-NotificationTimer.release.xcconfig"; path = "Target Support Files/Pods-012-NotificationTimer/Pods-012-NotificationTimer.release.xcconfig"; sourceTree = "<group>"; };
+		8D1DA6A42509DD4600F6D4AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D6BFD7525075678003FAF2A /* AudioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewController.swift; sourceTree = "<group>"; };
 		8D6BFDB72507A6D5003FAF2A /* デフォルト(アプリ起動時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ起動時).mp3"; sourceTree = "<group>"; };
 		8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ終了時).mp3"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				8DA3F24024FD009B0029D5C3 /* Assets.xcassets */,
 				8DDA4B5824FF6F7300AD7C69 /* PageViewController.swift */,
 				8DA3F24524FD009B0029D5C3 /* Info.plist */,
+				8D1DA6A42509DD4600F6D4AE /* GoogleService-Info.plist */,
 				8D4E625225061FDA007CDADC /* Default Audio */,
 			);
 			path = "012-NotificationTimer";
@@ -245,6 +248,7 @@
 				8D6BFDD02507A6D6003FAF2A /* デフォルト(40分経過).mp3 in Resources */,
 				8D6BFDC82507A6D6003FAF2A /* デフォルト(アプリ終了時).mp3 in Resources */,
 				8D6BFDC72507A6D6003FAF2A /* デフォルト(アプリ起動時).mp3 in Resources */,
+				8D1DA6A52509DD4600F6D4AE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

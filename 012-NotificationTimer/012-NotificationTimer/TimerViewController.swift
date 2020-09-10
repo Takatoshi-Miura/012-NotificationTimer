@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import AVFoundation
+import GoogleMobileAds
 
 class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate,AVAudioPlayerDelegate {
 
@@ -22,6 +23,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // アプリフォルダ構成の初期化
         directoryInit()
+        
+        // 広告表示
+        displayAdsense()
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -193,6 +197,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // 音声再生用
     var player = AVAudioPlayer()
+    
+    // 広告用
+    let AdMobID = "ca-app-pub-5239611561920614/8530378558"
+    let TEST_ID = "ca-app-pub-3940256099942544/2934735716"
+    let AdMobTest:Bool = true
     
     
     
@@ -624,6 +633,33 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // ラベルに反映
         timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
+    }
+    
+    // 広告表示
+    func displayAdsense() {
+        // バナー広告を作成
+        var admobView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        
+        // レイアウトの設定
+        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - admobView.frame.height - 34)
+        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+        
+        // テストモード識別
+        if AdMobTest {
+            admobView.adUnitID = TEST_ID
+        } else {
+            admobView.adUnitID = AdMobID
+        }
+        
+        // テストデバイスの登録
+        let request = GADRequest()
+        request.testDevices = ["e9bf85481a56f3f95336ba98a47e0d4c"]
+        
+        // 広告をビューに追加
+        admobView.rootViewController = self
+        admobView.load(request)
+        self.view.addSubview(admobView)
     }
     
     // アラート表示

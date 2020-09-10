@@ -8,11 +8,15 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Firebase接続用
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         // 初回起動判定(初期値を登録)
         UserDefaults.standard.register(defaults: ["firstLaunch": true])
         
