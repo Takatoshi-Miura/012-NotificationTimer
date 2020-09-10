@@ -62,11 +62,12 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
             // 音声データの取り込み方
             break
         case 1:
-            // 利用規約
+            // 利用規約ページに飛ぶ
+            let url = URL(string: "https://sportnote-b2c92.firebaseapp.com/")
+            UIApplication.shared.open(url!)
             break
         case 2:
-            // お問い合わせ
-            // メーラーを起動
+            // お問い合わせメーラーを起動
             startMailer()
         default:
             break

@@ -48,6 +48,12 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         player.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 利用規約の同意
+        displayAgreement()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // 通知の削除
@@ -463,6 +469,38 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     // MARK:- その他のメソッド
+    
+    // 利用規約表示メソッド
+    func displayAgreement() {
+        if UserDefaults.standard.bool(forKey: "firstLaunch") {
+            // アラートダイアログを生成
+            let alertController = UIAlertController(title:"利用規約の確認",message:"本アプリの利用規約とプライバシーポリシーに同意します。",preferredStyle:UIAlertController.Style.alert)
+            
+            // 同意ボタンを宣言
+            let agreeAction = UIAlertAction(title:"同意する",style:UIAlertAction.Style.default){(action:UIAlertAction)in
+                // 同意ボタンがタップされたときの処理
+                // 次回以降、利用規約を表示しないようにする
+                UserDefaults.standard.set(false, forKey: "firstLaunch")
+            }
+            
+            // 利用規約ボタンを宣言
+            let termsAction = UIAlertAction(title:"利用規約を読む",style:UIAlertAction.Style.default){(action:UIAlertAction)in
+                // 利用規約ボタンがタップされたときの処理
+                let url = URL(string: "https://sportnote-b2c92.firebaseapp.com/")
+                UIApplication.shared.open(url!)
+                
+                // アラートが消えるため再度表示
+                self.displayAgreement()
+            }
+            
+            // ボタンを追加
+            alertController.addAction(termsAction)
+            alertController.addAction(agreeAction)
+            
+            //アラートダイアログを表示
+            self.present(alertController,animated:true,completion:nil)
+        }
+    }
     
     // フォルダ構成の初期化
     func directoryInit() {

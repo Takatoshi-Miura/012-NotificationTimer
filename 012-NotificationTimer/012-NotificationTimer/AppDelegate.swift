@@ -41,9 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try! realm.write {
                 realm.add(settingData)
             }
-            
-            // 2回目以降の起動では「firstLaunch」のkeyをfalseに
-            UserDefaults.standard.set(false, forKey: "firstLaunch")
         }
         
         return true
