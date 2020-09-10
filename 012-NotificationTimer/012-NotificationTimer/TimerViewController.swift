@@ -21,6 +21,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // データベースのパスを取得
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+        // 画面自動ロックをしない
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         // アプリフォルダ構成の初期化
         directoryInit()
         
@@ -733,7 +736,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @objc func didBecomeActive(notify: NSNotification) {
         if let backgroundDate = backgroundDate, self.settingData.count > 0 {
             // Int型へ変換
-            var count_Int = Int(self.self.settingData.count)
+            var count_Int = Int(self.settingData.count)
             
             // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得
             let timeDiff = Int(NSDate().timeIntervalSince(backgroundDate as Date))
@@ -744,6 +747,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 count_Int -= timeDiff
                 self.settingData.setCount(time: Float(count_Int))
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
+                timerNotification = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(notification), userInfo:nil, repeats:true)
             } else if timeDiff < count_Int && timerIsStart == false {
                 // ラベルに反映
                 displayCount()
@@ -751,6 +755,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 // ゼロにリセット
                 self.settingData.setCount(time: 0)
                 timer.invalidate()
+                timerNotification.invalidate()
                 
                 // ラベルに反映
                 displayCount()
@@ -765,6 +770,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     @objc func didEnterBackground(notify: NSNotification) {
         // タイマー停止
         timer.invalidate()
+        timerNotification.invalidate()
         
         // バックグラウンドに入った時間を保持
         backgroundDate = NSDate()
