@@ -648,9 +648,19 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             fallthrough
         case 5 * 60...10 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から5分が経過しました。", soundPath: settingData.audioElapsed5min, timeInterval: 5 * 60))
+            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り5分になりました。", soundPath: settingData.audioRemaining5min, timeInterval: Double(count - (5 * 60))))
+            fallthrough
+        case 3 * 60...5 * 60 :
+            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り3分になりました。", soundPath: settingData.audioRemaining3min, timeInterval: Double(count - (3 * 60))))
+            fallthrough
+        case 1 * 60...3 * 60 :
+            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り1分になりました。", soundPath: settingData.audioRemaining1min, timeInterval: Double(count - (1 * 60))))
+            fallthrough
+        case 30...1 * 60 :
+            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り30秒になりました。", soundPath: settingData.audioRemaining30sec, timeInterval: Double(count - 30)))
             fallthrough
         default:
-            print("")
+            requestArray.append(createRequest(title: "計測完了通知", subTitle: "設定時間になりました。", soundPath: settingData.audioFinish, timeInterval: Double(count)))
         }
         
         // 通知をセット
