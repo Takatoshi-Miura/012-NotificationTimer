@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="40" id="4YO-ry-D1Z"/>
                                     <constraint firstAttribute="height" constant="40" id="IFj-AP-Gg9"/>
                                 </constraints>
-                                <state key="normal" image="ハンバーガーメニュー"/>
+                                <state key="normal" image="hamburgerMenu"/>
                                 <connections>
                                     <action selector="hamburgerMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nze-9b-sJe"/>
                                     <segue destination="4h0-VD-KOe" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3wa-bY-ekF"/>
@@ -72,7 +72,7 @@
                                     <constraint firstAttribute="height" constant="40" id="lCB-IF-fpe"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" image="camera" catalog="system"/>
+                                <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="camaraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tmh-aR-MLe"/>
                                 </connections>
@@ -84,7 +84,7 @@
                                     <constraint firstAttribute="width" constant="40" id="qkK-zq-UpS"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" image="speaker.3" catalog="system"/>
+                                <state key="normal" image="sound"/>
                                 <connections>
                                     <action selector="audioButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dkz-aN-ytE"/>
                                     <segue destination="fzK-ui-Qee" kind="show" identifier="goAudioSettingViewController" id="7ig-jn-cvA"/>
@@ -390,8 +390,8 @@
     <resources>
         <image name="Reset Button" width="74" height="74"/>
         <image name="Start Button" width="74" height="74"/>
-        <image name="camera" catalog="system" width="128" height="96"/>
-        <image name="speaker.3" catalog="system" width="128" height="90"/>
-        <image name="ハンバーガーメニュー" width="200" height="200"/>
+        <image name="camera" width="200" height="200"/>
+        <image name="hamburgerMenu" width="200" height="200"/>
+        <image name="sound" width="200" height="200"/>
     </resources>
 </document>

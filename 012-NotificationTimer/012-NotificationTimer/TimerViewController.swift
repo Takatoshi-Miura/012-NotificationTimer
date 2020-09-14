@@ -115,6 +115,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timerIsStart = true
             
             // バナー通知をセット
+            // MARK:- Fix:前回セットした通知を削除
             setElapsedTimeNotification()
             
             // ボタン画像を一時停止用にセット
@@ -677,6 +678,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // バナー通知のリクエストを作成するメソッド
     func createRequest(title titleText:String,subTitle subTitleText:String,soundPath path:String,timeInterval time:Double) -> UNNotificationRequest {
         // 表示の設定
+        // MARK:- Fix:サウンドがデフォルト以外トライトーンになってしまう
         let content = UNMutableNotificationContent()
         content.title = titleText
         content.subtitle = subTitleText
@@ -686,7 +688,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time,repeats: false)
         
         // リクエストの作成＆返却
-        print("リクエスト:\(subTitleText) を作成しました")
+        print("リクエスト:\(subTitleText)を作成しました")
         return UNNotificationRequest(identifier: subTitleText,content: content,trigger: trigger)
     }
     
