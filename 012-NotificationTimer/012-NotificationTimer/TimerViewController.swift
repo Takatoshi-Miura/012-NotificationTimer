@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import AVFoundation
 import GoogleMobileAds
+import UserNotifications
 
 class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate,AVAudioPlayerDelegate {
 
@@ -112,6 +113,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             
             // フラグ設定
             timerIsStart = true
+            
+            // バナー通知をセット
+            setElapsedTimeNotification()
             
             // ボタン画像を一時停止用にセット
             startButton.setImage(stopImage, for: .normal)
@@ -468,65 +472,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     
     
-    // MARK:- その他のメソッド
+    // MARK:- タイマー関連
     
-    // 利用規約表示メソッド
-    func displayAgreement() {
-        if UserDefaults.standard.bool(forKey: "firstLaunch") {
-            // アラートダイアログを生成
-            let alertController = UIAlertController(title:"利用規約の確認",message:"本アプリの利用規約とプライバシーポリシーに同意します。",preferredStyle:UIAlertController.Style.alert)
-            
-            // 同意ボタンを宣言
-            let agreeAction = UIAlertAction(title:"同意する",style:UIAlertAction.Style.default){(action:UIAlertAction)in
-                // 同意ボタンがタップされたときの処理
-                // 次回以降、利用規約を表示しないようにする
-                UserDefaults.standard.set(false, forKey: "firstLaunch")
-            }
-            
-            // 利用規約ボタンを宣言
-            let termsAction = UIAlertAction(title:"利用規約を読む",style:UIAlertAction.Style.default){(action:UIAlertAction)in
-                // 利用規約ボタンがタップされたときの処理
-                let url = URL(string: "https://sportnote-b2c92.firebaseapp.com/")
-                UIApplication.shared.open(url!)
-                
-                // アラートが消えるため再度表示
-                self.displayAgreement()
-            }
-            
-            // ボタンを追加
-            alertController.addAction(termsAction)
-            alertController.addAction(agreeAction)
-            
-            //アラートダイアログを表示
-            self.present(alertController,animated:true,completion:nil)
-        }
-    }
-    
-    // フォルダ構成の初期化
-    func directoryInit() {
-        // ファイル共有
-        let fm = FileManager.default
-        
-        // アプリフォルダのパス
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        
-        // Picture,Audioフォルダが存在しなければ作成
-        let filePathList = [documentsPath + "/Audio"]
-        for filePath in filePathList {
-            if !fm.fileExists(atPath: filePath) {
-                try! fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: [:])
-                print("Audioフォルダを作成しました")
-            }
-        }
-        
-        // Application SupportフォルダをRealmの保存先に指定
-        let applicationSupportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        let path = applicationSupportDir.appendingPathComponent("default.realm")
-        var config = Realm.Configuration.defaultConfiguration
-        config.fileURL = path
-        Realm.Configuration.defaultConfiguration = config
-    }
-
     //タイマーから呼び出されるメソッド
     @objc func countDown(){
         // 残り時間の計算
@@ -551,6 +498,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // 規定時間なら通知
         self.notificationTime(elapsedTime: elapsedTime)
     }
+    
+    
+    
+    // MARK:- 通知関連
     
     // 規定時間を通知するメソッド
     func notificationTime(elapsedTime time:Float) {
@@ -625,7 +576,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         default:
             break
         }
-        
     }
     
     // 音声を再生するメソッド
@@ -659,21 +609,136 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
     }
     
-    // countの値をラベルに表示するメソッド
-    func displayCount() {
-        // 分秒に変換
-        let minute:Int = Int(self.settingData.count / 60)
-        let second:Int = Int(self.settingData.count.truncatingRemainder(dividingBy: 60))
-        let count_Int:Int = Int(self.settingData.count)
-        let mili:Float = (self.settingData.count - Float(count_Int)) * 100
+    // バナー通知を作成
+    func setElapsedTimeNotification() {
+        // 設定時間の取得
+        let count = self.settingData.getCount()
         
-        // フォーマット揃え
-        let minuteText = NSString(format: "%02d", minute)
-        let secondText = NSString(format: "%02d", second)
-        let miliText = NSString(format: "%02d", Int(mili))
+        // リクエストを格納する配列を作成
+        var requestArray:[UNNotificationRequest] = []
         
-        // ラベルに反映
-        timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
+        // リクエスト作成
+        switch count {
+        case 50 * 60...99 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から50分が経過しました。", soundPath: settingData.audioElapsed50min, timeInterval: 50 * 60))
+            fallthrough
+        case 45 * 60...50 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から45分が経過しました。", soundPath: settingData.audioElapsed45min, timeInterval: 45 * 60))
+            fallthrough
+        case 40 * 60...45 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から40分が経過しました。", soundPath: settingData.audioElapsed40min, timeInterval: 40 * 60))
+            fallthrough
+        case 35 * 60...40 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から35分が経過しました。", soundPath: settingData.audioElapsed35min, timeInterval: 35 * 60))
+            fallthrough
+        case 30 * 60...35 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から30分が経過しました。", soundPath: settingData.audioElapsed30min, timeInterval: 30 * 60))
+            fallthrough
+        case 25 * 60...30 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から25分が経過しました。", soundPath: settingData.audioElapsed25min, timeInterval: 25 * 60))
+            fallthrough
+        case 20 * 60...25 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から20分が経過しました。", soundPath: settingData.audioElapsed20min, timeInterval: 20 * 60))
+            fallthrough
+        case 15 * 60...20 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から15分が経過しました。", soundPath: settingData.audioElapsed15min, timeInterval: 15 * 60))
+            fallthrough
+        case 10 * 60...15 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から10分が経過しました。", soundPath: settingData.audioElapsed10min, timeInterval: 10 * 60))
+            fallthrough
+        case 5 * 60...10 * 60 :
+            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から5分が経過しました。", soundPath: settingData.audioElapsed5min, timeInterval: 5 * 60))
+            fallthrough
+        default:
+            print("")
+        }
+        
+        // 通知をセット
+        let center = UNUserNotificationCenter.current()
+        for request in requestArray {
+            center.add(request) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    // バナー通知のリクエストを作成するメソッド
+    func createRequest(title titleText:String,subTitle subTitleText:String,soundPath path:String,timeInterval time:Double) -> UNNotificationRequest {
+        // 表示の設定
+        let content = UNMutableNotificationContent()
+        content.title = titleText
+        content.subtitle = subTitleText
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(self.settingData.getFileName(filePath: path)))
+        
+        // 通知タイミングの設定
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time,repeats: false)
+        
+        // リクエストの作成＆返却
+        print("リクエスト:\(subTitleText) を作成しました")
+        return UNNotificationRequest(identifier: subTitleText,content: content,trigger: trigger)
+    }
+    
+    
+    
+    // MARK:- その他のメソッド
+    
+    // 利用規約表示メソッド
+    func displayAgreement() {
+        if UserDefaults.standard.bool(forKey: "firstLaunch") {
+            // アラートダイアログを生成
+            let alertController = UIAlertController(title:"利用規約の確認",message:"本アプリの利用規約とプライバシーポリシーに同意します。",preferredStyle:UIAlertController.Style.alert)
+            
+            // 同意ボタンを宣言
+            let agreeAction = UIAlertAction(title:"同意する",style:UIAlertAction.Style.default){(action:UIAlertAction)in
+                // 同意ボタンがタップされたときの処理
+                // 次回以降、利用規約を表示しないようにする
+                UserDefaults.standard.set(false, forKey: "firstLaunch")
+            }
+            
+            // 利用規約ボタンを宣言
+            let termsAction = UIAlertAction(title:"利用規約を読む",style:UIAlertAction.Style.default){(action:UIAlertAction)in
+                // 利用規約ボタンがタップされたときの処理
+                let url = URL(string: "https://sportnote-b2c92.firebaseapp.com/")
+                UIApplication.shared.open(url!)
+                
+                // アラートが消えるため再度表示
+                self.displayAgreement()
+            }
+            
+            // ボタンを追加
+            alertController.addAction(termsAction)
+            alertController.addAction(agreeAction)
+            
+            //アラートダイアログを表示
+            self.present(alertController,animated:true,completion:nil)
+        }
+    }
+    
+    // フォルダ構成の初期化
+    func directoryInit() {
+        // ファイル共有
+        let fm = FileManager.default
+        
+        // アプリフォルダのパス
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        // Picture,Audioフォルダが存在しなければ作成
+        let filePathList = [documentsPath + "/Audio"]
+        for filePath in filePathList {
+            if !fm.fileExists(atPath: filePath) {
+                try! fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: [:])
+                print("Audioフォルダを作成しました")
+            }
+        }
+        
+        // Application SupportフォルダをRealmの保存先に指定
+        let applicationSupportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let path = applicationSupportDir.appendingPathComponent("default.realm")
+        var config = Realm.Configuration.defaultConfiguration
+        config.fileURL = path
+        Realm.Configuration.defaultConfiguration = config
     }
     
     // 広告表示
@@ -701,6 +766,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         admobView.rootViewController = self
         admobView.load(request)
         self.view.addSubview(admobView)
+    }
+    
+    // countの値をラベルに表示するメソッド
+    func displayCount() {
+        // 分秒に変換
+        let minute:Int = Int(self.settingData.count / 60)
+        let second:Int = Int(self.settingData.count.truncatingRemainder(dividingBy: 60))
+        let count_Int:Int = Int(self.settingData.count)
+        let mili:Float = (self.settingData.count - Float(count_Int)) * 100
+        
+        // フォーマット揃え
+        let minuteText = NSString(format: "%02d", minute)
+        let secondText = NSString(format: "%02d", second)
+        let miliText = NSString(format: "%02d", Int(mili))
+        
+        // ラベルに反映
+        timeLabel.text = "\(minuteText):\(secondText).\(miliText)"
     }
     
     // アラート表示

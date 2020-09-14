@@ -43,6 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // 通知の許可
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Allowed")
+            } else {
+                print("Didn't allowed")
+            }
+        }
+        
         return true
     }
 

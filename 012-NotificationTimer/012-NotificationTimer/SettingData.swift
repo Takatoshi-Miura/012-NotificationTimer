@@ -225,4 +225,12 @@ class SettingData:Object {
     }
     
     
+    
+    //MARK:- その他
+    
+    // ファイルパスからファイル名を取得するメソッド
+    func getFileName(filePath path:String) -> String {
+        return (path as NSString).lastPathComponent
+    }
+    
 }
