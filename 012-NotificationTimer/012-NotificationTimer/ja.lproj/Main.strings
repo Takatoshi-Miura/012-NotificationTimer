@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0iI-OA-xq6"; */
+"0iI-OA-xq6.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "音声設定"; ObjectID = "5b9-TP-g0c"; */
+"5b9-TP-g0c.title" = "音声設定";
+
+/* Class = "UILabel"; text = "RESET"; ObjectID = "A5i-1v-mFC"; */
+"A5i-1v-mFC.text" = "RESET";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "UEc-U6-CeZ"; */
+"UEc-U6-CeZ.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "音声選択"; ObjectID = "mpM-9u-Adt"; */
+"mpM-9u-Adt.title" = "音声選択";
+
+/* Class = "UILabel"; text = "00:00.00"; ObjectID = "oEU-4M-EXz"; */
+"oEU-4M-EXz.text" = "00:00.00";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "oXS-jk-aeu"; */
+"oXS-jk-aeu.text" = "Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "sfe-aQ-La5"; */
+"sfe-aQ-La5.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "zzB-YF-ARs"; */
+"zzB-YF-ARs.text" = "Title";
