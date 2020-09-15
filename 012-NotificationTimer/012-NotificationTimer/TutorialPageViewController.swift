@@ -52,8 +52,8 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDeleg
                                 "[STEP 2/3]\nこのiPhone内＞TimeManager＞Audio をタップし、「保存」をタップします。",
                                 "[STEP 3/3]\nタイムマネージャーアプリを起動すると先程のボイスメモが通知音として使えるようになっています。"]
     
-    var imageArray:[UIImage?] = [UIImage(named: "①ファイルアプリ"),UIImage(named: "①ファイルアプリ"),UIImage(named: "①ファイルアプリ"),
-                                 UIImage(named: "①ファイルアプリ")]
+    var imageArray:[UIImage?] = [UIImage(named: "①ファイルアプリ"),UIImage(named: "②ボイスメモ1"),UIImage(named: "③ボイスメモ2"),
+                                 UIImage(named: "④ボイスメモ3")]
     
     
     
