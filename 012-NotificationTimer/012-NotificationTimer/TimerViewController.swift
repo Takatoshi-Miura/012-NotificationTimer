@@ -736,7 +736,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // アプリフォルダのパス
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         
-        // Picture,Audioフォルダが存在しなければ作成
+        // Audioフォルダが存在しなければ作成
+        // 何もファイルがないと「ファイル」アプリにアプリフォルダが表示されないためAudioフォルダを作成する
         let filePathList = [documentsPath + "/Audio"]
         for filePath in filePathList {
             if !fm.fileExists(atPath: filePath) {

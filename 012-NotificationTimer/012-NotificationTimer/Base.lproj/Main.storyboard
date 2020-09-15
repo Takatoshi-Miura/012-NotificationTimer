@@ -386,6 +386,21 @@
             </objects>
             <point key="canvasLocation" x="1980" y="137"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="GA8-vQ-Ftc">
+            <objects>
+                <viewController id="6xv-nA-CUb" customClass="TutorialViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6s3-wQ-6wH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yjl-7p-Qr5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8B-oo-vhs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="135"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Reset Button" width="74" height="74"/>
