@@ -443,6 +443,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yjl-7p-Qr5"/>
                     </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="rZ7-Er-owS" id="HGt-Iz-BfN"/>
+                        <outlet property="imageView" destination="4Wb-dL-YHd" id="ZVL-Rb-bJd"/>
+                        <outlet property="titleLabel" destination="wsu-qq-Pbb" id="9Na-ON-iLO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8B-oo-vhs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
