@@ -13,22 +13,16 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // controllersにビューを格納
-        let VC1 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC2 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC3 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC4 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC5 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC6 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        let VC7 = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
-        self.controllers = [VC1,VC2,VC3,VC4,VC5,VC6,VC7]
+        // 初期化
+        self.controllers = []
         
-        // 各画面にチュートリアルデータを渡す
-        for num in 0...self.controllers.count - 1 {
-            let VC = self.controllers[num] as! TutorialViewController
-            VC.titleLabel.text  = titleArray[num]
-            VC.detailLabel.text = detailArray[num]
-            VC.imageView.image  = imageArray[num]!
+        // チュートリアルデータ格納済みのビューをcontrollersに格納
+        for num in 0...titleArray.count - 1 {
+            let VC = storyboard!.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+            VC.titleText  = titleArray[num]
+            VC.detailText = detailArray[num]
+            VC.image      = imageArray[num]!
+            self.controllers.append(VC)
         }
 
         // PageViewController初期化メソッド

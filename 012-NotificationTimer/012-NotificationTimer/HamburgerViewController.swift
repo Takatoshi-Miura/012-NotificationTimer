@@ -60,12 +60,14 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
         switch indexPath.row {
         case 0:
             // 音声データの取り込み方
-            break
+            // チュートリアル画面へ遷移
+            let storyboard: UIStoryboard = self.storyboard!
+            let tutorialPageViewController = storyboard.instantiateViewController(withIdentifier: "TutorialPageViewController")
+            self.present(tutorialPageViewController, animated: true, completion: nil)
         case 1:
             // 利用規約ページに飛ぶ
             let url = URL(string: "https://notificationtimer-70d41.web.app/")
             UIApplication.shared.open(url!)
-            break
         case 2:
             // お問い合わせメーラーを起動
             startMailer()

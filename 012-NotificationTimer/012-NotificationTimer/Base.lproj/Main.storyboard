@@ -389,7 +389,7 @@
         <!--Tutorial Page View Controller-->
         <scene sceneID="gA3-qu-66f">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="CHn-k8-59Z" customClass="TutorialPageViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="CHn-k8-59Z" customClass="TutorialPageViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jce-sf-rLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3186" y="134"/>
@@ -397,16 +397,16 @@
         <!--Tutorial View Controller-->
         <scene sceneID="GA8-vQ-Ftc">
             <objects>
-                <viewController id="6xv-nA-CUb" customClass="TutorialViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewController" id="6xv-nA-CUb" customClass="TutorialViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6s3-wQ-6wH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="①ファイルアプリ" translatesAutoresizingMaskIntoConstraints="NO" id="4Wb-dL-YHd">
-                                <rect key="frame" x="0.0" y="145" width="320" height="379"/>
+                                <rect key="frame" x="0.0" y="161" width="320" height="363"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ファイル共有機能" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsu-qq-Pbb">
-                                <rect key="frame" x="58.5" y="44" width="203" height="21"/>
+                                <rect key="frame" x="58.5" y="60" width="203" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4V3-cU-ra2"/>
                                 </constraints>
@@ -415,7 +415,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ7-Er-owS">
-                                <rect key="frame" x="20" y="85" width="280" height="50"/>
+                                <rect key="frame" x="20" y="101" width="280" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7V0-wP-3bJ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="PbT-ip-glq"/>
@@ -437,7 +437,7 @@
                             <constraint firstItem="yjl-7p-Qr5" firstAttribute="bottom" secondItem="4Wb-dL-YHd" secondAttribute="bottom" constant="44" id="bAi-ud-qbX"/>
                             <constraint firstItem="rZ7-Er-owS" firstAttribute="top" secondItem="wsu-qq-Pbb" secondAttribute="bottom" constant="20" id="lYZ-5X-ghb"/>
                             <constraint firstItem="4Wb-dL-YHd" firstAttribute="top" secondItem="rZ7-Er-owS" secondAttribute="bottom" constant="10" id="qOd-0l-RK3"/>
-                            <constraint firstItem="wsu-qq-Pbb" firstAttribute="top" secondItem="yjl-7p-Qr5" secondAttribute="top" constant="44" id="vxV-Xg-IKl"/>
+                            <constraint firstItem="wsu-qq-Pbb" firstAttribute="top" secondItem="yjl-7p-Qr5" secondAttribute="top" constant="60" id="vxV-Xg-IKl"/>
                             <constraint firstItem="4Wb-dL-YHd" firstAttribute="centerX" secondItem="6s3-wQ-6wH" secondAttribute="centerX" id="vy8-RL-VGg"/>
                             <constraint firstItem="wsu-qq-Pbb" firstAttribute="centerX" secondItem="6s3-wQ-6wH" secondAttribute="centerX" id="z2r-Yr-RCu"/>
                         </constraints>

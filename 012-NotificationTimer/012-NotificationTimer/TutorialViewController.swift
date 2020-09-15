@@ -13,8 +13,17 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // チュートリアルデータを表示
+        printData()
     }
+    
+    
+    
+    //MARK:- 変数の宣言
+    
+    var titleText:String  = ""
+    var detailText:String = ""
+    var image:UIImage = UIImage(named: "①ファイルアプリ")!
     
     
 
@@ -24,5 +33,14 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    
+    
+    //MARK:- その他のメソッド
+    
+    func printData() {
+        self.titleLabel.text  = titleText
+        self.detailLabel.text = detailText
+        self.imageView.image  = image
+    }
 
 }
