@@ -393,13 +393,52 @@
                     <view key="view" contentMode="scaleToFill" id="6s3-wQ-6wH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="①ファイルアプリ" translatesAutoresizingMaskIntoConstraints="NO" id="4Wb-dL-YHd">
+                                <rect key="frame" x="0.0" y="145" width="320" height="379"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ファイル共有機能" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsu-qq-Pbb">
+                                <rect key="frame" x="58.5" y="44" width="203" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4V3-cU-ra2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ7-Er-owS">
+                                <rect key="frame" x="20" y="85" width="280" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7V0-wP-3bJ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="PbT-ip-glq"/>
+                                </constraints>
+                                <string key="text">本アプリではユーザーが取り込んだmp3ファイルやボイスメモを通知音として使用できます。
+※Apple純正アプリ「ファイル」が必要です。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95487004519999996" green="0.74410760399999998" blue="0.54113686080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="rZ7-Er-owS" firstAttribute="leading" secondItem="yjl-7p-Qr5" secondAttribute="leading" constant="20" id="CiV-1s-6jL"/>
+                            <constraint firstItem="rZ7-Er-owS" firstAttribute="top" secondItem="wsu-qq-Pbb" secondAttribute="bottom" constant="20" id="PfB-pG-Tvx"/>
+                            <constraint firstItem="4Wb-dL-YHd" firstAttribute="leading" secondItem="yjl-7p-Qr5" secondAttribute="leading" id="SCX-CK-yf1"/>
+                            <constraint firstItem="yjl-7p-Qr5" firstAttribute="trailing" secondItem="4Wb-dL-YHd" secondAttribute="trailing" id="Xn5-z3-vZJ"/>
+                            <constraint firstItem="rZ7-Er-owS" firstAttribute="centerX" secondItem="6s3-wQ-6wH" secondAttribute="centerX" id="Zoe-zj-Nn8"/>
+                            <constraint firstItem="yjl-7p-Qr5" firstAttribute="bottom" secondItem="4Wb-dL-YHd" secondAttribute="bottom" constant="44" id="bAi-ud-qbX"/>
+                            <constraint firstItem="rZ7-Er-owS" firstAttribute="top" secondItem="wsu-qq-Pbb" secondAttribute="bottom" constant="20" id="lYZ-5X-ghb"/>
+                            <constraint firstItem="4Wb-dL-YHd" firstAttribute="top" secondItem="rZ7-Er-owS" secondAttribute="bottom" constant="10" id="qOd-0l-RK3"/>
+                            <constraint firstItem="wsu-qq-Pbb" firstAttribute="top" secondItem="yjl-7p-Qr5" secondAttribute="top" constant="44" id="vxV-Xg-IKl"/>
+                            <constraint firstItem="4Wb-dL-YHd" firstAttribute="centerX" secondItem="6s3-wQ-6wH" secondAttribute="centerX" id="vy8-RL-VGg"/>
+                            <constraint firstItem="wsu-qq-Pbb" firstAttribute="centerX" secondItem="6s3-wQ-6wH" secondAttribute="centerX" id="z2r-Yr-RCu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yjl-7p-Qr5"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8B-oo-vhs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3313" y="135"/>
+            <point key="canvasLocation" x="3911" y="135"/>
         </scene>
     </scenes>
     <resources>
@@ -408,5 +447,6 @@
         <image name="camera" width="200" height="200"/>
         <image name="hamburgerMenu" width="200" height="200"/>
         <image name="sound" width="200" height="200"/>
+        <image name="①ファイルアプリ" width="1242" height="2240"/>
     </resources>
 </document>
