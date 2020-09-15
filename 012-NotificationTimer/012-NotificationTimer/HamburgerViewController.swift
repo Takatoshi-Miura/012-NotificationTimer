@@ -63,7 +63,7 @@ class HamburgerViewController: UIViewController,UITableViewDelegate,UITableViewD
             break
         case 1:
             // 利用規約ページに飛ぶ
-            let url = URL(string: "https://sportnote-b2c92.firebaseapp.com/")
+            let url = URL(string: "https://notificationtimer-70d41.web.app/")
             UIApplication.shared.open(url!)
             break
         case 2:
