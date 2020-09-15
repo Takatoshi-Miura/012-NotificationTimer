@@ -432,10 +432,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // 背景画像の取得
         let backgroundPath = NSHomeDirectory() + "/Library"
         let backgroundURL  = URL(fileURLWithPath: backgroundPath)
-        let imagePath = backgroundURL.appendingPathComponent("backgroundImage.png")
+        let imagePath = backgroundURL.appendingPathComponent("backgroundImage_\(self.settingData.getDataNumber()).png")
         do {
             try self.imageView.image = UIImage(data: Data(contentsOf: imagePath))
-            print("背景画像を取得しました")
+            print("backgroundImage_\(self.settingData.getDataNumber())を取得しました")
         } catch {
             print("背景画像がありません")
         }
@@ -448,10 +448,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         let backgroundURL  = URL(fileURLWithPath: backgroundPath)
         
         // 背景画像を保存
-        let imagePath = backgroundURL.appendingPathComponent("backgroundImage.png")
+        let imagePath = backgroundURL.appendingPathComponent("backgroundImage_\(self.settingData.getDataNumber()).png")
         do {
             try self.imageView.image?.pngData()!.write(to: imagePath)
-            print("背景画像を保存しました")
+            print("backgroundImage_\(self.settingData.getDataNumber())を保存しました")
         } catch {
             print("背景画像を保存できませんでした")
         }
