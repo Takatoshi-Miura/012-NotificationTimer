@@ -32,14 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Realm.Configuration.defaultConfiguration = config
             
             // SettingDataを作成
-            let settingData = SettingData(dataNumber: 0)
-            
-            // Realmデータベースにアクセス
-            let realm = try! Realm()
-            
-            // Realmデータベースに書き込み
-            try! realm.write {
-                realm.add(settingData)
+            for num in 0...4 {
+                // 設定データを作成
+                let settingData = SettingData(dataNumber: num)
+                
+                // Realmデータベースにアクセス
+                let realm = try! Realm()
+                
+                // Realmデータベースに書き込み
+                try! realm.write {
+                    realm.add(settingData)
+                }
+                print("SettingData_\(num)を新規作成しました")
             }
         }
         
