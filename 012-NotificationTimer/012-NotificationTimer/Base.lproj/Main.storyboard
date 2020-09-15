@@ -386,6 +386,14 @@
             </objects>
             <point key="canvasLocation" x="1980" y="137"/>
         </scene>
+        <!--Tutorial Page View Controller-->
+        <scene sceneID="gA3-qu-66f">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="CHn-k8-59Z" customClass="TutorialPageViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jce-sf-rLd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3186" y="134"/>
+        </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="GA8-vQ-Ftc">
             <objects>
