@@ -47,17 +47,15 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ox5-9i-PYf">
                                 <rect key="frame" x="16" y="347.5" width="74" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="p0K-H5-BUT"/>
+                                    <constraint firstAttribute="height" constant="74" id="pga-ft-GX5"/>
+                                </constraints>
                                 <state key="normal" image="Reset Button"/>
                                 <connections>
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hl5-pY-9yN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5i-1v-mFC">
-                                <rect key="frame" x="27" y="373.5" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" tag="2" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
                                 <rect key="frame" x="31" y="236.5" width="258" height="95"/>
                                 <fontDescription key="fontDescription" name="DevanagariSangamMN-Bold" family="Devanagari Sangam MN" pointSize="70"/>
@@ -102,13 +100,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAx-xE-3VS" secondAttribute="trailing" constant="16" id="Mgl-i2-IEs"/>
                             <constraint firstItem="ox5-9i-PYf" firstAttribute="top" secondItem="oEU-4M-EXz" secondAttribute="bottom" constant="16" id="N45-MU-crI"/>
                             <constraint firstItem="ox5-9i-PYf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NLS-cY-Pok"/>
-                            <constraint firstItem="A5i-1v-mFC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="OMG-IE-20T"/>
                             <constraint firstItem="oEU-4M-EXz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R25-fr-1yk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Meo-0R-SGr" secondAttribute="trailing" constant="16" id="RcW-wm-itk"/>
                             <constraint firstItem="oAx-xE-3VS" firstAttribute="top" secondItem="oEU-4M-EXz" secondAttribute="bottom" constant="16" id="TvM-Hi-51M"/>
                             <constraint firstItem="oEU-4M-EXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X3O-HT-1nP"/>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="YPV-pH-qLF"/>
-                            <constraint firstItem="A5i-1v-mFC" firstAttribute="top" secondItem="oEU-4M-EXz" secondAttribute="bottom" constant="42" id="YYB-Om-Rdq"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zc0-rp-7gc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j5J-rG-J7J" secondAttribute="trailing" constant="16" id="dFb-Lr-xnD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAx-xE-3VS" secondAttribute="trailing" constant="16" id="hHy-PP-hfe"/>
@@ -120,7 +116,6 @@
                     <connections>
                         <outlet property="imageView" destination="1wm-Dd-Kn1" id="MzY-n3-kKp"/>
                         <outlet property="resetButton" destination="ox5-9i-PYf" id="hcp-2E-MKu"/>
-                        <outlet property="resetLabel" destination="A5i-1v-mFC" id="urU-vl-KUZ"/>
                         <outlet property="startButton" destination="oAx-xE-3VS" id="NhR-fx-aNX"/>
                         <outlet property="timeLabel" destination="oEU-4M-EXz" id="Cmk-4z-3lx"/>
                     </connections>
@@ -453,7 +448,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reset Button" width="74" height="74"/>
+        <image name="Reset Button" width="256" height="256"/>
         <image name="Start Button" width="74" height="74"/>
         <image name="camera" width="200" height="200"/>
         <image name="hamburgerMenu" width="200" height="200"/>

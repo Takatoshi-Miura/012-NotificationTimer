@@ -33,7 +33,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
-        resetLabel.makeOutLine(strokeWidth: -4.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
         
         // バックグラウンド,フォアグラウンド判定の追加
         addNotification()
@@ -128,7 +127,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // リセットボタン
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var resetLabel: UILabel!
     @IBAction func resetButton(_ sender: Any) {
         if timer.isValid {
             // タイマーを停止
