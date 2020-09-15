@@ -45,11 +45,15 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDeleg
     var pageControl: UIPageControl!
     
     // チュートリアルデータ
-    var titleArray:[String]  = ["ファイル共有機能"]
+    var titleArray:[String]  = ["ファイル共有機能","ボイスメモを通知音にする","ボイスメモを通知音にする","ボイスメモを通知音にする"]
     
-    var detailArray:[String] = ["本アプリではユーザーが取り込んだmp3ファイルやボイスメモを通知音として使用できます。\n※Apple純正アプリ「ファイル」が必要です。"]
+    var detailArray:[String] = ["本アプリではユーザーが取り込んだmp3ファイルやボイスメモを通知音として使用できます。\n※Apple純正アプリ「ファイル」が必要です。",
+                                "[STEP 1/3]\n通知音に設定したいボイスメモの左下の「・・・」をタップし、「\("ファイル")に保存」をタップします。",
+                                "[STEP 2/3]\nこのiPhone内＞TimeManager＞Audio をタップし、「保存」をタップします。",
+                                "[STEP 3/3]\nタイムマネージャーアプリを起動すると先程のボイスメモが通知音として使えるようになっています。"]
     
-    var imageArray:[UIImage?] = [UIImage(named: "①ファイルアプリ")]
+    var imageArray:[UIImage?] = [UIImage(named: "①ファイルアプリ"),UIImage(named: "①ファイルアプリ"),UIImage(named: "①ファイルアプリ"),
+                                 UIImage(named: "①ファイルアプリ")]
     
     
     
@@ -104,7 +108,7 @@ class TutorialPageViewController: UIPageViewController,UIPageViewControllerDeleg
 
         // ラベルを設定
         button.setTitle("閉じる", for: UIControl.State.normal)
-        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        button.setTitleColor(UIColor.label, for: UIControl.State.normal)
 
         // 位置の設定
         button.frame = CGRect(x: UIScreen.main.bounds.maxX - 80, y: UIScreen.main.bounds.maxY - 60, width: 80, height: 60)
