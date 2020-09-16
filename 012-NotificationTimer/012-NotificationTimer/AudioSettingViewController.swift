@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import AVFoundation
 
 class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -60,6 +61,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     @objc func switchTriggered(sender: UISwitch) {
         if sender.isOn {
             // ONの処理
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             print("マナーモードをONにしました")
             // 設定データに反映
             self.settingData.setMannerMode(bool: true)
@@ -94,7 +96,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
                                      ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"],
                                      ["残り30秒","残り1分","残り3分","残り5分"],
                                      ["アプリ起動時","アプリ終了時"]]
-    let sectionTitleArray:[String] = ["一括設定","音量がゼロになり、バイブレーションでの通知となります。\n\n終了時","経過時間通知","残り時間通知","その他"]
+    let sectionTitleArray:[String] = ["一括設定","バイブレーションのみで通知します。\n\n\n終了時","経過時間通知","残り時間通知","その他"]
     
     
     

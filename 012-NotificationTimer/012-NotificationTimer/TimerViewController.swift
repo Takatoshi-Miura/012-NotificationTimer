@@ -649,32 +649,37 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // 音声を再生するメソッド
     func playAudio(filePath path:String?,soundID id:Int) {
-        if let audioPath = path {
-            // URLを作成
-            let audioURL = URL(fileURLWithPath: audioPath)
-            
-            // 再生中なら停止
-            if player.isPlaying {
-                player.stop()
-            }
-            
-            // 再生
-            do {
-                // カスタムオーディオの再生
-                player = try AVAudioPlayer(contentsOf: audioURL)
-                player.play()
-            } catch {
-                // システムサウンドの再生
-                if let soundUrl:URL = URL(string: audioPath) {
-                    var soundID:SystemSoundID = SystemSoundID(id)
-                    AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
-                    AudioServicesPlaySystemSound(soundID)
-                } else {
-                    print("再生処理でエラーが発生しました")
-                }
-            }
+        if self.settingData.getMannerMode() {
+            // バイブレーションで通知
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         } else {
-            print("ファイルがありません")
+            if let audioPath = path {
+                // URLを作成
+                let audioURL = URL(fileURLWithPath: audioPath)
+                       
+                // 再生中なら停止
+                if player.isPlaying {
+                    player.stop()
+                }
+                       
+                // 再生
+                do {
+                    // カスタムオーディオの再生
+                    player = try AVAudioPlayer(contentsOf: audioURL)
+                    player.play()
+                } catch {
+                    // システムサウンドの再生
+                    if let soundUrl:URL = URL(string: audioPath) {
+                        var soundID:SystemSoundID = SystemSoundID(id)
+                        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+                        AudioServicesPlaySystemSound(soundID)
+                    } else {
+                        print("再生処理でエラーが発生しました")
+                    }
+                }
+            } else {
+                print("ファイルがありません")
+            }
         }
     }
     
