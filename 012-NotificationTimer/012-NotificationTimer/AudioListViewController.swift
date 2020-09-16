@@ -70,9 +70,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     var settingData = SettingData()
     
     // テーブルビュー
-    var selectIndex:IndexPath?      // AudioListViewControllerでタップしたセルのindex
+    var selectCellTitle:String = ""
     var cellTitleArray:[[String]]  = [[],[],[],[]]
-    let sectionTitleArray:[String] = ["通知","デフォルト","Apple","取り込んだデータ"]
+    let sectionTitleArray:[String] = ["通知","デフォルト","Apple","取り込んだデータ(50音順)"]
     let systemSoundArray:[SystemSoundID] = [1336,1314,1309,1322,1332,
                                             1330,1331,1335,1308,1016,
                                             1334,1300,1328,1329,1326,
@@ -89,6 +89,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
                                             "ファンファーレ","ホルン","メヌエット","機関車","警告",
                                             "降下","鐘","電報","曇り","予感"]
     var userAudioTitleArray:[String] = []
+    var userAudioArray:[String] = []
     
     // サウンド
     var player = AVAudioPlayer()
@@ -105,15 +106,15 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     // セルを返却
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "audioCell", for: indexPath)
+        
+        // 選択したセルならチェックマークをつける
         cell.textLabel!.text = cellTitleArray[indexPath.section][indexPath.row]
-        if self.selectIndex != nil {
-            if indexPath == self.selectIndex {
-                cell.textLabel?.textColor = UIColor.systemBlue
-                cell.accessoryType = .checkmark
-            } else {
-                cell.textLabel?.textColor = UIColor.label
-                cell.accessoryType = .none
-            }
+        if cell.textLabel!.text == self.selectCellTitle {
+            cell.textLabel?.textColor = UIColor.systemBlue
+            cell.accessoryType = .checkmark
+        } else {
+            cell.textLabel?.textColor = UIColor.label
+            cell.accessoryType = .none
         }
         return cell
     }
@@ -133,20 +134,16 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         // タップしたときの選択色を消去
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         
-        // 前に選択されていたセルからチェックマークを外す
-        if let index = self.selectIndex {
-            let cell = tableView.cellForRow(at:index)
-            cell?.textLabel?.textColor = UIColor.label
-            cell?.accessoryType = .none
-        }
-        
-        // indexを取得
-        self.selectIndex = indexPath
+        // セルのタイトルを取得
+        self.selectCellTitle = cellTitleArray[indexPath.section][indexPath.row]
         
         // セルにチェックマークをつける
         let cell = tableView.cellForRow(at:indexPath)
         cell?.textLabel?.textColor = UIColor.systemBlue
         cell?.accessoryType = .checkmark
+        
+        // テーブルビューをリロード(前のセルからチェックマークを外すため)
+        tableView.reloadData()
         
         // パスを作成
         var audioPath:String = ""
@@ -160,7 +157,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
             audioPath = NSHomeDirectory() + "/Library/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
         case 3:
             // パスを作成
-            audioPath = NSHomeDirectory() + "/Documents/Audio/\(userAudioTitleArray[indexPath.row])"
+            audioPath = NSHomeDirectory() + "/Documents/Audio/\(userAudioArray[indexPath.row])"
         default:
             break
         }
@@ -218,7 +215,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         cellTitleArray[0] = ["OFF"]
         
         // デフォルトサウンドを設定
-        cellTitleArray[1] = ["\(navigationTitle)"]
+        cellTitleArray[1] = ["デフォルト(\(navigationTitle))"]
         
         // システムサウンドを設定
         cellTitleArray[2] = systemSoundTitleArray
@@ -232,11 +229,17 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         // ユーザーが取り込んだ音声データフォルダのパスを取得
         let userAudioPath = NSHomeDirectory() + "/Documents/Audio"
         
-        // フォルダ内のmp3データ名を全て取得＆50音順にソート
+        // フォルダ内のmp3ファイル名を全て取得＆50音順にソート
         do {
-            self.userAudioTitleArray = try FileManager.default.contentsOfDirectory(atPath: userAudioPath)
-            self.userAudioTitleArray = self.userAudioTitleArray.sorted()
-            print(self.userAudioTitleArray)
+            // ファイル名を取得
+            self.userAudioArray = try FileManager.default.contentsOfDirectory(atPath: userAudioPath)
+            self.userAudioArray = self.userAudioArray.sorted()
+            
+            // 拡張子を除く
+            let titleArray = self.userAudioArray
+            for title in titleArray {
+                self.userAudioTitleArray.append(URL(fileURLWithPath: NSHomeDirectory() + "/Documents/Audio/\(title)").deletingPathExtension().lastPathComponent)
+            }
         } catch {
             print(error)
         }

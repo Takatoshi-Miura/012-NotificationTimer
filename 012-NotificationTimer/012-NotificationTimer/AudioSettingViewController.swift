@@ -88,6 +88,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // テーブルビュー
     var cellTitle:String = ""
+    var cellSubTitle:String = ""
     let cellTitleArray:[[String]] = [["マナーモード"],
                                      ["終了時"],
                                      ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"],
@@ -160,6 +161,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             
             // セルのタイトルを取得
             self.cellTitle = cellTitleArray[indexPath.section][indexPath.row]
+            self.cellSubTitle = self.getFileName(indexPath: indexPath)
             
             // AudioListViewControllerへ遷移
             self.performSegue(withIdentifier: "goAudioListViewController", sender: nil)
@@ -177,6 +179,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             let audioListViewController = segue.destination as! AudioListViewController
             audioListViewController.settingData = self.settingData
             audioListViewController.navigationTitle = self.cellTitle
+            audioListViewController.selectCellTitle = self.cellSubTitle
             print("SettingData_\(self.settingData.getDataNumber())をAudioListViewControllerに渡しました")
         }
     }
