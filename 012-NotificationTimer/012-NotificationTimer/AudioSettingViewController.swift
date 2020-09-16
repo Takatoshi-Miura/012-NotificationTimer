@@ -55,8 +55,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
         }
     }
     
-    
-    
     // マナーモードスイッチ
     let switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     @objc func switchTriggered(sender: UISwitch) {
@@ -77,7 +75,18 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     
     // MARK:- 変数の宣言
     
+    // 設定データ
     var settingData = SettingData(dataNumber: 0)
+    
+    // ファイル名(セルのdetailに英語名で表示されるのを防止)
+    let fileNameArray:[String:String] = ["Update":"アップデート","sms-received6":"エレクトロニック","sms-received3":"ガラス","Calypso":"カリプソ",
+                                         "Suspense":"サスペンス","Sherwood_Forest":"シャーウッドの森","Spell":"スペル","Typewriters":"タイプライター",
+                                         "sms-received2":"チャイム","tweet_sent":"ツイート","Tiptoes":"つま先","Voicemail":"トライトーン",
+                                         "News_Flash":"ニュースフラッシュ","Noir":"ノアール","Ladder":"はしご","Fanfare":"ファンファーレ",
+                                         "sms-received4":"ホルン","Minuet":"メヌエット","Choo_Choo":"機関車","alarm":"警告","Descent":"降下",
+                                         "new-mail":"鐘","Telegraph":"電報","Bloom":"曇り","Anticipate":"予感","/":"OFF"]
+    
+    // テーブルビュー
     var cellTitle:String = ""
     let cellTitleArray:[[String]] = [["マナーモード"],
                                      ["終了時"],
@@ -113,7 +122,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // スイッチを追加
             switchView.addTarget(self, action: #selector(switchTriggered), for: .valueChanged)
             cell.accessoryView = switchView
-            
             return cell
         } else {
             // 音声セルを返却
@@ -228,30 +236,74 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     func getFileName(indexPath:IndexPath) -> String {
         if indexPath.section == 1 {
             // 終了時
-            return URL(fileURLWithPath: self.settingData.getAudioFinish()).deletingPathExtension().lastPathComponent
+            let fileName = URL(fileURLWithPath: self.settingData.getAudioFinish()).deletingPathExtension().lastPathComponent
+            if let name = fileNameArray[fileName] {
+                return name
+            }
+            return fileName
         } else if indexPath.section == 2 {
             // 経過時間通知
             switch indexPath.row {
             case 0:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed5min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed5min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 1:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed10min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed10min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 2:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed15min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed15min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 3:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed20min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed20min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 4:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed25min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed25min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 5:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed30min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed30min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 6:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed35min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed35min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 7:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed40min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed40min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 8:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed45min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed45min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 9:
-                return URL(fileURLWithPath: self.settingData.getAudioElapsed50min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioElapsed50min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             default:
                 return "detail"
             }
@@ -259,13 +311,29 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // 残り時間通知
             switch indexPath.row {
             case 0:
-                return URL(fileURLWithPath: self.settingData.getAudioRemaining30sec()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioRemaining30sec()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 1:
-                return URL(fileURLWithPath: self.settingData.getAudioRemaining1min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioRemaining1min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 2:
-                return URL(fileURLWithPath: self.settingData.getAudioRemaining3min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioRemaining3min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 3:
-                return URL(fileURLWithPath: self.settingData.getAudioRemaining5min()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioRemaining5min()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             default:
                 return "detail"
             }
@@ -273,9 +341,17 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // アプリ起動/終了時
             switch indexPath.row {
             case 0:
-                return URL(fileURLWithPath: self.settingData.getAudioAppStartUp()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioAppStartUp()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             case 1:
-                return URL(fileURLWithPath: self.settingData.getAudioAppFinish()).deletingPathExtension().lastPathComponent
+                let fileName = URL(fileURLWithPath: self.settingData.getAudioAppFinish()).deletingPathExtension().lastPathComponent
+                if let name = fileNameArray[fileName] {
+                    return name
+                }
+                return fileName
             default:
                 return "detail"
             }

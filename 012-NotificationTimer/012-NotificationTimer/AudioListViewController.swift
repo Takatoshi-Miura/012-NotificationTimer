@@ -52,7 +52,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
             // 設定データを渡す
             controller.settingData = self.settingData
             controller.tableView.reloadData()
-            print("データをAudioSettingViewControllerに渡しました")
+            print("SettingData_\(self.settingData.getDataNumber())をAudioSettingViewControllerに渡しました")
             
             // モーダルを閉じる
             self.dismiss(animated: true, completion: nil)
