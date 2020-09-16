@@ -147,6 +147,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         // パスを作成
         var audioPath:String = ""
+        var soundID:SystemSoundID = 0
         
         switch indexPath.section {
         case 1:
@@ -155,6 +156,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         case 2:
             // パスを作成
             audioPath = NSHomeDirectory() + "/Library/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
+            
+            // サウンドIDを取得
+            soundID = systemSoundArray[indexPath.row]
         case 3:
             // パスを作成
             audioPath = NSHomeDirectory() + "/Documents/Audio/\(userAudioArray[indexPath.row])"
@@ -163,10 +167,10 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         
         // 設定データに反映
-        updateSettingData(filePath: audioPath)
+        updateSettingData(filePath: audioPath, soundID: Int(soundID))
         
         // サウンドを再生
-        playAudio(filePath: audioPath, soundID: Int(systemSoundArray[indexPath.row]))
+        playAudio(filePath: audioPath, soundID: Int(soundID))
     }
     
     
@@ -193,7 +197,6 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
                 // システムサウンドの再生
                 if let soundUrl:URL = URL(string: audioPath) {
                     var soundID:SystemSoundID = SystemSoundID(id)
-                    self.settingData.setSoundID(id: id)
                     AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
                     AudioServicesPlaySystemSound(soundID)
                 } else {
@@ -246,42 +249,59 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     // 設定データを更新するメソッド
-    func updateSettingData(filePath path:String) {
+    func updateSettingData(filePath path:String,soundID id:Int) {
         switch self.navigationTitle {
         case "終了時":
             self.settingData.setAudioFinish(filePath: path)
+            self.settingData.setAudioFinishSoundID(id: id)
         case "5分経過":
             self.settingData.setAudioElapsed5min(filePath: path)
+            self.settingData.setAudioElapsed5minSoundID(id: id)
         case "10分経過":
             self.settingData.setAudioElapsed10min(filePath: path)
+            self.settingData.setAudioElapsed10minSoundID(id: id)
         case "15分経過":
             self.settingData.setAudioElapsed15min(filePath: path)
+            self.settingData.setAudioElapsed15minSoundID(id: id)
         case "20分経過":
             self.settingData.setAudioElapsed20min(filePath: path)
+            self.settingData.setAudioElapsed20minSoundID(id: id)
         case "25分経過":
             self.settingData.setAudioElapsed25min(filePath: path)
+            self.settingData.setAudioElapsed25minSoundID(id: id)
         case "30分経過":
             self.settingData.setAudioElapsed30min(filePath: path)
+            self.settingData.setAudioElapsed30minSoundID(id: id)
         case "35分経過":
             self.settingData.setAudioElapsed35min(filePath: path)
+            self.settingData.setAudioElapsed35minSoundID(id: id)
         case "40分経過":
             self.settingData.setAudioElapsed40min(filePath: path)
+            self.settingData.setAudioElapsed40minSoundID(id: id)
         case "45分経過":
             self.settingData.setAudioElapsed45min(filePath: path)
+            self.settingData.setAudioElapsed45minSoundID(id: id)
         case "50分経過":
             self.settingData.setAudioElapsed50min(filePath: path)
+            self.settingData.setAudioElapsed50minSoundID(id: id)
         case "残り30秒":
             self.settingData.setAudioRemaining30sec(filePath: path)
+            self.settingData.setAudioRemaining30secSoundID(id: id)
         case "残り1分":
             self.settingData.setAudioRemaining1min(filePath: path)
+            self.settingData.setAudioRemaining1minSoundID(id: id)
         case "残り3分":
             self.settingData.setAudioRemaining3min(filePath: path)
+            self.settingData.setAudioRemaining3minSoundID(id: id)
         case "残り5分":
             self.settingData.setAudioRemaining5min(filePath: path)
+            self.settingData.setAudioRemaining5minSoundID(id: id)
         case "アプリ起動時":
             self.settingData.setAudioAppStartUp(filePath: path)
+            self.settingData.setAudioAppStartUpSoundID(id: id)
         case "アプリ終了時":
             self.settingData.setAudioAppFinish(filePath: path)
+            self.settingData.setAudioAppFinishSoundID(id: id)
         default:
             break
         }

@@ -370,6 +370,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setDataNumber(number: object[self.settingData.getDataNumber()].getDataNumber())
         self.settingData.setCount(time: object[self.settingData.getDataNumber()].getCount())
         self.settingData.setMannerMode(bool: object[self.settingData.getDataNumber()].getMannerMode())
+        self.settingData.setAudioFinishSoundID(id: object[self.settingData.getDataNumber()].getAudioFinishSoundID())
+        self.settingData.setAudioElapsed5minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed5minSoundID())
+        self.settingData.setAudioElapsed10minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed10minSoundID())
+        self.settingData.setAudioElapsed15minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed15minSoundID())
+        self.settingData.setAudioElapsed20minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed20minSoundID())
+        self.settingData.setAudioElapsed25minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed25minSoundID())
+        self.settingData.setAudioElapsed30minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed30minSoundID())
+        self.settingData.setAudioElapsed35minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed35minSoundID())
+        self.settingData.setAudioElapsed40minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed40minSoundID())
+        self.settingData.setAudioElapsed45minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed45minSoundID())
+        self.settingData.setAudioElapsed50minSoundID(id: object[self.settingData.getDataNumber()].getAudioElapsed50minSoundID())
+        self.settingData.setAudioRemaining30secSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining30secSoundID())
+        self.settingData.setAudioRemaining1minSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining1minSoundID())
+        self.settingData.setAudioRemaining3minSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining3minSoundID())
+        self.settingData.setAudioRemaining5minSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining5minSoundID())
+        self.settingData.setAudioAppStartUpSoundID(id: object[self.settingData.getDataNumber()].getAudioAppStartUpSoundID())
+        self.settingData.setAudioAppFinishSoundID(id: object[self.settingData.getDataNumber()].getAudioAppFinishSoundID())
         self.settingData.setAudioFinish(filePath: object[self.settingData.getDataNumber()].getAudioFinish())
         self.settingData.setAudioElapsed5min(filePath: object[self.settingData.getDataNumber()].getAudioElapsed5min())
         self.settingData.setAudioElapsed10min(filePath: object[self.settingData.getDataNumber()].getAudioElapsed10min())
@@ -404,6 +421,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             object[self.settingData.getDataNumber()].setDataNumber(number: self.settingData.getDataNumber())
             object[self.settingData.getDataNumber()].setCount(time: self.settingData.getCount())
             object[self.settingData.getDataNumber()].setMannerMode(bool: self.settingData.getMannerMode())
+            object[self.settingData.getDataNumber()].setAudioFinishSoundID(id: self.settingData.getAudioFinishSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed5minSoundID(id: self.settingData.getAudioElapsed5minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed10minSoundID(id: self.settingData.getAudioElapsed10minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed15minSoundID(id: self.settingData.getAudioElapsed15minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed20minSoundID(id: self.settingData.getAudioElapsed20minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed25minSoundID(id: self.settingData.getAudioElapsed25minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed30minSoundID(id: self.settingData.getAudioElapsed30minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed35minSoundID(id: self.settingData.getAudioElapsed35minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed40minSoundID(id: self.settingData.getAudioElapsed40minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed45minSoundID(id: self.settingData.getAudioElapsed45minSoundID())
+            object[self.settingData.getDataNumber()].setAudioElapsed50minSoundID(id: self.settingData.getAudioElapsed50minSoundID())
+            object[self.settingData.getDataNumber()].setAudioRemaining30secSoundID(id: self.settingData.getAudioRemaining30secSoundID())
+            object[self.settingData.getDataNumber()].setAudioRemaining1minSoundID(id: self.settingData.getAudioRemaining1minSoundID())
+            object[self.settingData.getDataNumber()].setAudioRemaining3minSoundID(id: self.settingData.getAudioRemaining3minSoundID())
+            object[self.settingData.getDataNumber()].setAudioRemaining5minSoundID(id: self.settingData.getAudioRemaining5minSoundID())
+            object[self.settingData.getDataNumber()].setAudioAppStartUpSoundID(id: self.settingData.getAudioAppStartUpSoundID())
+            object[self.settingData.getDataNumber()].setAudioAppFinishSoundID(id: self.settingData.getAudioAppFinishSoundID())
             object[self.settingData.getDataNumber()].setAudioFinish(filePath: self.settingData.getAudioFinish())
             object[self.settingData.getDataNumber()].setAudioElapsed5min(filePath: self.settingData.getAudioElapsed5min())
             object[self.settingData.getDataNumber()].setAudioElapsed10min(filePath: self.settingData.getAudioElapsed10min())
@@ -508,43 +542,43 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(time) {
         case 60 * 5:
             // 5分経過
-            playAudio(filePath: self.settingData.audioElapsed5min)
+            playAudio(filePath: self.settingData.audioElapsed5min,soundID: self.settingData.getAudioElapsed5minSoundID())
             print("5分経過")
         case 60 * 10:
             // 10分経過
-            playAudio(filePath: self.settingData.audioElapsed10min)
+            playAudio(filePath: self.settingData.audioElapsed10min,soundID: self.settingData.getAudioElapsed10minSoundID())
             print("10分経過")
         case 60 * 15:
             // 15分経過
-            playAudio(filePath: self.settingData.audioElapsed15min)
+            playAudio(filePath: self.settingData.audioElapsed15min,soundID: self.settingData.getAudioElapsed15minSoundID())
             print("15分経過")
         case 60 * 20:
             // 20分経過
-            playAudio(filePath: self.settingData.audioElapsed20min)
+            playAudio(filePath: self.settingData.audioElapsed20min,soundID: self.settingData.getAudioElapsed20minSoundID())
             print("20分経過")
         case 60 * 25:
             // 25分経過
-            playAudio(filePath: self.settingData.audioElapsed25min)
+            playAudio(filePath: self.settingData.audioElapsed25min,soundID: self.settingData.getAudioElapsed25minSoundID())
             print("25分経過")
         case 60 * 30:
             // 30分経過
-            playAudio(filePath: self.settingData.audioElapsed30min)
+            playAudio(filePath: self.settingData.audioElapsed30min,soundID: self.settingData.getAudioElapsed30minSoundID())
             print("30分経過")
         case 60 * 35:
             // 35分経過
-            playAudio(filePath: self.settingData.audioElapsed35min)
+            playAudio(filePath: self.settingData.audioElapsed35min,soundID: self.settingData.getAudioElapsed35minSoundID())
             print("35分経過")
         case 60 * 40:
             // 40分経過
-            playAudio(filePath: self.settingData.audioElapsed40min)
+            playAudio(filePath: self.settingData.audioElapsed40min,soundID: self.settingData.getAudioElapsed40minSoundID())
             print("40分経過")
         case 60 * 45:
             // 45分経過
-            playAudio(filePath: self.settingData.audioElapsed45min)
+            playAudio(filePath: self.settingData.audioElapsed45min,soundID: self.settingData.getAudioElapsed45minSoundID())
             print("45分経過")
         case 60 * 50:
             // 50分経過
-            playAudio(filePath: self.settingData.audioElapsed50min)
+            playAudio(filePath: self.settingData.audioElapsed50min,soundID: self.settingData.getAudioElapsed50minSoundID())
             print("50分経過")
         default:
             break
@@ -554,23 +588,23 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(self.settingData.count) {
         case 60 * 5:
             // 残り5分
-            playAudio(filePath: self.settingData.audioRemaining5min)
+            playAudio(filePath: self.settingData.audioRemaining5min,soundID: self.settingData.getAudioRemaining5minSoundID())
             print("残り5分")
         case 60 * 3:
             // 残り3分
-            playAudio(filePath: self.settingData.audioRemaining3min)
+            playAudio(filePath: self.settingData.audioRemaining3min,soundID: self.settingData.getAudioRemaining3minSoundID())
             print("残り3分")
         case 60 * 1:
             // 残り1分
-            playAudio(filePath: self.settingData.audioRemaining1min)
+            playAudio(filePath: self.settingData.audioRemaining1min,soundID: self.settingData.getAudioRemaining1minSoundID())
             print("残り1分")
         case 30:
             // 残り30秒
-            playAudio(filePath: self.settingData.audioRemaining30sec)
+            playAudio(filePath: self.settingData.audioRemaining30sec,soundID: self.settingData.getAudioRemaining30secSoundID())
             print("残り30秒")
         case 0:
             // 終了
-            playAudio(filePath: self.settingData.audioFinish)
+            playAudio(filePath: self.settingData.audioFinish,soundID: self.settingData.getAudioFinishSoundID())
             print("終了")
         default:
             break
@@ -578,7 +612,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     }
     
     // 音声を再生するメソッド
-    func playAudio(filePath path:String?) {
+    func playAudio(filePath path:String?,soundID id:Int) {
         if let audioPath = path {
             // URLを作成
             let audioURL = URL(fileURLWithPath: audioPath)
@@ -596,7 +630,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             } catch {
                 // システムサウンドの再生
                 if let soundUrl:URL = URL(string: audioPath) {
-                    var soundID:SystemSoundID = SystemSoundID(self.settingData.getSoundID())
+                    var soundID:SystemSoundID = SystemSoundID(id)
                     AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
                     AudioServicesPlaySystemSound(soundID)
                 } else {

@@ -17,10 +17,26 @@ class SettingData:Object {
     
     //MARK:- 保持データ
     
-    @objc dynamic var dataNumber:Int = 0              // データ番号
-    @objc dynamic var count:Float = 0.0               // 設定時間
-    @objc dynamic var mannerMode:Bool = false         // マナーモード（true:ON / false:OFF）
-    @objc dynamic var soundID:Int = 0                 // サウンドID(システムサウンド再生用)
+    @objc dynamic var dataNumber:Int = 0                    // データ番号
+    @objc dynamic var count:Float = 0.0                     // 設定時間
+    @objc dynamic var mannerMode:Bool = false               // マナーモード（true:ON / false:OFF）
+    @objc dynamic var audioFinishSoundID:Int = 0            // 終了時間通知用 システムサウンドID
+    @objc dynamic var audioElapsed5minSoundID:Int = 0       // 5分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed10minSoundID:Int = 0      // 10分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed15minSoundID:Int = 0      // 15分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed20minSoundID:Int = 0      // 20分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed25minSoundID:Int = 0      // 25分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed30minSoundID:Int = 0      // 30分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed35minSoundID:Int = 0      // 35分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed40minSoundID:Int = 0      // 40分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed45minSoundID:Int = 0      // 45分経過通知用 システムサウンドID
+    @objc dynamic var audioElapsed50minSoundID:Int = 0      // 50分経過通知用 システムサウンドID
+    @objc dynamic var audioRemaining30secSoundID:Int = 0    // 残り30秒通知用 システムサウンドID
+    @objc dynamic var audioRemaining1minSoundID:Int = 0     // 残り1分通知用 システムサウンドID
+    @objc dynamic var audioRemaining3minSoundID:Int = 0     // 残り3分通知用 システムサウンドID
+    @objc dynamic var audioRemaining5minSoundID:Int = 0     // 残り5分通知用 システムサウンドID
+    @objc dynamic var audioAppStartUpSoundID:Int = 0        // アプリ起動音 システムサウンドID
+    @objc dynamic var audioAppFinishSoundID:Int = 0         // アプリ終了音 システムサウンドID
     @objc dynamic var audioFinish:String = Bundle.main.path(forResource: "デフォルト(終了時)", ofType:"mp3")!           // 終了時通知用 音声ファイルパス
     @objc dynamic var audioElapsed5min:String = Bundle.main.path(forResource: "デフォルト(5分経過)", ofType:"mp3")!     // 5分経過通知用 音声ファイルパス
     @objc dynamic var audioElapsed10min:String = Bundle.main.path(forResource: "デフォルト(10分経過)", ofType:"mp3")!   // 10分経過通知用 音声ファイルパス
@@ -64,8 +80,72 @@ class SettingData:Object {
         self.mannerMode = bool
     }
     
-    func setSoundID(id:Int) {
-        self.soundID = id
+    func setAudioFinishSoundID(id:Int) {
+        self.audioFinishSoundID = id
+    }
+    
+    func setAudioElapsed5minSoundID(id:Int) {
+        self.audioElapsed5minSoundID = id
+    }
+    
+    func setAudioElapsed10minSoundID(id:Int) {
+        self.audioElapsed10minSoundID = id
+    }
+    
+    func setAudioElapsed15minSoundID(id:Int) {
+        self.audioElapsed15minSoundID = id
+    }
+    
+    func setAudioElapsed20minSoundID(id:Int) {
+        self.audioElapsed20minSoundID = id
+    }
+    
+    func setAudioElapsed25minSoundID(id:Int) {
+        self.audioElapsed25minSoundID = id
+    }
+    
+    func setAudioElapsed30minSoundID(id:Int) {
+        self.audioElapsed30minSoundID = id
+    }
+    
+    func setAudioElapsed35minSoundID(id:Int) {
+        self.audioElapsed35minSoundID = id
+    }
+    
+    func setAudioElapsed40minSoundID(id:Int) {
+        self.audioElapsed40minSoundID = id
+    }
+    
+    func setAudioElapsed45minSoundID(id:Int) {
+        self.audioElapsed45minSoundID = id
+    }
+    
+    func setAudioElapsed50minSoundID(id:Int) {
+        self.audioElapsed50minSoundID = id
+    }
+    
+    func setAudioRemaining30secSoundID(id:Int) {
+        self.audioRemaining30secSoundID = id
+    }
+    
+    func setAudioRemaining1minSoundID(id:Int) {
+        self.audioRemaining1minSoundID = id
+    }
+    
+    func setAudioRemaining3minSoundID(id:Int) {
+        self.audioRemaining3minSoundID = id
+    }
+    
+    func setAudioRemaining5minSoundID(id:Int) {
+        self.audioRemaining5minSoundID = id
+    }
+    
+    func setAudioAppStartUpSoundID(id:Int) {
+        self.audioAppStartUpSoundID = id
+    }
+    
+    func setAudioAppFinishSoundID(id:Int) {
+        self.audioAppFinishSoundID = id
     }
     
     func setAudioFinish(filePath:String) {
@@ -152,8 +232,72 @@ class SettingData:Object {
         return self.mannerMode
     }
     
-    func getSoundID() -> Int {
-        return self.soundID
+    func getAudioFinishSoundID() -> Int {
+        return self.audioFinishSoundID
+    }
+    
+    func getAudioElapsed5minSoundID() -> Int {
+        return self.audioElapsed5minSoundID
+    }
+    
+    func getAudioElapsed10minSoundID() -> Int {
+        return self.audioElapsed10minSoundID
+    }
+    
+    func getAudioElapsed15minSoundID() -> Int {
+        return self.audioElapsed15minSoundID
+    }
+    
+    func getAudioElapsed20minSoundID() -> Int {
+        return self.audioElapsed20minSoundID
+    }
+    
+    func getAudioElapsed25minSoundID() -> Int {
+        return self.audioElapsed25minSoundID
+    }
+    
+    func getAudioElapsed30minSoundID() -> Int {
+        return self.audioElapsed30minSoundID
+    }
+    
+    func getAudioElapsed35minSoundID() -> Int {
+        return self.audioElapsed35minSoundID
+    }
+    
+    func getAudioElapsed40minSoundID() -> Int {
+        return self.audioElapsed40minSoundID
+    }
+    
+    func getAudioElapsed45minSoundID() -> Int {
+        return self.audioElapsed45minSoundID
+    }
+    
+    func getAudioElapsed50minSoundID() -> Int {
+        return self.audioElapsed50minSoundID
+    }
+    
+    func getAudioRemaining30secSoundID() -> Int {
+        return self.audioRemaining30secSoundID
+    }
+    
+    func getAudioRemaining1minSoundID() -> Int {
+        return self.audioRemaining1minSoundID
+    }
+    
+    func getAudioRemaining3minSoundID() -> Int {
+        return self.audioRemaining3minSoundID
+    }
+    
+    func getAudioRemaining5minSoundID() -> Int {
+        return self.audioRemaining5minSoundID
+    }
+    
+    func getAudioAppStartUpSoundID() -> Int {
+        return self.audioAppStartUpSoundID
+    }
+    
+    func getAudioAppFinishSoundID() -> Int {
+        return self.audioAppFinishSoundID
     }
     
     func getAudioFinish() -> String {
