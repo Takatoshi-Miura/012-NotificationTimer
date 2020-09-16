@@ -40,6 +40,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // データをロード
         loadSettingData()
         loadBackgroundImage()
+        loadNotificationRequest()
+        
+        // 通知を削除
+        deleteNotificationRequest()
         
         // ラベルにcountを反映
         displayCount()
@@ -100,6 +104,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timer.invalidate()
             timerNotification.invalidate()
             
+            // 通知を削除
+            deleteNotificationRequest()
+            
             // フラグ設定
             timerIsStart = false
             
@@ -114,7 +121,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             timerIsStart = true
             
             // バナー通知をセット
-            // MARK:- Fix:前回セットした通知を削除
             setElapsedTimeNotification()
             
             // ボタン画像を一時停止用にセット
@@ -132,6 +138,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             // タイマーを停止
             timer.invalidate()
             timerNotification.invalidate()
+            
+            // 通知を削除
+            deleteNotificationRequest()
             
             // フラグ設定
             timerIsStart = false
@@ -209,6 +218,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // 音声再生用
     var player = AVAudioPlayer()
+    
+    // 通知用
+    var requestIDArray:[String] = []
     
     // 広告用
     let AdMobID = "ca-app-pub-5239611561920614/8530378558"
@@ -489,6 +501,30 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
     }
     
+    // 通知リクエストを取得するメソッド
+    func loadNotificationRequest() {
+        if let array = UserDefaults.standard.array(forKey: "requestIDArray") as? [String] {
+            self.requestIDArray = array
+            print("通知リクエストを取得しました")
+        } else {
+            print("通知リクエストはありません")
+        }
+    }
+    
+    // 通知リクエストを保存するメソッド
+    func saveNotificationRequest() {
+        UserDefaults.standard.set(self.requestIDArray, forKey: "requestIDArray")
+        print("通知リクエストを保存しました")
+    }
+    
+    // 通知リクエストを削除するメソッド
+    func deleteNotificationRequest() {
+        if self.requestIDArray.isEmpty == false {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: self.requestIDArray)
+            print("通知リクエストを削除しました")
+        }
+    }
+    
     
     
     // MARK:- 画面遷移
@@ -649,51 +685,67 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // リクエストを格納する配列を作成
         var requestArray:[UNNotificationRequest] = []
+        requestIDArray = []
         
         // リクエスト作成
         switch count {
         case 50 * 60...99 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から50分が経過しました。", soundPath: settingData.audioElapsed50min, timeInterval: 50 * 60))
+            requestIDArray.append("開始から50分が経過しました。")
             fallthrough
         case 45 * 60...50 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から45分が経過しました。", soundPath: settingData.audioElapsed45min, timeInterval: 45 * 60))
+            requestIDArray.append("開始から45分が経過しました。")
             fallthrough
         case 40 * 60...45 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から40分が経過しました。", soundPath: settingData.audioElapsed40min, timeInterval: 40 * 60))
+            requestIDArray.append("開始から40分が経過しました。")
             fallthrough
         case 35 * 60...40 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から35分が経過しました。", soundPath: settingData.audioElapsed35min, timeInterval: 35 * 60))
+            requestIDArray.append("開始から35分が経過しました。")
             fallthrough
         case 30 * 60...35 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から30分が経過しました。", soundPath: settingData.audioElapsed30min, timeInterval: 30 * 60))
+            requestIDArray.append("開始から30分が経過しました。")
             fallthrough
         case 25 * 60...30 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から25分が経過しました。", soundPath: settingData.audioElapsed25min, timeInterval: 25 * 60))
+            requestIDArray.append("開始から25分が経過しました。")
             fallthrough
         case 20 * 60...25 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から20分が経過しました。", soundPath: settingData.audioElapsed20min, timeInterval: 20 * 60))
+            requestIDArray.append("開始から20分が経過しました。")
             fallthrough
         case 15 * 60...20 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から15分が経過しました。", soundPath: settingData.audioElapsed15min, timeInterval: 15 * 60))
+            requestIDArray.append("開始から15分が経過しました。")
             fallthrough
         case 10 * 60...15 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から10分が経過しました。", soundPath: settingData.audioElapsed10min, timeInterval: 10 * 60))
+            requestIDArray.append("開始から10分が経過しました。")
             fallthrough
         case 5 * 60...10 * 60 :
             requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から5分が経過しました。", soundPath: settingData.audioElapsed5min, timeInterval: 5 * 60))
             requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り5分になりました。", soundPath: settingData.audioRemaining5min, timeInterval: Double(count - (5 * 60))))
+            requestIDArray.append("開始から5分が経過しました。")
+            requestIDArray.append("残り5分になりました。")
             fallthrough
         case 3 * 60...5 * 60 :
             requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り3分になりました。", soundPath: settingData.audioRemaining3min, timeInterval: Double(count - (3 * 60))))
+            requestIDArray.append("残り3分になりました。")
             fallthrough
         case 1 * 60...3 * 60 :
             requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り1分になりました。", soundPath: settingData.audioRemaining1min, timeInterval: Double(count - (1 * 60))))
+            requestIDArray.append("残り1分になりました。")
             fallthrough
         case 30...1 * 60 :
             requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り30秒になりました。", soundPath: settingData.audioRemaining30sec, timeInterval: Double(count - 30)))
+            requestIDArray.append("残り30秒になりました。")
             fallthrough
         default:
             requestArray.append(createRequest(title: "計測完了通知", subTitle: "設定時間になりました。", soundPath: settingData.audioFinish, timeInterval: Double(count)))
+            requestIDArray.append("設定時間になりました。")
         }
         
         // 通知をセット
@@ -942,6 +994,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         
         // SettingDataを保存
         updateSettingData()
+        
+        // 通知を保存
+        saveNotificationRequest()
     }
 
 }
