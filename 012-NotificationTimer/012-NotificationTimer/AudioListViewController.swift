@@ -303,9 +303,6 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         case "アプリ起動時":
             self.settingData.setAudioAppStartUp(filePath: path)
             self.settingData.setAudioAppStartUpSoundID(id: id)
-        case "アプリ終了時":
-            self.settingData.setAudioAppFinish(filePath: path)
-            self.settingData.setAudioAppFinishSoundID(id: id)
         default:
             break
         }

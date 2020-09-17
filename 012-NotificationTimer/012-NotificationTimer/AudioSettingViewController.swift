@@ -95,8 +95,8 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
                                      ["終了時"],
                                      ["5分経過","10分経過","15分経過","20分経過","25分経過","30分経過","35分経過","40分経過","45分経過","50分経過"],
                                      ["残り30秒","残り1分","残り3分","残り5分"],
-                                     ["アプリ起動時","アプリ終了時"]]
-    let sectionTitleArray:[String] = ["一括設定","バイブレーションのみで通知します。\n\n\n終了時","経過時間通知","残り時間通知","その他"]
+                                     ["アプリ起動時"],[]]
+    let sectionTitleArray:[String] = ["一括設定","バイブレーションのみで通知します。\n\n\n終了時","経過時間通知","残り時間通知","その他","次回起動時に音声が再生されます。"]
     
     
     
@@ -147,7 +147,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     // セクションの高さを返却
-    let sectionHeightArray:[CGFloat] = [30,60,30,30,30]
+    let sectionHeightArray:[CGFloat] = [30,60,30,30,30,10]
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeightArray[section]
     }
@@ -219,7 +219,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             object[self.settingData.getDataNumber()].setAudioRemaining3minSoundID(id: self.settingData.getAudioRemaining3minSoundID())
             object[self.settingData.getDataNumber()].setAudioRemaining5minSoundID(id: self.settingData.getAudioRemaining5minSoundID())
             object[self.settingData.getDataNumber()].setAudioAppStartUpSoundID(id: self.settingData.getAudioAppStartUpSoundID())
-            object[self.settingData.getDataNumber()].setAudioAppFinishSoundID(id: self.settingData.getAudioAppFinishSoundID())
             object[self.settingData.getDataNumber()].setAudioFinish(filePath: self.settingData.getAudioFinish())
             object[self.settingData.getDataNumber()].setAudioElapsed5min(filePath: self.settingData.getAudioElapsed5min())
             object[self.settingData.getDataNumber()].setAudioElapsed10min(filePath: self.settingData.getAudioElapsed10min())
@@ -236,7 +235,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             object[self.settingData.getDataNumber()].setAudioRemaining3min(filePath: self.settingData.getAudioRemaining3min())
             object[self.settingData.getDataNumber()].setAudioRemaining5min(filePath: self.settingData.getAudioRemaining5min())
             object[self.settingData.getDataNumber()].setAudioAppStartUp(filePath: self.settingData.getAudioAppStartUp())
-            object[self.settingData.getDataNumber()].setAudioAppFinish(filePath: self.settingData.getAudioAppFinish())
             print("SettingData_\(self.settingData.getDataNumber())を更新しました")
         }
     }
@@ -360,16 +358,10 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
                 return "detail"
             }
         } else {
-            // アプリ起動/終了時
+            // アプリ起動
             switch indexPath.row {
             case 0:
                 let fileName = URL(fileURLWithPath: self.settingData.getAudioAppStartUp()).deletingPathExtension().lastPathComponent
-                if let name = fileNameArray[fileName] {
-                    return name
-                }
-                return fileName
-            case 1:
-                let fileName = URL(fileURLWithPath: self.settingData.getAudioAppFinish()).deletingPathExtension().lastPathComponent
                 if let name = fileNameArray[fileName] {
                     return name
                 }

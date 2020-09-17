@@ -398,7 +398,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setAudioRemaining3minSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining3minSoundID())
         self.settingData.setAudioRemaining5minSoundID(id: object[self.settingData.getDataNumber()].getAudioRemaining5minSoundID())
         self.settingData.setAudioAppStartUpSoundID(id: object[self.settingData.getDataNumber()].getAudioAppStartUpSoundID())
-        self.settingData.setAudioAppFinishSoundID(id: object[self.settingData.getDataNumber()].getAudioAppFinishSoundID())
         self.settingData.setAudioFinish(filePath: object[self.settingData.getDataNumber()].getAudioFinish())
         self.settingData.setAudioElapsed5min(filePath: object[self.settingData.getDataNumber()].getAudioElapsed5min())
         self.settingData.setAudioElapsed10min(filePath: object[self.settingData.getDataNumber()].getAudioElapsed10min())
@@ -415,7 +414,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         self.settingData.setAudioRemaining3min(filePath: object[self.settingData.getDataNumber()].getAudioRemaining3min())
         self.settingData.setAudioRemaining5min(filePath: object[self.settingData.getDataNumber()].getAudioRemaining5min())
         self.settingData.setAudioAppStartUp(filePath: object[self.settingData.getDataNumber()].getAudioAppStartUp())
-        self.settingData.setAudioAppFinish(filePath: object[self.settingData.getDataNumber()].getAudioAppFinish())
         print("SettingData_\(self.settingData.getDataNumber())をロードしました")
     }
     
@@ -449,7 +447,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             object[self.settingData.getDataNumber()].setAudioRemaining3minSoundID(id: self.settingData.getAudioRemaining3minSoundID())
             object[self.settingData.getDataNumber()].setAudioRemaining5minSoundID(id: self.settingData.getAudioRemaining5minSoundID())
             object[self.settingData.getDataNumber()].setAudioAppStartUpSoundID(id: self.settingData.getAudioAppStartUpSoundID())
-            object[self.settingData.getDataNumber()].setAudioAppFinishSoundID(id: self.settingData.getAudioAppFinishSoundID())
             object[self.settingData.getDataNumber()].setAudioFinish(filePath: self.settingData.getAudioFinish())
             object[self.settingData.getDataNumber()].setAudioElapsed5min(filePath: self.settingData.getAudioElapsed5min())
             object[self.settingData.getDataNumber()].setAudioElapsed10min(filePath: self.settingData.getAudioElapsed10min())
@@ -466,7 +463,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             object[self.settingData.getDataNumber()].setAudioRemaining3min(filePath: self.settingData.getAudioRemaining3min())
             object[self.settingData.getDataNumber()].setAudioRemaining5min(filePath: self.settingData.getAudioRemaining5min())
             object[self.settingData.getDataNumber()].setAudioAppStartUp(filePath: self.settingData.getAudioAppStartUp())
-            object[self.settingData.getDataNumber()].setAudioAppFinish(filePath: self.settingData.getAudioAppFinish())
             print("SettingData_\(self.settingData.getDataNumber())を更新しました")
         }
     }

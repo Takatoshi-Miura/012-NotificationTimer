@@ -36,7 +36,6 @@ class SettingData:Object {
     @objc dynamic var audioRemaining3minSoundID:Int = 0     // 残り3分通知用 システムサウンドID
     @objc dynamic var audioRemaining5minSoundID:Int = 0     // 残り5分通知用 システムサウンドID
     @objc dynamic var audioAppStartUpSoundID:Int = 0        // アプリ起動音 システムサウンドID
-    @objc dynamic var audioAppFinishSoundID:Int = 0         // アプリ終了音 システムサウンドID
     @objc dynamic var audioFinish:String = Bundle.main.path(forResource: "デフォルト(終了時)", ofType:"mp3")!           // 終了時通知用 音声ファイルパス
     @objc dynamic var audioElapsed5min:String = Bundle.main.path(forResource: "デフォルト(5分経過)", ofType:"mp3")!     // 5分経過通知用 音声ファイルパス
     @objc dynamic var audioElapsed10min:String = Bundle.main.path(forResource: "デフォルト(10分経過)", ofType:"mp3")!   // 10分経過通知用 音声ファイルパス
@@ -52,8 +51,7 @@ class SettingData:Object {
     @objc dynamic var audioRemaining1min:String = Bundle.main.path(forResource: "デフォルト(残り1分)", ofType:"mp3")!   // 残り1分通知用 音声ファイルパス
     @objc dynamic var audioRemaining3min:String = Bundle.main.path(forResource: "デフォルト(残り3分)", ofType:"mp3")!   // 残り3分通知用 音声ファイルパス
     @objc dynamic var audioRemaining5min:String = Bundle.main.path(forResource: "デフォルト(残り5分)", ofType:"mp3")!   // 残り5分通知用 音声ファイルパス
-    @objc dynamic var audioAppStartUp:String = Bundle.main.path(forResource: "デフォルト(アプリ起動時)", ofType:"mp3")!  // アプリ起動音 音声ファイルパス
-    @objc dynamic var audioAppFinish:String = Bundle.main.path(forResource: "デフォルト(アプリ終了時)", ofType:"mp3")!   // アプリ終了音 音声ファイルパス
+    @objc dynamic var audioAppStartUp:String = "OFF"                                                                 // アプリ起動音 音声ファイルパス
     
     
     
@@ -144,10 +142,6 @@ class SettingData:Object {
         self.audioAppStartUpSoundID = id
     }
     
-    func setAudioAppFinishSoundID(id:Int) {
-        self.audioAppFinishSoundID = id
-    }
-    
     func setAudioFinish(filePath:String) {
         self.audioFinish = filePath
     }
@@ -210,10 +204,6 @@ class SettingData:Object {
     
     func setAudioAppStartUp(filePath:String) {
         self.audioAppStartUp = filePath
-    }
-    
-    func setAudioAppFinish(filePath:String) {
-        self.audioAppFinish = filePath
     }
     
     
@@ -296,10 +286,6 @@ class SettingData:Object {
         return self.audioAppStartUpSoundID
     }
     
-    func getAudioAppFinishSoundID() -> Int {
-        return self.audioAppFinishSoundID
-    }
-    
     func getAudioFinish() -> String {
         return self.audioFinish
     }
@@ -362,10 +348,6 @@ class SettingData:Object {
     
     func getAudioAppStartUp() -> String {
         return self.audioAppStartUp
-    }
-    
-    func getAudioAppFinish() -> String {
-        return self.audioAppFinish
     }
     
     
