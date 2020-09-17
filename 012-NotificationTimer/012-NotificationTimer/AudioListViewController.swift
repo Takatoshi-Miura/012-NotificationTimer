@@ -150,6 +150,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         var soundID:SystemSoundID = 0
         
         switch indexPath.section {
+        case 0:
+            // OFF
+            audioPath = "OFF"
         case 1:
             // パスを作成
             audioPath = Bundle.main.path(forResource: "デフォルト(\(navigationTitle))", ofType:"mp3")!

@@ -501,30 +501,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
     }
     
-    // 通知リクエストを取得するメソッド
-    func loadNotificationRequest() {
-        if let array = UserDefaults.standard.array(forKey: "requestIDArray") as? [String] {
-            self.requestIDArray = array
-            print("通知リクエストを取得しました")
-        } else {
-            print("通知リクエストはありません")
-        }
-    }
-    
-    // 通知リクエストを保存するメソッド
-    func saveNotificationRequest() {
-        UserDefaults.standard.set(self.requestIDArray, forKey: "requestIDArray")
-        print("通知リクエストを保存しました")
-    }
-    
-    // 通知リクエストを削除するメソッド
-    func deleteNotificationRequest() {
-        if self.requestIDArray.isEmpty == false {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: self.requestIDArray)
-            print("通知リクエストを削除しました")
-        }
-    }
-    
     
     
     // MARK:- 画面遷移
@@ -572,50 +548,114 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // MARK:- 通知関連
     
+    // 通知リクエストを取得するメソッド
+    func loadNotificationRequest() {
+        if let array = UserDefaults.standard.array(forKey: "requestIDArray") as? [String] {
+            self.requestIDArray = array
+            print("通知リクエストを取得しました")
+        } else {
+            print("通知リクエストはありません")
+        }
+    }
+    
+    // 通知リクエストを保存するメソッド
+    func saveNotificationRequest() {
+        UserDefaults.standard.set(self.requestIDArray, forKey: "requestIDArray")
+        print("通知リクエストを保存しました")
+    }
+    
+    // 通知リクエストを削除するメソッド
+    func deleteNotificationRequest() {
+        if self.requestIDArray.isEmpty == false {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: self.requestIDArray)
+            print("通知リクエストを削除しました")
+        }
+    }
+    
     // 規定時間を通知するメソッド
     func notificationTime(elapsedTime time:Float) {
         // 経過時間の通知
         switch Int(time) {
         case 60 * 5:
             // 5分経過
-            playAudio(filePath: self.settingData.audioElapsed5min,soundID: self.settingData.getAudioElapsed5minSoundID())
-            print("5分経過")
+            if self.settingData.getAudioElapsed5min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed5min,soundID: self.settingData.getAudioElapsed5minSoundID())
+                print("5分経過")
+            }
         case 60 * 10:
             // 10分経過
-            playAudio(filePath: self.settingData.audioElapsed10min,soundID: self.settingData.getAudioElapsed10minSoundID())
-            print("10分経過")
+            if self.settingData.getAudioElapsed10min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed10min,soundID: self.settingData.getAudioElapsed10minSoundID())
+                print("10分経過")
+            }
         case 60 * 15:
             // 15分経過
-            playAudio(filePath: self.settingData.audioElapsed15min,soundID: self.settingData.getAudioElapsed15minSoundID())
-            print("15分経過")
+            if self.settingData.getAudioElapsed15min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed15min,soundID: self.settingData.getAudioElapsed15minSoundID())
+                print("15分経過")
+            }
         case 60 * 20:
             // 20分経過
-            playAudio(filePath: self.settingData.audioElapsed20min,soundID: self.settingData.getAudioElapsed20minSoundID())
-            print("20分経過")
+            if self.settingData.getAudioElapsed20min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed20min,soundID: self.settingData.getAudioElapsed20minSoundID())
+                print("20分経過")
+            }
         case 60 * 25:
             // 25分経過
-            playAudio(filePath: self.settingData.audioElapsed25min,soundID: self.settingData.getAudioElapsed25minSoundID())
-            print("25分経過")
+            if self.settingData.getAudioElapsed25min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed25min,soundID: self.settingData.getAudioElapsed25minSoundID())
+                print("25分経過")
+            }
         case 60 * 30:
             // 30分経過
-            playAudio(filePath: self.settingData.audioElapsed30min,soundID: self.settingData.getAudioElapsed30minSoundID())
-            print("30分経過")
+            if self.settingData.getAudioElapsed30min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed30min,soundID: self.settingData.getAudioElapsed30minSoundID())
+                print("30分経過")
+            }
         case 60 * 35:
             // 35分経過
-            playAudio(filePath: self.settingData.audioElapsed35min,soundID: self.settingData.getAudioElapsed35minSoundID())
-            print("35分経過")
+            if self.settingData.getAudioElapsed35min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed35min,soundID: self.settingData.getAudioElapsed35minSoundID())
+                print("35分経過")
+            }
         case 60 * 40:
             // 40分経過
-            playAudio(filePath: self.settingData.audioElapsed40min,soundID: self.settingData.getAudioElapsed40minSoundID())
-            print("40分経過")
+            if self.settingData.getAudioElapsed40min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed40min,soundID: self.settingData.getAudioElapsed40minSoundID())
+                print("40分経過")
+            }
         case 60 * 45:
             // 45分経過
-            playAudio(filePath: self.settingData.audioElapsed45min,soundID: self.settingData.getAudioElapsed45minSoundID())
-            print("45分経過")
+            if self.settingData.getAudioElapsed45min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed45min,soundID: self.settingData.getAudioElapsed45minSoundID())
+                print("45分経過")
+            }
         case 60 * 50:
             // 50分経過
-            playAudio(filePath: self.settingData.audioElapsed50min,soundID: self.settingData.getAudioElapsed50minSoundID())
-            print("50分経過")
+            if self.settingData.getAudioElapsed50min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioElapsed50min,soundID: self.settingData.getAudioElapsed50minSoundID())
+                print("50分経過")
+            }
         default:
             break
         }
@@ -624,24 +664,44 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         switch Int(self.settingData.count) {
         case 60 * 5:
             // 残り5分
-            playAudio(filePath: self.settingData.audioRemaining5min,soundID: self.settingData.getAudioRemaining5minSoundID())
-            print("残り5分")
+            if self.settingData.getAudioRemaining5min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioRemaining5min,soundID: self.settingData.getAudioRemaining5minSoundID())
+                print("残り5分")
+            }
         case 60 * 3:
             // 残り3分
-            playAudio(filePath: self.settingData.audioRemaining3min,soundID: self.settingData.getAudioRemaining3minSoundID())
-            print("残り3分")
+            if self.settingData.getAudioRemaining3min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioRemaining3min,soundID: self.settingData.getAudioRemaining3minSoundID())
+                print("残り3分")
+            }
         case 60 * 1:
             // 残り1分
-            playAudio(filePath: self.settingData.audioRemaining1min,soundID: self.settingData.getAudioRemaining1minSoundID())
-            print("残り1分")
+            if self.settingData.getAudioRemaining1min() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioRemaining1min,soundID: self.settingData.getAudioRemaining1minSoundID())
+                print("残り1分")
+            }
         case 30:
             // 残り30秒
-            playAudio(filePath: self.settingData.audioRemaining30sec,soundID: self.settingData.getAudioRemaining30secSoundID())
-            print("残り30秒")
+            if self.settingData.getAudioRemaining30sec() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioRemaining30sec,soundID: self.settingData.getAudioRemaining30secSoundID())
+                print("残り30秒")
+            }
         case 0:
             // 終了
-            playAudio(filePath: self.settingData.audioFinish,soundID: self.settingData.getAudioFinishSoundID())
-            print("終了")
+            if self.settingData.getAudioFinish() == "OFF" {
+                print("通知OFFのため通知しない")
+            } else {
+                playAudio(filePath: self.settingData.audioFinish,soundID: self.settingData.getAudioFinishSoundID())
+                print("終了")
+            }
         default:
             break
         }
@@ -695,63 +755,126 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         // リクエスト作成
         switch count {
         case 50 * 60...99 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から50分が経過しました。", soundPath: settingData.audioElapsed50min, timeInterval: 50 * 60))
-            requestIDArray.append("開始から50分が経過しました。")
+            if self.settingData.getAudioElapsed50min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から50分が経過しました。", soundPath: settingData.audioElapsed50min, timeInterval: 50 * 60))
+                requestIDArray.append("開始から50分が経過しました。")
+            }
             fallthrough
         case 45 * 60...50 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から45分が経過しました。", soundPath: settingData.audioElapsed45min, timeInterval: 45 * 60))
-            requestIDArray.append("開始から45分が経過しました。")
+            if self.settingData.getAudioElapsed45min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から45分が経過しました。", soundPath: settingData.audioElapsed45min, timeInterval: 45 * 60))
+                requestIDArray.append("開始から45分が経過しました。")
+            }
             fallthrough
         case 40 * 60...45 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から40分が経過しました。", soundPath: settingData.audioElapsed40min, timeInterval: 40 * 60))
-            requestIDArray.append("開始から40分が経過しました。")
+            if self.settingData.getAudioElapsed40min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から40分が経過しました。", soundPath: settingData.audioElapsed40min, timeInterval: 40 * 60))
+                requestIDArray.append("開始から40分が経過しました。")
+            }
             fallthrough
         case 35 * 60...40 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から35分が経過しました。", soundPath: settingData.audioElapsed35min, timeInterval: 35 * 60))
-            requestIDArray.append("開始から35分が経過しました。")
+            if self.settingData.getAudioElapsed35min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から35分が経過しました。", soundPath: settingData.audioElapsed35min, timeInterval: 35 * 60))
+                requestIDArray.append("開始から35分が経過しました。")
+            }
             fallthrough
         case 30 * 60...35 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から30分が経過しました。", soundPath: settingData.audioElapsed30min, timeInterval: 30 * 60))
-            requestIDArray.append("開始から30分が経過しました。")
+            if self.settingData.getAudioElapsed30min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から30分が経過しました。", soundPath: settingData.audioElapsed30min, timeInterval: 30 * 60))
+                requestIDArray.append("開始から30分が経過しました。")
+            }
             fallthrough
         case 25 * 60...30 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から25分が経過しました。", soundPath: settingData.audioElapsed25min, timeInterval: 25 * 60))
-            requestIDArray.append("開始から25分が経過しました。")
+            if self.settingData.getAudioElapsed25min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から25分が経過しました。", soundPath: settingData.audioElapsed25min, timeInterval: 25 * 60))
+                requestIDArray.append("開始から25分が経過しました。")
+            }
             fallthrough
         case 20 * 60...25 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から20分が経過しました。", soundPath: settingData.audioElapsed20min, timeInterval: 20 * 60))
-            requestIDArray.append("開始から20分が経過しました。")
+            if self.settingData.getAudioElapsed20min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から20分が経過しました。", soundPath: settingData.audioElapsed20min, timeInterval: 20 * 60))
+                requestIDArray.append("開始から20分が経過しました。")
+            }
             fallthrough
         case 15 * 60...20 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から15分が経過しました。", soundPath: settingData.audioElapsed15min, timeInterval: 15 * 60))
-            requestIDArray.append("開始から15分が経過しました。")
+            if self.settingData.getAudioElapsed15min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から15分が経過しました。", soundPath: settingData.audioElapsed15min, timeInterval: 15 * 60))
+                requestIDArray.append("開始から15分が経過しました。")
+            }
             fallthrough
         case 10 * 60...15 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から10分が経過しました。", soundPath: settingData.audioElapsed10min, timeInterval: 10 * 60))
-            requestIDArray.append("開始から10分が経過しました。")
+            if self.settingData.getAudioElapsed10min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から10分が経過しました。", soundPath: settingData.audioElapsed10min, timeInterval: 10 * 60))
+                requestIDArray.append("開始から10分が経過しました。")
+            }
             fallthrough
         case 5 * 60...10 * 60 :
-            requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から5分が経過しました。", soundPath: settingData.audioElapsed5min, timeInterval: 5 * 60))
-            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り5分になりました。", soundPath: settingData.audioRemaining5min, timeInterval: Double(count - (5 * 60))))
-            requestIDArray.append("開始から5分が経過しました。")
-            requestIDArray.append("残り5分になりました。")
+            if self.settingData.getAudioElapsed5min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "経過時間通知", subTitle: "開始から5分が経過しました。", soundPath: settingData.audioElapsed5min, timeInterval: 5 * 60))
+                requestIDArray.append("開始から5分が経過しました。")
+            }
+            
+            if self.settingData.getAudioRemaining5min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り5分になりました。", soundPath: settingData.audioRemaining5min, timeInterval: Double(count - (5 * 60))))
+                requestIDArray.append("残り5分になりました。")
+            }
             fallthrough
         case 3 * 60...5 * 60 :
-            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り3分になりました。", soundPath: settingData.audioRemaining3min, timeInterval: Double(count - (3 * 60))))
-            requestIDArray.append("残り3分になりました。")
+            if self.settingData.getAudioRemaining3min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り3分になりました。", soundPath: settingData.audioRemaining3min, timeInterval: Double(count - (3 * 60))))
+                requestIDArray.append("残り3分になりました。")
+            }
             fallthrough
         case 1 * 60...3 * 60 :
-            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り1分になりました。", soundPath: settingData.audioRemaining1min, timeInterval: Double(count - (1 * 60))))
-            requestIDArray.append("残り1分になりました。")
+            if self.settingData.getAudioRemaining1min() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り1分になりました。", soundPath: settingData.audioRemaining1min, timeInterval: Double(count - (1 * 60))))
+                requestIDArray.append("残り1分になりました。")
+            }
             fallthrough
         case 30...1 * 60 :
-            requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り30秒になりました。", soundPath: settingData.audioRemaining30sec, timeInterval: Double(count - 30)))
-            requestIDArray.append("残り30秒になりました。")
+            if self.settingData.getAudioRemaining30sec() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "残り時間通知", subTitle: "残り30秒になりました。", soundPath: settingData.audioRemaining30sec, timeInterval: Double(count - 30)))
+                requestIDArray.append("残り30秒になりました。")
+            }
             fallthrough
         default:
-            requestArray.append(createRequest(title: "計測完了通知", subTitle: "設定時間になりました。", soundPath: settingData.audioFinish, timeInterval: Double(count)))
-            requestIDArray.append("設定時間になりました。")
+            if self.settingData.getAudioFinish() == "OFF" {
+                // 通知OFFのため、リクエストは作成しない
+            } else {
+                requestArray.append(createRequest(title: "計測完了通知", subTitle: "設定時間になりました。", soundPath: settingData.audioFinish, timeInterval: Double(count)))
+                requestIDArray.append("設定時間になりました。")
+            }
         }
+        
+        print("requestIDArray:\(requestIDArray)")
         
         // 通知をセット
         let center = UNUserNotificationCenter.current()
@@ -777,7 +900,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time,repeats: false)
         
         // リクエストの作成＆返却
-        print("リクエスト:\(subTitleText)を作成しました")
         return UNNotificationRequest(identifier: subTitleText,content: content,trigger: trigger)
     }
     

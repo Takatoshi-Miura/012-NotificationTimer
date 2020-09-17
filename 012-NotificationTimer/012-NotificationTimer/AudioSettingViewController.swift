@@ -86,7 +86,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
                                          "sms-received2":"チャイム","tweet_sent":"ツイート","Tiptoes":"つま先","Voicemail":"トライトーン",
                                          "News_Flash":"ニュースフラッシュ","Noir":"ノアール","Ladder":"はしご","Fanfare":"ファンファーレ",
                                          "sms-received4":"ホルン","Minuet":"メヌエット","Choo_Choo":"機関車","alarm":"警告","Descent":"降下",
-                                         "new-mail":"鐘","Telegraph":"電報","Bloom":"曇り","Anticipate":"予感","/":"OFF"]
+                                         "new-mail":"鐘","Telegraph":"電報","Bloom":"曇り","Anticipate":"予感"]
     
     // テーブルビュー
     var cellTitle:String = ""
