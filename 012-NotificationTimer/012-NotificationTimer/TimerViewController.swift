@@ -890,11 +890,34 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // バナー通知のリクエストを作成するメソッド
     func createRequest(title titleText:String,subTitle subTitleText:String,soundPath path:String,timeInterval time:Double) -> UNNotificationRequest {
         // 表示の設定
-        // MARK:- Fix:サウンドがデフォルト以外トライトーンになってしまう
+        // MARK:- Fix:サウンドがシステムサウンドのみトライトーンになってしまう
         let content = UNMutableNotificationContent()
         content.title = titleText
         content.subtitle = subTitleText
-        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(self.settingData.getFileName(filePath: path)))
+        
+        // <App>/Library/Soundsが無ければ作成
+        let libraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!
+        if !FileManager.default.fileExists(atPath: libraryPath + "/Sounds") {
+            do {
+                try FileManager.default.createDirectory(atPath: libraryPath + "/Sounds", withIntermediateDirectories: true, attributes: [:])
+                print("Soundsフォルダを作成しました")
+            } catch {
+                print("Soundsフォルダの作成に失敗しました")
+            }
+        }
+        
+        // 音声ファイルをSoundsにコピー
+        do {
+            let from = URL(fileURLWithPath: path)
+            let dest = URL(fileURLWithPath: libraryPath + "/Sounds" + "/\(self.settingData.getFileName(filePath: path))")
+            try FileManager.default.copyItem(at: from, to: dest)
+        } catch {
+            print(URL(fileURLWithPath: path))
+            print("error:\(error)")
+        }
+        
+        // コピーした音声ファイルを通知音に設定
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(self.settingData.getFileName(filePath: path))"))
         
         // 通知タイミングの設定
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time,repeats: false)

@@ -158,7 +158,8 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
             audioPath = Bundle.main.path(forResource: "デフォルト(\(navigationTitle))", ofType:"mp3")!
         case 2:
             // パスを作成
-            audioPath = NSHomeDirectory() + "/Library/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
+            let libraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!
+            audioPath = libraryPath + "/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
             
             // サウンドIDを取得
             soundID = systemSoundArray[indexPath.row]
