@@ -1101,6 +1101,13 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // フォアグラウンドになった時に呼ばれる
     @objc func didBecomeActive(notify: NSNotification) {
+        // アプリ起動時音声再生
+        if self.settingData.getAudioAppStartUp() == "OFF" {
+            print("通知OFFのため再生しない")
+        } else {
+            playAudio(filePath: self.settingData.getAudioAppStartUp(),soundID: self.settingData.getAudioAppStartUpSoundID())
+        }
+        
         if let backgroundDate = backgroundDate, self.settingData.count > 0 {
             // Int型へ変換
             var count_Int = Int(self.settingData.count)
