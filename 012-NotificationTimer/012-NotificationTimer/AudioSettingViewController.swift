@@ -34,12 +34,6 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
     // テーブルビュー
     @IBOutlet weak var tableView: UITableView!
     
-    // キャンセルボタン
-    @IBAction func cancelButton(_ sender: Any) {
-        // 音声設定を閉じる
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     // 保存ボタン
     @IBAction func saveButton(_ sender: Any) {
         // SettingDataに設定を反映する
@@ -52,7 +46,7 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             print("SettingData_\(self.settingData.getDataNumber())をTimerViewControllerに渡しました")
             
             // 音声設定を閉じる
-            controller.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
