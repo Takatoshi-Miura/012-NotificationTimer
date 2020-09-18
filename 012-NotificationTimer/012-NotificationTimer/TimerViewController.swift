@@ -58,12 +58,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         displayAgreement()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        // 通知の削除
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     
     
     // MARK:- UIの設定
