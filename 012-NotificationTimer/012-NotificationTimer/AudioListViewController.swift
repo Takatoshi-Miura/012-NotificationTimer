@@ -46,7 +46,9 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // 保存ボタン
     @IBAction func saveButton(_ sender: Any) {
-        // 最終的な保存はAudioSettingViewControllerで行うため、現状のsettingDataを渡すだけ
+        // 設定データに反映
+        updateSettingData(filePath: audioPath, soundID: Int(soundID))
+        
         // 遷移元に画面を取得する
         if let controller = self.presentingViewController as? AudioSettingViewController {
             // 設定データを渡す
@@ -93,6 +95,8 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     // サウンド
     var player = AVAudioPlayer()
+    var audioPath:String = ""
+    var soundID:SystemSoundID = 0
     
     
     
@@ -145,10 +149,11 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         // テーブルビューをリロード(前のセルからチェックマークを外すため)
         tableView.reloadData()
         
-        // パスを作成
-        var audioPath:String = ""
-        var soundID:SystemSoundID = 0
+        // 初期化
+        audioPath = ""
+        soundID = 0
         
+        // パスを作成
         switch indexPath.section {
         case 0:
             // OFF
@@ -169,9 +174,6 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         default:
             break
         }
-        
-        // 設定データに反映
-        updateSettingData(filePath: audioPath, soundID: Int(soundID))
         
         // サウンドを再生
         playAudio(filePath: audioPath, soundID: Int(soundID))
