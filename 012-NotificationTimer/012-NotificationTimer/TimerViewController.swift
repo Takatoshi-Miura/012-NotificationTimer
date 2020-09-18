@@ -1099,20 +1099,20 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
         
         if let backgroundDate = backgroundDate, self.settingData.count > 0 {
-            // Int型へ変換
-            var count_Int = Int(self.settingData.count)
+            // countを取得
+            var count = self.settingData.count
             
             // バックグラウンドに入った時間とフォアグラウンドになった時間の差分を取得
-            let timeDiff = Int(NSDate().timeIntervalSince(backgroundDate as Date))
+            let timeDiff = NSDate().timeIntervalSince(backgroundDate as Date)
             print("経過時間 : \(timeDiff)")
 
             // 経過時間よりタイマーの残り時間が多かった場合、再度タイマースタート
-            if timeDiff < count_Int && timerIsStart == true {
-                count_Int -= timeDiff
-                self.settingData.setCount(time: Float(count_Int))
+            if Int(timeDiff) < Int(count) && timerIsStart == true {
+                count -= Float(timeDiff)
+                self.settingData.setCount(time: Float(count))
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(countDown), userInfo:nil, repeats:true)
                 timerNotification = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(notification), userInfo:nil, repeats:true)
-            } else if timeDiff < count_Int && timerIsStart == false {
+            } else if Int(timeDiff) < Int(count) && timerIsStart == false {
                 // ラベルに反映
                 displayCount()
             } else {
