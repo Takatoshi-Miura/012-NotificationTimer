@@ -7,31 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // SettingDataをロード(なければ作成)し、各画面に渡す
+        // データ番号を各画面に渡す(ロードは各画面で行う)
         for num in 0...4 {
-            // データのロード
-            if let storedData = UserDefaults.standard.object(forKey: "SettingData_\(num)") as? Data {
-                if let unarchivedObject = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(storedData) as? SettingData {
-                    // データを各画面に渡す
-                    let VC = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                    VC.settingData = unarchivedObject
-                    self.controllers.append(VC)
-                }
-            } else {
-                // データを作成
-                let settingData = SettingData(dataNumber: num)
-                
-                // データを各画面に渡す
-                let VC = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
-                VC.settingData = settingData
-                self.controllers.append(VC)
-            }
+            // データを各画面に渡す
+            let VC = storyboard!.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+            VC.dataNumber = num
+            self.controllers.append(VC)
         }
         
         // PageViewController初期化メソッド
@@ -49,6 +37,9 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     var controllers: [UIViewController] = []
     var pageViewController: UIPageViewController!
     var pageControl: UIPageControl!
+    
+    // 音声再生
+    var player = AVAudioPlayer()
     
     
     
@@ -127,6 +118,51 @@ extension PageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let currentPage = pageViewController.viewControllers![0]
         self.pageControl.currentPage = self.controllers.firstIndex(of: currentPage)!
+        
+        // アプリ起動時音声再生
+        let VC = self.controllers[pageControl.currentPage] as! TimerViewController
+        if VC.settingData.getAudioAppStartUp() == "OFF" {
+            print("通知OFFのため再生しない")
+        } else {
+            playAudio(settingData: VC.settingData, filePath: VC.settingData.getAudioAppStartUp(),soundID: VC.settingData.getAudioAppStartUpSoundID())
+        }
+    }
+    
+    
+    // 音声を再生するメソッド
+    func playAudio(settingData data:SettingData,filePath path:String?,soundID id:Int) {
+        if data.getMannerMode() {
+            // バイブレーションで通知
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        } else {
+            if let audioPath = path {
+                // URLを作成
+                let audioURL = URL(fileURLWithPath: audioPath)
+                       
+                // 再生中なら停止
+                if player.isPlaying {
+                    player.stop()
+                }
+                       
+                // 再生
+                do {
+                    // カスタムオーディオの再生
+                    player = try AVAudioPlayer(contentsOf: audioURL)
+                    player.play()
+                } catch {
+                    // システムサウンドの再生
+                    if let soundUrl:URL = URL(string: audioPath) {
+                        var soundID:SystemSoundID = SystemSoundID(id)
+                        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+                        AudioServicesPlaySystemSound(soundID)
+                    } else {
+                        print("再生処理でエラーが発生しました")
+                    }
+                }
+            } else {
+                print("ファイルがありません")
+            }
+        }
     }
 
 }

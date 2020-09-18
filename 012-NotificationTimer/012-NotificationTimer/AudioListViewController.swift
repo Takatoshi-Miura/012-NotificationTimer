@@ -164,6 +164,7 @@ class AudioListViewController: UIViewController,UITableViewDelegate,UITableViewD
         case 2:
             // パスを作成
             let libraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!
+            // MARK:- Fix:サウンドがシステムサウンドのみトライトーンになってしまう
             audioPath = libraryPath + "/Audio/UISounds/\(systemSoundFileTitleArray[indexPath.row])"
             
             // サウンドIDを取得

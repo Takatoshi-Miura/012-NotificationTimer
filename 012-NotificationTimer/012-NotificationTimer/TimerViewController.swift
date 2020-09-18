@@ -208,7 +208,8 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var secondIndex:Int = 0
     
     // 設定データ
-    var settingData:SettingData = SettingData(dataNumber: 0)
+    var settingData = SettingData()
+    var dataNumber:Int = 0
     
     // 音声再生用
     var player = AVAudioPlayer()
@@ -371,6 +372,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
         // データの取得
         let object = realm.objects(SettingData.self)
+        
+        // データ番号の指定
+        self.settingData.setDataNumber(number: dataNumber)
         
         // データの反映
         self.settingData.setDataNumber(number: object[self.settingData.getDataNumber()].getDataNumber())
@@ -1091,13 +1095,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     
     // フォアグラウンドになった時に呼ばれる
     @objc func didBecomeActive(notify: NSNotification) {
-        // アプリ起動時音声再生
-        if self.settingData.getAudioAppStartUp() == "OFF" {
-            print("通知OFFのため再生しない")
-        } else {
-            playAudio(filePath: self.settingData.getAudioAppStartUp(),soundID: self.settingData.getAudioAppStartUpSoundID())
-        }
-        
         if let backgroundDate = backgroundDate, self.settingData.count > 0 {
             // countを取得
             var count = self.settingData.count

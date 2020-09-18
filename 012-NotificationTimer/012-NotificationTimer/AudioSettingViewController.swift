@@ -44,10 +44,10 @@ class AudioSettingViewController: UIViewController,UITableViewDelegate,UITableVi
             // 設定データを渡す
             controller.settingData = self.settingData
             print("SettingData_\(self.settingData.getDataNumber())をTimerViewControllerに渡しました")
-            
-            // 音声設定を閉じる
-            self.dismiss(animated: true, completion: nil)
         }
+        
+        // 音声設定を閉じる
+        self.dismiss(animated: true, completion: nil)
     }
     
     // マナーモードスイッチ
