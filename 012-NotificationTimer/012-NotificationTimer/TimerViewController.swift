@@ -32,7 +32,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         displayAdsense()
         
         // ラベルの文字を縁取る
-        timeLabel.makeOutLine(strokeWidth: -2.0, oulineColor: UIColor.black, foregroundColor: UIColor.white)
+        timeLabel.makeOutLine(strokeWidth: -2.5, oulineColor: UIColor.black, foregroundColor: UIColor.white)
         
         // バックグラウンド,フォアグラウンド判定の追加
         addNotification()
