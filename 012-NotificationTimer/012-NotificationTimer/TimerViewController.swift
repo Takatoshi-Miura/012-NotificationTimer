@@ -29,7 +29,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         directoryInit()
         
         // 広告表示
-        displayAdsense()
+        //RdisplayAdsense()
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.5, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -1069,6 +1069,10 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         alertController.addAction(actionLibrary)
         alertController.addAction(actionCamera)
         alertController.addAction(actionCancel)
+        
+        // iPadでのクラッシュ対策
+        alertController.popoverPresentationController?.sourceView = view
+        alertController.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height, width: 0, height: 0)
         
         // アラートを表示
         present(alertController, animated: true, completion: nil)
