@@ -58,9 +58,12 @@
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hl5-pY-9yN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" tag="2" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
-                                <rect key="frame" x="31" y="236.5" width="258" height="95"/>
-                                <fontDescription key="fontDescription" name="DevanagariSangamMN-Bold" family="Devanagari Sangam MN" pointSize="70"/>
+                            <label opaque="NO" tag="2" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="oEU-4M-EXz">
+                                <rect key="frame" x="30" y="236.5" width="260" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oEU-4M-EXz" secondAttribute="height" multiplier="52:19" id="lwz-w8-jZb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DevanagariSangamMN-Bold" family="Devanagari Sangam MN" pointSize="200"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -97,6 +100,7 @@
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0G0-cc-Xb0"/>
                             <constraint firstAttribute="bottom" secondItem="1wm-Dd-Kn1" secondAttribute="bottom" id="4eh-fw-Ufj"/>
                             <constraint firstItem="j5J-rG-J7J" firstAttribute="top" secondItem="Meo-0R-SGr" secondAttribute="bottom" constant="8" id="5KM-2u-8zn"/>
+                            <constraint firstItem="oEU-4M-EXz" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8125" id="5dz-Q9-Ey1"/>
                             <constraint firstItem="Meo-0R-SGr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="BJb-hi-Tz0"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EuB-ed-96g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1wm-Dd-Kn1" secondAttribute="trailing" id="IM7-hH-PXx"/>
@@ -106,10 +110,10 @@
                             <constraint firstItem="oEU-4M-EXz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R25-fr-1yk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Meo-0R-SGr" secondAttribute="trailing" constant="16" id="RcW-wm-itk"/>
                             <constraint firstItem="oAx-xE-3VS" firstAttribute="top" secondItem="oEU-4M-EXz" secondAttribute="bottom" constant="16" id="TvM-Hi-51M"/>
-                            <constraint firstItem="oEU-4M-EXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X3O-HT-1nP"/>
                             <constraint firstItem="oEa-Ug-Nnh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="YPV-pH-qLF"/>
                             <constraint firstItem="1wm-Dd-Kn1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zc0-rp-7gc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j5J-rG-J7J" secondAttribute="trailing" constant="16" id="dFb-Lr-xnD"/>
+                            <constraint firstItem="oEU-4M-EXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="en2-Ie-g9s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAx-xE-3VS" secondAttribute="trailing" constant="16" id="hHy-PP-hfe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Meo-0R-SGr" secondAttribute="trailing" constant="16" id="jU7-Ak-z0N"/>
                         </constraints>
