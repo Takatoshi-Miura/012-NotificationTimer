@@ -14,9 +14,6 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 初期化
-        self.controllers = []
-        
         // データ番号を各画面に渡す(ロードは各画面で行う)
         for num in 0...4 {
             // データを各画面に渡す
@@ -52,7 +49,7 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     func initPageViewController() {
         // pageViewControllerの宣言
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        self.pageViewController.setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+        self.pageViewController.setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
 
         // デリゲート,データソースの指定
         self.pageViewController.dataSource = self

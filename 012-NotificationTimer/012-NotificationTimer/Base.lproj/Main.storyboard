@@ -12,7 +12,7 @@
         <!--Page View Controller-->
         <scene sceneID="C1H-l4-Kz3">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="8wb-Gr-3KR" customClass="PageViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="8wb-Gr-3KR" customClass="PageViewController" customModule="_12_NotificationTimer" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brO-rI-cNE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268" y="136"/>
