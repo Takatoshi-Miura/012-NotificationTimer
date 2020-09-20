@@ -917,7 +917,11 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         }
         
         // コピーした音声ファイルを通知音に設定
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(self.settingData.getFileName(filePath: path))"))
+        if self.settingData.getMannerMode() {
+            // マナーモードのため音無
+        } else {
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(self.settingData.getFileName(filePath: path))"))
+        }
         
         // 通知タイミングの設定
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time,repeats: false)
