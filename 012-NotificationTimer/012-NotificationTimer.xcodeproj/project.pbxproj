@@ -10,23 +10,6 @@
 		68B4486075A905BF160AD064 /* Pods_012_NotificationTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9A7A2526A440A34EB4CD54 /* Pods_012_NotificationTimer.framework */; };
 		8D1DA6A92509F3FA00F6D4AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DA6A82509F3FA00F6D4AE /* GoogleService-Info.plist */; };
 		8D6BFD7625075678003FAF2A /* AudioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6BFD7525075678003FAF2A /* AudioListViewController.swift */; };
-		8D6BFDC72507A6D6003FAF2A /* デフォルト(アプリ起動時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB72507A6D5003FAF2A /* デフォルト(アプリ起動時).mp3 */; };
-		8D6BFDC82507A6D6003FAF2A /* デフォルト(アプリ終了時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */; };
-		8D6BFDC92507A6D6003FAF2A /* デフォルト(残り1分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDB92507A6D5003FAF2A /* デフォルト(残り1分).mp3 */; };
-		8D6BFDCA2507A6D6003FAF2A /* デフォルト(5分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBA2507A6D5003FAF2A /* デフォルト(5分経過).mp3 */; };
-		8D6BFDCB2507A6D6003FAF2A /* デフォルト(残り30秒).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBB2507A6D5003FAF2A /* デフォルト(残り30秒).mp3 */; };
-		8D6BFDCC2507A6D6003FAF2A /* デフォルト(終了時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBC2507A6D5003FAF2A /* デフォルト(終了時).mp3 */; };
-		8D6BFDCD2507A6D6003FAF2A /* デフォルト(25分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBD2507A6D5003FAF2A /* デフォルト(25分経過).mp3 */; };
-		8D6BFDCE2507A6D6003FAF2A /* デフォルト(30分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBE2507A6D5003FAF2A /* デフォルト(30分経過).mp3 */; };
-		8D6BFDCF2507A6D6003FAF2A /* デフォルト(35分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDBF2507A6D5003FAF2A /* デフォルト(35分経過).mp3 */; };
-		8D6BFDD02507A6D6003FAF2A /* デフォルト(40分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC02507A6D5003FAF2A /* デフォルト(40分経過).mp3 */; };
-		8D6BFDD12507A6D6003FAF2A /* デフォルト(45分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC12507A6D5003FAF2A /* デフォルト(45分経過).mp3 */; };
-		8D6BFDD22507A6D6003FAF2A /* デフォルト(50分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC22507A6D5003FAF2A /* デフォルト(50分経過).mp3 */; };
-		8D6BFDD32507A6D6003FAF2A /* デフォルト(10分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC32507A6D5003FAF2A /* デフォルト(10分経過).mp3 */; };
-		8D6BFDD42507A6D6003FAF2A /* デフォルト(15分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC42507A6D5003FAF2A /* デフォルト(15分経過).mp3 */; };
-		8D6BFDD52507A6D6003FAF2A /* デフォルト(20分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC52507A6D5003FAF2A /* デフォルト(20分経過).mp3 */; };
-		8D6BFDD62507A6D6003FAF2A /* デフォルト(残り3分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */; };
-		8D71E7592508C1820045FD20 /* デフォルト(残り5分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */; };
 		8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23724FD00980029D5C3 /* AppDelegate.swift */; };
 		8DA3F23A24FD00980029D5C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F23924FD00980029D5C3 /* SceneDelegate.swift */; };
 		8DA3F23F24FD00980029D5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3F23D24FD00980029D5C3 /* Main.storyboard */; };
@@ -35,6 +18,22 @@
 		8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */; };
 		8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */; };
 		8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */; };
+		8DBB824D25171BA500437CB8 /* デフォルト(5分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB824C25171BA500437CB8 /* デフォルト(5分経過).mp3 */; };
+		8DBB825025171C0900437CB8 /* デフォルト(10分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB824F25171C0900437CB8 /* デフォルト(10分経過).mp3 */; };
+		8DBB825325171C3800437CB8 /* デフォルト(15分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825225171C3800437CB8 /* デフォルト(15分経過).mp3 */; };
+		8DBB826225171D4100437CB8 /* デフォルト(40分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825525171D4000437CB8 /* デフォルト(40分経過).mp3 */; };
+		8DBB826325171D4100437CB8 /* デフォルト(45分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825625171D4000437CB8 /* デフォルト(45分経過).mp3 */; };
+		8DBB826425171D4100437CB8 /* デフォルト(アプリ起動時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825725171D4100437CB8 /* デフォルト(アプリ起動時).mp3 */; };
+		8DBB826525171D4100437CB8 /* デフォルト(20分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825825171D4100437CB8 /* デフォルト(20分経過).mp3 */; };
+		8DBB826625171D4100437CB8 /* デフォルト(25分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825925171D4100437CB8 /* デフォルト(25分経過).mp3 */; };
+		8DBB826725171D4100437CB8 /* デフォルト(30分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825A25171D4100437CB8 /* デフォルト(30分経過).mp3 */; };
+		8DBB826825171D4100437CB8 /* デフォルト(35分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825B25171D4100437CB8 /* デフォルト(35分経過).mp3 */; };
+		8DBB826925171D4100437CB8 /* デフォルト(50分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825C25171D4100437CB8 /* デフォルト(50分経過).mp3 */; };
+		8DBB826A25171D4100437CB8 /* デフォルト(終了時).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825D25171D4100437CB8 /* デフォルト(終了時).mp3 */; };
+		8DBB826B25171D4100437CB8 /* デフォルト(残り1分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825E25171D4100437CB8 /* デフォルト(残り1分).mp3 */; };
+		8DBB826C25171D4100437CB8 /* デフォルト(残り3分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB825F25171D4100437CB8 /* デフォルト(残り3分).mp3 */; };
+		8DBB826D25171D4100437CB8 /* デフォルト(残り5分).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB826025171D4100437CB8 /* デフォルト(残り5分).mp3 */; };
+		8DBB826E25171D4100437CB8 /* デフォルト(残り30秒).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB826125171D4100437CB8 /* デフォルト(残り30秒).mp3 */; };
 		8DBCA4082510547F00383647 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCA4072510547F00383647 /* TutorialViewController.swift */; };
 		8DBCA40A2510601A00383647 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBCA4092510601A00383647 /* TutorialPageViewController.swift */; };
 		8DDA4B5524FF595000AD7C69 /* SettingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA4B5424FF595000AD7C69 /* SettingData.swift */; };
@@ -47,23 +46,6 @@
 		8CFEDB70F92CC72D9F7090B3 /* Pods-012-NotificationTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-012-NotificationTimer.release.xcconfig"; path = "Target Support Files/Pods-012-NotificationTimer/Pods-012-NotificationTimer.release.xcconfig"; sourceTree = "<group>"; };
 		8D1DA6A82509F3FA00F6D4AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D6BFD7525075678003FAF2A /* AudioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioListViewController.swift; sourceTree = "<group>"; };
-		8D6BFDB72507A6D5003FAF2A /* デフォルト(アプリ起動時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ起動時).mp3"; sourceTree = "<group>"; };
-		8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ終了時).mp3"; sourceTree = "<group>"; };
-		8D6BFDB92507A6D5003FAF2A /* デフォルト(残り1分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り1分).mp3"; sourceTree = "<group>"; };
-		8D6BFDBA2507A6D5003FAF2A /* デフォルト(5分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(5分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDBB2507A6D5003FAF2A /* デフォルト(残り30秒).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り30秒).mp3"; sourceTree = "<group>"; };
-		8D6BFDBC2507A6D5003FAF2A /* デフォルト(終了時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(終了時).mp3"; sourceTree = "<group>"; };
-		8D6BFDBD2507A6D5003FAF2A /* デフォルト(25分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(25分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDBE2507A6D5003FAF2A /* デフォルト(30分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(30分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDBF2507A6D5003FAF2A /* デフォルト(35分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(35分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC02507A6D5003FAF2A /* デフォルト(40分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(40分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC12507A6D5003FAF2A /* デフォルト(45分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(45分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC22507A6D5003FAF2A /* デフォルト(50分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(50分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC32507A6D5003FAF2A /* デフォルト(10分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(10分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC42507A6D5003FAF2A /* デフォルト(15分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(15分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC52507A6D5003FAF2A /* デフォルト(20分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(20分経過).mp3"; sourceTree = "<group>"; };
-		8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り3分).mp3"; sourceTree = "<group>"; };
-		8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り5分).mp3"; sourceTree = "<group>"; };
 		8D8441CD250F04E900BEBAF3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		8D8441CE250F04E900BEBAF3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8DA3F23424FD00980029D5C3 /* 012-NotificationTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "012-NotificationTimer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +58,22 @@
 		8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingViewController.swift; sourceTree = "<group>"; };
 		8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		8DBB824C25171BA500437CB8 /* デフォルト(5分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(5分経過).mp3"; sourceTree = "<group>"; };
+		8DBB824F25171C0900437CB8 /* デフォルト(10分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(10分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825225171C3800437CB8 /* デフォルト(15分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(15分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825525171D4000437CB8 /* デフォルト(40分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(40分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825625171D4000437CB8 /* デフォルト(45分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(45分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825725171D4100437CB8 /* デフォルト(アプリ起動時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(アプリ起動時).mp3"; sourceTree = "<group>"; };
+		8DBB825825171D4100437CB8 /* デフォルト(20分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(20分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825925171D4100437CB8 /* デフォルト(25分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(25分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825A25171D4100437CB8 /* デフォルト(30分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(30分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825B25171D4100437CB8 /* デフォルト(35分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(35分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825C25171D4100437CB8 /* デフォルト(50分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(50分経過).mp3"; sourceTree = "<group>"; };
+		8DBB825D25171D4100437CB8 /* デフォルト(終了時).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(終了時).mp3"; sourceTree = "<group>"; };
+		8DBB825E25171D4100437CB8 /* デフォルト(残り1分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り1分).mp3"; sourceTree = "<group>"; };
+		8DBB825F25171D4100437CB8 /* デフォルト(残り3分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り3分).mp3"; sourceTree = "<group>"; };
+		8DBB826025171D4100437CB8 /* デフォルト(残り5分).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り5分).mp3"; sourceTree = "<group>"; };
+		8DBB826125171D4100437CB8 /* デフォルト(残り30秒).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(残り30秒).mp3"; sourceTree = "<group>"; };
 		8DBCA4072510547F00383647 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8DBCA4092510601A00383647 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		8DDA4B5424FF595000AD7C69 /* SettingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingData.swift; sourceTree = "<group>"; };
@@ -114,23 +112,22 @@
 		8D4E625225061FDA007CDADC /* Default Audio */ = {
 			isa = PBXGroup;
 			children = (
-				8D6BFDBA2507A6D5003FAF2A /* デフォルト(5分経過).mp3 */,
-				8D6BFDC32507A6D5003FAF2A /* デフォルト(10分経過).mp3 */,
-				8D6BFDC42507A6D5003FAF2A /* デフォルト(15分経過).mp3 */,
-				8D6BFDC52507A6D5003FAF2A /* デフォルト(20分経過).mp3 */,
-				8D6BFDBD2507A6D5003FAF2A /* デフォルト(25分経過).mp3 */,
-				8D6BFDBE2507A6D5003FAF2A /* デフォルト(30分経過).mp3 */,
-				8D6BFDBF2507A6D5003FAF2A /* デフォルト(35分経過).mp3 */,
-				8D6BFDC02507A6D5003FAF2A /* デフォルト(40分経過).mp3 */,
-				8D6BFDC12507A6D5003FAF2A /* デフォルト(45分経過).mp3 */,
-				8D6BFDC22507A6D5003FAF2A /* デフォルト(50分経過).mp3 */,
-				8D6BFDB72507A6D5003FAF2A /* デフォルト(アプリ起動時).mp3 */,
-				8D6BFDB82507A6D5003FAF2A /* デフォルト(アプリ終了時).mp3 */,
-				8D6BFDB92507A6D5003FAF2A /* デフォルト(残り1分).mp3 */,
-				8D6BFDC62507A6D6003FAF2A /* デフォルト(残り3分).mp3 */,
-				8D71E7582508C1820045FD20 /* デフォルト(残り5分).mp3 */,
-				8D6BFDBB2507A6D5003FAF2A /* デフォルト(残り30秒).mp3 */,
-				8D6BFDBC2507A6D5003FAF2A /* デフォルト(終了時).mp3 */,
+				8DBB824C25171BA500437CB8 /* デフォルト(5分経過).mp3 */,
+				8DBB824F25171C0900437CB8 /* デフォルト(10分経過).mp3 */,
+				8DBB825225171C3800437CB8 /* デフォルト(15分経過).mp3 */,
+				8DBB825825171D4100437CB8 /* デフォルト(20分経過).mp3 */,
+				8DBB825925171D4100437CB8 /* デフォルト(25分経過).mp3 */,
+				8DBB825A25171D4100437CB8 /* デフォルト(30分経過).mp3 */,
+				8DBB825B25171D4100437CB8 /* デフォルト(35分経過).mp3 */,
+				8DBB825525171D4000437CB8 /* デフォルト(40分経過).mp3 */,
+				8DBB825625171D4000437CB8 /* デフォルト(45分経過).mp3 */,
+				8DBB825C25171D4100437CB8 /* デフォルト(50分経過).mp3 */,
+				8DBB825725171D4100437CB8 /* デフォルト(アプリ起動時).mp3 */,
+				8DBB825E25171D4100437CB8 /* デフォルト(残り1分).mp3 */,
+				8DBB825F25171D4100437CB8 /* デフォルト(残り3分).mp3 */,
+				8DBB826025171D4100437CB8 /* デフォルト(残り5分).mp3 */,
+				8DBB826125171D4100437CB8 /* デフォルト(残り30秒).mp3 */,
+				8DBB825D25171D4100437CB8 /* デフォルト(終了時).mp3 */,
 			);
 			path = "Default Audio";
 			sourceTree = "<group>";
@@ -237,27 +234,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6BFDCF2507A6D6003FAF2A /* デフォルト(35分経過).mp3 in Resources */,
-				8D6BFDD32507A6D6003FAF2A /* デフォルト(10分経過).mp3 in Resources */,
-				8D6BFDCA2507A6D6003FAF2A /* デフォルト(5分経過).mp3 in Resources */,
+				8DBB826525171D4100437CB8 /* デフォルト(20分経過).mp3 in Resources */,
+				8DBB826C25171D4100437CB8 /* デフォルト(残り3分).mp3 in Resources */,
 				8DA3F24424FD009B0029D5C3 /* LaunchScreen.storyboard in Resources */,
-				8D6BFDCB2507A6D6003FAF2A /* デフォルト(残り30秒).mp3 in Resources */,
-				8D6BFDCC2507A6D6003FAF2A /* デフォルト(終了時).mp3 in Resources */,
-				8D6BFDD52507A6D6003FAF2A /* デフォルト(20分経過).mp3 in Resources */,
-				8D6BFDC92507A6D6003FAF2A /* デフォルト(残り1分).mp3 in Resources */,
-				8D6BFDCD2507A6D6003FAF2A /* デフォルト(25分経過).mp3 in Resources */,
-				8D6BFDD12507A6D6003FAF2A /* デフォルト(45分経過).mp3 in Resources */,
+				8DBB826725171D4100437CB8 /* デフォルト(30分経過).mp3 in Resources */,
 				8DA3F24124FD009B0029D5C3 /* Assets.xcassets in Resources */,
-				8D71E7592508C1820045FD20 /* デフォルト(残り5分).mp3 in Resources */,
-				8D6BFDD22507A6D6003FAF2A /* デフォルト(50分経過).mp3 in Resources */,
-				8D6BFDD62507A6D6003FAF2A /* デフォルト(残り3分).mp3 in Resources */,
-				8D6BFDCE2507A6D6003FAF2A /* デフォルト(30分経過).mp3 in Resources */,
 				8DA3F23F24FD00980029D5C3 /* Main.storyboard in Resources */,
-				8D6BFDD42507A6D6003FAF2A /* デフォルト(15分経過).mp3 in Resources */,
-				8D6BFDD02507A6D6003FAF2A /* デフォルト(40分経過).mp3 in Resources */,
-				8D6BFDC82507A6D6003FAF2A /* デフォルト(アプリ終了時).mp3 in Resources */,
-				8D6BFDC72507A6D6003FAF2A /* デフォルト(アプリ起動時).mp3 in Resources */,
+				8DBB825325171C3800437CB8 /* デフォルト(15分経過).mp3 in Resources */,
+				8DBB826225171D4100437CB8 /* デフォルト(40分経過).mp3 in Resources */,
+				8DBB826425171D4100437CB8 /* デフォルト(アプリ起動時).mp3 in Resources */,
+				8DBB826A25171D4100437CB8 /* デフォルト(終了時).mp3 in Resources */,
+				8DBB826B25171D4100437CB8 /* デフォルト(残り1分).mp3 in Resources */,
+				8DBB826825171D4100437CB8 /* デフォルト(35分経過).mp3 in Resources */,
+				8DBB826D25171D4100437CB8 /* デフォルト(残り5分).mp3 in Resources */,
+				8DBB826925171D4100437CB8 /* デフォルト(50分経過).mp3 in Resources */,
+				8DBB824D25171BA500437CB8 /* デフォルト(5分経過).mp3 in Resources */,
 				8D1DA6A92509F3FA00F6D4AE /* GoogleService-Info.plist in Resources */,
+				8DBB826325171D4100437CB8 /* デフォルト(45分経過).mp3 in Resources */,
+				8DBB825025171C0900437CB8 /* デフォルト(10分経過).mp3 in Resources */,
+				8DBB826E25171D4100437CB8 /* デフォルト(残り30秒).mp3 in Resources */,
+				8DBB826625171D4100437CB8 /* デフォルト(25分経過).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
