@@ -29,7 +29,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
         directoryInit()
         
         // 広告表示
-        //RdisplayAdsense()
+        displayAdsense()
         
         // ラベルの文字を縁取る
         timeLabel.makeOutLine(strokeWidth: -2.5, oulineColor: UIColor.black, foregroundColor: UIColor.white)
@@ -884,7 +884,6 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // バナー通知のリクエストを作成するメソッド
     func createRequest(title titleText:String,subTitle subTitleText:String,soundPath path:String,timeInterval time:Double) -> UNNotificationRequest {
         // 表示の設定
-        // MARK:- Fix:サウンドがシステムサウンドのみトライトーンになってしまう
         let content = UNMutableNotificationContent()
         content.title = titleText
         content.subtitle = subTitleText
@@ -906,7 +905,14 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             let dest = URL(fileURLWithPath: libraryPath + "/Sounds" + "/\(self.settingData.getFileName(filePath: path))")
             try FileManager.default.copyItem(at: from, to: dest)
         } catch {
-            print(URL(fileURLWithPath: path))
+            print("error:\(error)")
+        }
+        
+        do {
+            let from = URL(fileURLWithPath: "/System/Library/Audio/UISounds/\(self.settingData.getFileName(filePath: path))")
+            let dest = URL(fileURLWithPath: libraryPath + "/Sounds" + "/\(self.settingData.getFileName(filePath: path))")
+            try FileManager.default.copyItem(at: from, to: dest)
+        } catch {
             print("error:\(error)")
         }
         

@@ -14,6 +14,9 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 初期化
+        self.controllers = []
+        
         // データ番号を各画面に渡す(ロードは各画面で行う)
         for num in 0...4 {
             // データを各画面に渡す
