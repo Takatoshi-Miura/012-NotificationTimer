@@ -220,7 +220,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     // 広告用
     let AdMobID = "ca-app-pub-5239611561920614/8530378558"
     let TEST_ID = "ca-app-pub-3940256099942544/2934735716"
-    let AdMobTest:Bool = true
+    let AdMobTest:Bool = false
     
     
     
