@@ -25,9 +25,9 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>カメラにアクセスします。</string>
+	<string>タイムマネージャーはタイマーの背景画像を設定するためにカメラにアクセスします。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>フォトライブラリにアクセスします。</string>
+	<string>タイムマネージャーはタイマーの背景画像を設定するためにカメラロールにアクセスします。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
