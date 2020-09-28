@@ -820,7 +820,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 requestIDArray.append("開始から10分が経過しました。")
             }
             fallthrough
-        case 5 * 60...10 * 60 :
+        case (5 * 60 + 1)...10 * 60 :
             if self.settingData.getAudioElapsed5min() == "OFF" {
                 // 通知OFFのため、リクエストは作成しない
             } else {
@@ -835,7 +835,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 requestIDArray.append("残り5分になりました。")
             }
             fallthrough
-        case 3 * 60...5 * 60 :
+        case (3 * 60 + 1)...5 * 60 :
             if self.settingData.getAudioRemaining3min() == "OFF" {
                 // 通知OFFのため、リクエストは作成しない
             } else {
@@ -843,7 +843,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 requestIDArray.append("残り3分になりました。")
             }
             fallthrough
-        case 1 * 60...3 * 60 :
+        case (1 * 60 + 1)...3 * 60 :
             if self.settingData.getAudioRemaining1min() == "OFF" {
                 // 通知OFFのため、リクエストは作成しない
             } else {
@@ -851,7 +851,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
                 requestIDArray.append("残り1分になりました。")
             }
             fallthrough
-        case 30...1 * 60 :
+        case 31...1 * 60:
             if self.settingData.getAudioRemaining30sec() == "OFF" {
                 // 通知OFFのため、リクエストは作成しない
             } else {
