@@ -218,7 +218,7 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
     var requestIDArray:[String] = []
     
     // 広告用
-    let AdMobID = "ca-app-pub-5239611561920614/8530378558"
+    let AdMobID = "ca-app-pub-9630417275930781/7965359622"
     let TEST_ID = "ca-app-pub-3940256099942544/2934735716"
     let AdMobTest:Bool = false
     
@@ -1009,13 +1009,9 @@ class TimerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDat
             admobView.adUnitID = AdMobID
         }
         
-        // テストデバイスの登録
-        let request = GADRequest()
-        request.testDevices = ["e9bf85481a56f3f95336ba98a47e0d4c"]
-        
         // 広告をビューに追加
         admobView.rootViewController = self
-        admobView.load(request)
+        admobView.load(GADRequest())
         self.view.addSubview(admobView)
     }
     
