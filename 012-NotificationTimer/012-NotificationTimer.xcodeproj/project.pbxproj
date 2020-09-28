@@ -17,6 +17,13 @@
 		8DA3F24424FD009B0029D5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA3F24224FD009B0029D5C3 /* LaunchScreen.storyboard */; };
 		8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */; };
 		8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */; };
+		8DA8E89B2521A26C00172DC4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA8E89A2521A26C00172DC4 /* WidgetKit.framework */; };
+		8DA8E89D2521A26C00172DC4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA8E89C2521A26C00172DC4 /* SwiftUI.framework */; };
+		8DA8E8A02521A26C00172DC4 /* TimeManagerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8E89F2521A26C00172DC4 /* TimeManagerWidget.swift */; };
+		8DA8E8A32521A26E00172DC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA8E8A22521A26E00172DC4 /* Assets.xcassets */; };
+		8DA8E8A52521A26E00172DC4 /* TimeManagerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8E8A12521A26C00172DC4 /* TimeManagerWidget.intentdefinition */; };
+		8DA8E8A62521A26E00172DC4 /* TimeManagerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8E8A12521A26C00172DC4 /* TimeManagerWidget.intentdefinition */; };
+		8DA8E8A92521A26E00172DC4 /* TimeManagerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8DA8E8992521A26C00172DC4 /* TimeManagerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */; };
 		8DBB824D25171BA500437CB8 /* デフォルト(5分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB824C25171BA500437CB8 /* デフォルト(5分経過).mp3 */; };
 		8DBB825025171C0900437CB8 /* デフォルト(10分経過).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8DBB824F25171C0900437CB8 /* デフォルト(10分経過).mp3 */; };
@@ -40,6 +47,30 @@
 		8DDA4B5924FF6F7300AD7C69 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA4B5824FF6F7300AD7C69 /* PageViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8DA8E8A72521A26E00172DC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DA3F22C24FD00980029D5C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DA8E8982521A26C00172DC4;
+			remoteInfo = TimeManagerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DA8E8AD2521A26E00172DC4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8DA8E8A92521A26E00172DC4 /* TimeManagerWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		26EA20D01F17E8E46A504816 /* Pods-012-NotificationTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-012-NotificationTimer.debug.xcconfig"; path = "Target Support Files/Pods-012-NotificationTimer/Pods-012-NotificationTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		6E9A7A2526A440A34EB4CD54 /* Pods_012_NotificationTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_012_NotificationTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +88,13 @@
 		8DA3F24524FD009B0029D5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DA3F24D24FD17A70029D5C3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8DA3F24F24FD1E370029D5C3 /* AudioSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingViewController.swift; sourceTree = "<group>"; };
+		8DA8E8992521A26C00172DC4 /* TimeManagerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimeManagerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA8E89A2521A26C00172DC4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		8DA8E89C2521A26C00172DC4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8DA8E89F2521A26C00172DC4 /* TimeManagerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagerWidget.swift; sourceTree = "<group>"; };
+		8DA8E8A12521A26C00172DC4 /* TimeManagerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = TimeManagerWidget.intentdefinition; sourceTree = "<group>"; };
+		8DA8E8A22521A26E00172DC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DA8E8A42521A26E00172DC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DAAD0F024FE2E0A0004765C /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		8DBB824C25171BA500437CB8 /* デフォルト(5分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(5分経過).mp3"; sourceTree = "<group>"; };
 		8DBB824F25171C0900437CB8 /* デフォルト(10分経過).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "デフォルト(10分経過).mp3"; sourceTree = "<group>"; };
@@ -89,6 +127,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DA8E8962521A26C00172DC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DA8E89D2521A26C00172DC4 /* SwiftUI.framework in Frameworks */,
+				8DA8E89B2521A26C00172DC4 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -105,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				6E9A7A2526A440A34EB4CD54 /* Pods_012_NotificationTimer.framework */,
+				8DA8E89A2521A26C00172DC4 /* WidgetKit.framework */,
+				8DA8E89C2521A26C00172DC4 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				8DA3F23624FD00980029D5C3 /* 012-NotificationTimer */,
+				8DA8E89E2521A26C00172DC4 /* TimeManagerWidget */,
 				8DA3F23524FD00980029D5C3 /* Products */,
 				2D09A0B512C07FCC54B7A51D /* Pods */,
 				7B51DC64BAAFAF9AE21DFC07 /* Frameworks */,
@@ -146,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				8DA3F23424FD00980029D5C3 /* 012-NotificationTimer.app */,
+				8DA8E8992521A26C00172DC4 /* TimeManagerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +224,17 @@
 			path = "012-NotificationTimer";
 			sourceTree = "<group>";
 		};
+		8DA8E89E2521A26C00172DC4 /* TimeManagerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8DA8E89F2521A26C00172DC4 /* TimeManagerWidget.swift */,
+				8DA8E8A12521A26C00172DC4 /* TimeManagerWidget.intentdefinition */,
+				8DA8E8A22521A26E00172DC4 /* Assets.xcassets */,
+				8DA8E8A42521A26E00172DC4 /* Info.plist */,
+			);
+			path = TimeManagerWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,15 +247,34 @@
 				8DA3F23124FD00980029D5C3 /* Frameworks */,
 				8DA3F23224FD00980029D5C3 /* Resources */,
 				5F5B3FF3C107D6D6A3AD329C /* [CP] Embed Pods Frameworks */,
+				8DA8E8AD2521A26E00172DC4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8DA8E8A82521A26E00172DC4 /* PBXTargetDependency */,
 			);
 			name = "012-NotificationTimer";
 			productName = "012-NotificationTimer";
 			productReference = 8DA3F23424FD00980029D5C3 /* 012-NotificationTimer.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8DA8E8982521A26C00172DC4 /* TimeManagerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DA8E8AA2521A26E00172DC4 /* Build configuration list for PBXNativeTarget "TimeManagerWidgetExtension" */;
+			buildPhases = (
+				8DA8E8952521A26C00172DC4 /* Sources */,
+				8DA8E8962521A26C00172DC4 /* Frameworks */,
+				8DA8E8972521A26C00172DC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeManagerWidgetExtension;
+			productName = TimeManagerWidgetExtension;
+			productReference = 8DA8E8992521A26C00172DC4 /* TimeManagerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -201,12 +282,15 @@
 		8DA3F22C24FD00980029D5C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Takatoshi Miura";
 				TargetAttributes = {
 					8DA3F23324FD00980029D5C3 = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					8DA8E8982521A26C00172DC4 = {
+						CreatedOnToolsVersion = 12.0.1;
 					};
 				};
 			};
@@ -225,6 +309,7 @@
 			projectRoot = "";
 			targets = (
 				8DA3F23324FD00980029D5C3 /* 012-NotificationTimer */,
+				8DA8E8982521A26C00172DC4 /* TimeManagerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +339,14 @@
 				8DBB825025171C0900437CB8 /* デフォルト(10分経過).mp3 in Resources */,
 				8DBB826E25171D4100437CB8 /* デフォルト(残り30秒).mp3 in Resources */,
 				8DBB826625171D4100437CB8 /* デフォルト(25分経過).mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DA8E8972521A26C00172DC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DA8E8A32521A26E00172DC4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +402,7 @@
 				8DAAD0F124FE2E0A0004765C /* HamburgerViewController.swift in Sources */,
 				8DBCA4082510547F00383647 /* TutorialViewController.swift in Sources */,
 				8DDA4B5924FF6F7300AD7C69 /* PageViewController.swift in Sources */,
+				8DA8E8A62521A26E00172DC4 /* TimeManagerWidget.intentdefinition in Sources */,
 				8DA3F25024FD1E370029D5C3 /* AudioSettingViewController.swift in Sources */,
 				8DA3F23824FD00980029D5C3 /* AppDelegate.swift in Sources */,
 				8DA3F24E24FD17A70029D5C3 /* TimerViewController.swift in Sources */,
@@ -319,7 +413,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DA8E8952521A26C00172DC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DA8E8A02521A26C00172DC4 /* TimeManagerWidget.swift in Sources */,
+				8DA8E8A52521A26E00172DC4 /* TimeManagerWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DA8E8A82521A26E00172DC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DA8E8982521A26C00172DC4 /* TimeManagerWidgetExtension */;
+			targetProxy = 8DA8E8A72521A26E00172DC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8DA3F23D24FD00980029D5C3 /* Main.storyboard */ = {
@@ -463,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 26EA20D01F17E8E46A504816 /* Pods-012-NotificationTimer.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -485,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CFEDB70F92CC72D9F7090B3 /* Pods-012-NotificationTimer.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -498,6 +611,52 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Takatoshi-Miura.-12-NotificationTimer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8DA8E8AB2521A26E00172DC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YB68MR5FL;
+				INFOPLIST_FILE = TimeManagerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Takatoshi-Miura.-12-NotificationTimer.TimeManagerWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DA8E8AC2521A26E00172DC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9YB68MR5FL;
+				INFOPLIST_FILE = TimeManagerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Takatoshi-Miura.-12-NotificationTimer.TimeManagerWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,6 +679,15 @@
 			buildConfigurations = (
 				8DA3F24924FD009B0029D5C3 /* Debug */,
 				8DA3F24A24FD009B0029D5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DA8E8AA2521A26E00172DC4 /* Build configuration list for PBXNativeTarget "TimeManagerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DA8E8AB2521A26E00172DC4 /* Debug */,
+				8DA8E8AC2521A26E00172DC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
