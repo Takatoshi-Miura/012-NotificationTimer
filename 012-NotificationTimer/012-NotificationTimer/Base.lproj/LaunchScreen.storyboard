@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="width" constant="200" id="uDG-3a-Kkn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver 1.0.4　" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lov-9A-E3X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver 1.0.1　" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lov-9A-E3X">
                                 <rect key="frame" x="240" y="534" width="80" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="MDy-pr-oAK"/>
